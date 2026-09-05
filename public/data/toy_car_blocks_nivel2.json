@@ -1,0 +1,392 @@
+[
+    {
+        "name": "old_house_1_lev2",
+        "x": 180.3013,
+        "y": -2.3018,
+        "z": 122.228,
+        "rotationY": -0.0,
+        "scale": 1.0,
+        "Role": "building",
+        "level": 2
+    },
+    {
+        "name": "rock3_lev2",
+        "x": -241.4169,
+        "y": -2.3018,
+        "z": -61.8858,
+        "rotationY": 2.6383,
+        "scale": 1.0,
+        "Role": "building",
+        "level": 2
+    },
+    {
+        "name": "floor5_lev2",
+        "x": -118.1158,
+        "y": 1.1078,
+        "z": -199.5074,
+        "rotationY": -0.0,
+        "scale": 1.0,
+        "Role": "building",
+        "level": 2
+    },
+    {
+        "name": "coin_3_lev2",
+        "x": -151.3966,
+        "y": 0.0,
+        "z": 44.9818,
+        "rotationY": -0.0,
+        "scale": 1.0,
+        "Role": "default",
+        "level": 2
+    },
+    {
+        "name": "old_castle_lev2",
+        "x": 97.9328,
+        "y": -2.3018,
+        "z": 64.0814,
+        "rotationY": -0.0,
+        "scale": 1.0,
+        "Role": "building",
+        "level": 2
+    },
+    {
+        "name": "p5_lev2",
+        "x": 79.6739,
+        "y": -2.3018,
+        "z": -66.2771,
+        "rotationY": -0.0,
+        "scale": 1.0,
+        "Role": "building",
+        "level": 2
+    },
+    {
+        "name": "coin_8_lev2",
+        "x": 176.7582,
+        "y": -2.3018,
+        "z": 169.6599,
+        "rotationY": -0.0,
+        "scale": 1.0,
+        "Role": "default",
+        "level": 2
+    },
+    {
+        "name": "coin_2_lev2",
+        "x": -147.6283,
+        "y": 0.0,
+        "z": -86.1136,
+        "rotationY": -0.0,
+        "scale": 1.0,
+        "Role": "default",
+        "level": 2
+    },
+    {
+        "name": "farm_lev2",
+        "x": -158.1026,
+        "y": -2.3018,
+        "z": 92.2592,
+        "rotationY": -0.0,
+        "scale": 1.0,
+        "Role": "building",
+        "level": 2
+    },
+    {
+        "name": "stone_building_lev2",
+        "x": 45.7346,
+        "y": 0.0,
+        "z": -118.8126,
+        "rotationY": -0.0,
+        "scale": 1.0,
+        "Role": "building",
+        "level": 2
+    },
+    {
+        "name": "old_house_lev2",
+        "x": -125.8677,
+        "y": -2.3018,
+        "z": 171.2508,
+        "rotationY": -3.059,
+        "scale": 1.0,
+        "Role": "building",
+        "level": 2
+    },
+    {
+        "name": "floor4_lev2",
+        "x": -165.3144,
+        "y": 1.1078,
+        "z": -151.3785,
+        "rotationY": -0.0,
+        "scale": 1.0,
+        "Role": "building",
+        "level": 2
+    },
+    {
+        "name": "fuerte_lev2",
+        "x": -142.869,
+        "y": 3.7365,
+        "z": -195.345,
+        "rotationY": -0.0,
+        "scale": 1.0,
+        "Role": "building",
+        "level": 2
+    },
+    {
+        "name": "rock2_lev2",
+        "x": -241.7091,
+        "y": -2.3018,
+        "z": -90.7905,
+        "rotationY": 0.7162,
+        "scale": 1.0,
+        "Role": "building",
+        "level": 2
+    },
+    {
+        "name": "old_castle_1.002_lev2",
+        "x": 60.8697,
+        "y": -2.3018,
+        "z": 167.2638,
+        "rotationY": -0.0,
+        "scale": 1.0,
+        "Role": "building",
+        "level": 2
+    },
+    {
+        "name": "fantasy_house_lev2",
+        "x": -208.706,
+        "y": -2.3018,
+        "z": 179.197,
+        "rotationY": -2.0555,
+        "scale": 1.0,
+        "Role": "building",
+        "level": 2
+    },
+    {
+        "name": "castle_lev2",
+        "x": -5.4889,
+        "y": -2.3018,
+        "z": 5.5654,
+        "rotationY": -0.0,
+        "scale": 1.0,
+        "Role": "building",
+        "level": 2
+    },
+    {
+        "name": "p4_lev2",
+        "x": -15.4901,
+        "y": -2.3018,
+        "z": -199.9272,
+        "rotationY": 1.5779,
+        "scale": 1.0,
+        "Role": "building",
+        "level": 2
+    },
+    {
+        "name": "stairscorner_lev2",
+        "x": -181.2865,
+        "y": 4.4413,
+        "z": -150.4162,
+        "rotationY": 3.0837,
+        "scale": 1.0,
+        "Role": "building",
+        "level": 2
+    },
+    {
+        "name": "floor3_lev2",
+        "x": -212.4102,
+        "y": 1.1078,
+        "z": -199.2821,
+        "rotationY": -0.0,
+        "scale": 1.0,
+        "Role": "building",
+        "level": 2
+    },
+    {
+        "name": "rock_lev2",
+        "x": -221.8923,
+        "y": -2.3018,
+        "z": -112.6332,
+        "rotationY": -0.431,
+        "scale": 1.0,
+        "Role": "building",
+        "level": 2
+    },
+    {
+        "name": "p3_lev2",
+        "x": 101.6058,
+        "y": -2.3018,
+        "z": -0.8606,
+        "rotationY": -0.0,
+        "scale": 1.0,
+        "Role": "building",
+        "level": 2
+    },
+    {
+        "name": "coin_7_lev2",
+        "x": 45.5326,
+        "y": -2.3018,
+        "z": -193.1996,
+        "rotationY": -0.0,
+        "scale": 1.0,
+        "Role": "default",
+        "level": 2
+    },
+    {
+        "name": "pared_lev2",
+        "x": 205.0464,
+        "y": -2.3018,
+        "z": -1.1284,
+        "rotationY": -0.0,
+        "scale": 1.0,
+        "Role": "building",
+        "level": 2
+    },
+    {
+        "name": "floor2_lev2",
+        "x": -165.1323,
+        "y": 1.1078,
+        "z": -199.0161,
+        "rotationY": -0.0,
+        "scale": 1.0,
+        "Role": "building",
+        "level": 2
+    },
+    {
+        "name": "coin_1_lev2",
+        "x": 51.3546,
+        "y": -2.3018,
+        "z": -60.5591,
+        "rotationY": -0.0,
+        "scale": 1.0,
+        "Role": "default",
+        "level": 2
+    },
+    {
+        "name": "coin_6_lev2",
+        "x": 208.1535,
+        "y": -2.3018,
+        "z": -190.2017,
+        "rotationY": -0.0,
+        "scale": 1.0,
+        "Role": "default",
+        "level": 2
+    },
+    {
+        "name": "desert_stone_house_lev2",
+        "x": 181.7357,
+        "y": -2.3018,
+        "z": -41.7573,
+        "rotationY": -0.0,
+        "scale": 1.0,
+        "Role": "building",
+        "level": 2
+    },
+    {
+        "name": "floor6_lev2",
+        "x": -117.812,
+        "y": 1.1078,
+        "z": -151.5014,
+        "rotationY": -0.0,
+        "scale": 1.0,
+        "Role": "building",
+        "level": 2
+    },
+    {
+        "name": "storageh_lev2",
+        "x": -68.0676,
+        "y": -2.3018,
+        "z": -202.0536,
+        "rotationY": -0.0,
+        "scale": 1.0,
+        "Role": "building",
+        "level": 2
+    },
+    {
+        "name": "p2_lev2",
+        "x": 153.3908,
+        "y": -2.3018,
+        "z": -0.8242,
+        "rotationY": -0.0,
+        "scale": 1.0,
+        "Role": "building",
+        "level": 2
+    },
+    {
+        "name": "rock4_lev2",
+        "x": -199.8904,
+        "y": -2.3018,
+        "z": -109.3913,
+        "rotationY": -2.2051,
+        "scale": 1.0,
+        "Role": "building",
+        "level": 2
+    },
+    {
+        "name": "coin_5_lev2",
+        "x": -177.9758,
+        "y": -2.3018,
+        "z": 138.8221,
+        "rotationY": -0.0,
+        "scale": 1.0,
+        "Role": "default",
+        "level": 2
+    },
+    {
+        "name": "wallrocks_lev2",
+        "x": -117.4891,
+        "y": -2.3018,
+        "z": 18.6474,
+        "rotationY": 0.0656,
+        "scale": 1.0,
+        "Role": "building",
+        "level": 2
+    },
+    {
+        "name": "ancient_building_lev2",
+        "x": 102.2907,
+        "y": -2.3018,
+        "z": -180.338,
+        "rotationY": -0.0,
+        "scale": 1.0,
+        "Role": "building",
+        "level": 2
+    },
+    {
+        "name": "old_castle_1_lev2",
+        "x": 163.2131,
+        "y": -2.3018,
+        "z": -135.307,
+        "rotationY": -0.0,
+        "scale": 1.0,
+        "Role": "building",
+        "level": 2
+    },
+    {
+        "name": "floor_lev2",
+        "x": -212.8349,
+        "y": 1.1078,
+        "z": -151.6822,
+        "rotationY": -0.0,
+        "scale": 1.0,
+        "Role": "building",
+        "level": 2
+    },
+    {
+        "name": "p6_lev2",
+        "x": -16.2609,
+        "y": -2.3018,
+        "z": -96.6843,
+        "rotationY": 1.5689,
+        "scale": 1.0,
+        "Role": "building",
+        "level": 2
+    },
+    {
+        "name": "coin_4_lev2",
+        "x": -69.5816,
+        "y": 0.0,
+        "z": -117.0146,
+        "rotationY": -0.0,
+        "scale": 1.0,
+        "Role": "default",
+        "level": 2
+    }
+]

@@ -1,0 +1,512 @@
+[
+    {
+        "name": "dmuñecodenieve_lev5",
+        "x": 13.7563,
+        "y": 8.6583,
+        "z": -514.5712,
+        "rotationY": 1.6318,
+        "scale": 1,
+        "Role": "building",
+        "level": 5
+    },
+    {
+        "name": "tiendas2_lev5",
+        "x": -44.0611,
+        "y": 0,
+        "z": -680.7171,
+        "rotationY": -0.0802,
+        "scale": 1,
+        "Role": "building",
+        "level": 5
+    },
+    {
+        "name": "deathtreemountain5_lev5",
+        "x": 184.2518,
+        "y": 0.6591,
+        "z": -647.6158,
+        "rotationY": -0.8683,
+        "scale": 1,
+        "Role": "building",
+        "level": 5
+    },
+    {
+        "name": "montanas_lev5",
+        "x": 92.6122,
+        "y": 0,
+        "z": -369.1599,
+        "rotationY": 0.9194,
+        "scale": 1,
+        "Role": "building",
+        "level": 5
+    },
+    {
+        "name": "snow2_lev5",
+        "x": 221.6896,
+        "y": -6.6422,
+        "z": -603.6655,
+        "rotationY": 1.5732,
+        "scale": 1,
+        "Role": "building",
+        "level": 5
+    },
+    {
+        "name": "tiendas_lev5",
+        "x": 75.4673,
+        "y": 0,
+        "z": -122.2164,
+        "rotationY": 1.7319,
+        "scale": 1,
+        "Role": "building",
+        "level": 5
+    },
+    {
+        "name": "snow1_lev5",
+        "x": 1.6027,
+        "y": 40.667,
+        "z": -127.5281,
+        "rotationY": 0,
+        "scale": 1,
+        "Role": "building",
+        "level": 5
+    },
+    {
+        "name": "housesnow_lev5",
+        "x": -27.6556,
+        "y": 7.3855,
+        "z": 224.0343,
+        "rotationY": 0,
+        "scale": 1,
+        "Role": "building",
+        "level": 5
+    },
+    {
+        "name": "deathtreemountain4_lev5",
+        "x": 185.448,
+        "y": 0.6591,
+        "z": -672.8712,
+        "rotationY": -0.8683,
+        "scale": 1,
+        "Role": "building",
+        "level": 5
+    },
+    {
+        "name": "tree7_lev5",
+        "x": -196.8491,
+        "y": 12.429,
+        "z": 387.9017,
+        "rotationY": 0,
+        "scale": 1,
+        "Role": "building",
+        "level": 5
+    },
+    {
+        "name": "deathtree3_lev5",
+        "x": 122.5587,
+        "y": 0.5303,
+        "z": -226.0689,
+        "rotationY": -0.8683,
+        "scale": 1,
+        "Role": "building",
+        "level": 5
+    },
+    {
+        "name": "housesnowroja2_lev5",
+        "x": -145.8654,
+        "y": 7.3855,
+        "z": 398.3883,
+        "rotationY": -1.4397,
+        "scale": 1,
+        "Role": "building",
+        "level": 5
+    },
+    {
+        "name": "coin9_lev5",
+        "x": 195.3248,
+        "y": 0,
+        "z": -721.9951,
+        "rotationY": 0,
+        "scale": 1,
+        "Role": "default",
+        "level": 5
+    },
+    {
+        "name": "deathtreemountain3_lev5",
+        "x": 217.5852,
+        "y": 0.6591,
+        "z": -647.4875,
+        "rotationY": -0.8683,
+        "scale": 1,
+        "Role": "building",
+        "level": 5
+    },
+    {
+        "name": "deathtree2_lev5",
+        "x": 17.4169,
+        "y": 0,
+        "z": 122.7247,
+        "rotationY": 0,
+        "scale": 1,
+        "Role": "building",
+        "level": 5
+    },
+    {
+        "name": "coin8_lev5",
+        "x": 196.4377,
+        "y": 0,
+        "z": -574.1616,
+        "rotationY": 0,
+        "scale": 1,
+        "Role": "default",
+        "level": 5
+    },
+    {
+        "name": "deathtreemountain2_lev5",
+        "x": 210.0777,
+        "y": 0.6591,
+        "z": -672.3851,
+        "rotationY": -0.8683,
+        "scale": 1,
+        "Role": "building",
+        "level": 5
+    },
+    {
+        "name": "deathtree_lev5",
+        "x": 11.2977,
+        "y": 0,
+        "z": -52.5845,
+        "rotationY": -0.8683,
+        "scale": 1,
+        "Role": "building",
+        "level": 5
+    },
+    {
+        "name": "coin7_lev5",
+        "x": 20.274,
+        "y": 0,
+        "z": -564.1643,
+        "rotationY": 0,
+        "scale": 1,
+        "Role": "default",
+        "level": 5
+    },
+    {
+        "name": "deathtreemountain_lev5",
+        "x": 165.9088,
+        "y": 0.6591,
+        "z": -656.004,
+        "rotationY": 0.1151,
+        "scale": 1,
+        "Role": "building",
+        "level": 5
+    },
+    {
+        "name": "tree6_lev5",
+        "x": -24.8112,
+        "y": 10.1496,
+        "z": 344.6581,
+        "rotationY": 0,
+        "scale": 1,
+        "Role": "building",
+        "level": 5
+    },
+    {
+        "name": "snow3_lev5",
+        "x": -110.1811,
+        "y": 10.7067,
+        "z": 352.486,
+        "rotationY": 0,
+        "scale": 1,
+        "Role": "building",
+        "level": 5
+    },
+    {
+        "name": "coin6_lev5",
+        "x": -258.0827,
+        "y": 5.1093,
+        "z": -675.3628,
+        "rotationY": 0,
+        "scale": 1,
+        "Role": "default",
+        "level": 5
+    },
+    {
+        "name": "tree3_lev5",
+        "x": -123.7192,
+        "y": 8.3057,
+        "z": -94.9863,
+        "rotationY": 0,
+        "scale": 1,
+        "Role": "building",
+        "level": 5
+    },
+    {
+        "name": "tree_lev5",
+        "x": -92.1863,
+        "y": 0,
+        "z": 0,
+        "rotationY": 0,
+        "scale": 1,
+        "Role": "building",
+        "level": 5
+    },
+    {
+        "name": "tree63_lev5",
+        "x": -14.3911,
+        "y": 11.3896,
+        "z": 332.4675,
+        "rotationY": 0,
+        "scale": 1,
+        "Role": "building",
+        "level": 5
+    },
+    {
+        "name": "church_lev5",
+        "x": -202.059,
+        "y": -0.8861,
+        "z": 306.3264,
+        "rotationY": -0.3295,
+        "scale": 1,
+        "Role": "building",
+        "level": 5
+    },
+    {
+        "name": "tre1_lev5",
+        "x": -133.4844,
+        "y": 8.5888,
+        "z": -49.1774,
+        "rotationY": 0,
+        "scale": 1,
+        "Role": "building",
+        "level": 5
+    },
+    {
+        "name": "coin5_lev5",
+        "x": -140.3594,
+        "y": 0,
+        "z": -484.733,
+        "rotationY": 0,
+        "scale": 1,
+        "Role": "default",
+        "level": 5
+    },
+    {
+        "name": "tree62_lev5",
+        "x": -31.715,
+        "y": 10.1496,
+        "z": 358.4962,
+        "rotationY": 0,
+        "scale": 1,
+        "Role": "building",
+        "level": 5
+    },
+    {
+        "name": "coin4_lev5",
+        "x": -211.9933,
+        "y": 53.857,
+        "z": 286.9424,
+        "rotationY": 0,
+        "scale": 1,
+        "Role": "default",
+        "level": 5
+    },
+    {
+        "name": "casasnow_lev5",
+        "x": -79.8139,
+        "y": 7.3855,
+        "z": 0,
+        "rotationY": 0,
+        "scale": 1,
+        "Role": "building",
+        "level": 5
+    },
+    {
+        "name": "casaverde2_lev5",
+        "x": -126.0707,
+        "y": 7.3855,
+        "z": -497.1897,
+        "rotationY": 2.922,
+        "scale": 1,
+        "Role": "building",
+        "level": 5
+    },
+    {
+        "name": "coin3_lev5",
+        "x": -25.7207,
+        "y": 1.0969,
+        "z": 361.0168,
+        "rotationY": 0,
+        "scale": 1,
+        "Role": "default",
+        "level": 5
+    },
+    {
+        "name": "tree5_lev5",
+        "x": -60.0612,
+        "y": 0,
+        "z": 131.5443,
+        "rotationY": 0,
+        "scale": 1,
+        "Role": "building",
+        "level": 5
+    },
+    {
+        "name": "casaverde_lev5",
+        "x": -18.3712,
+        "y": 7.3855,
+        "z": 257.677,
+        "rotationY": 0,
+        "scale": 1,
+        "Role": "building",
+        "level": 5
+    },
+    {
+        "name": "tree65_lev5",
+        "x": -16.1198,
+        "y": 18.9563,
+        "z": 325.522,
+        "rotationY": 0,
+        "scale": 1,
+        "Role": "building",
+        "level": 5
+    },
+    {
+        "name": "coin2_lev5",
+        "x": -24.6039,
+        "y": -3.0012,
+        "z": 43.0284,
+        "rotationY": 0,
+        "scale": 1,
+        "Role": "default",
+        "level": 5
+    },
+    {
+        "name": "tree4_lev5",
+        "x": 11.4866,
+        "y": 12.6324,
+        "z": 86.9483,
+        "rotationY": 0,
+        "scale": 1,
+        "Role": "building",
+        "level": 5
+    },
+    {
+        "name": "casasnow2_lev5",
+        "x": -55.7385,
+        "y": 7.3855,
+        "z": 375.52,
+        "rotationY": -1.5632,
+        "scale": 1,
+        "Role": "building",
+        "level": 5
+    },
+    {
+        "name": "tree64_lev5",
+        "x": -41.2915,
+        "y": 11.9896,
+        "z": 369.7958,
+        "rotationY": 0,
+        "scale": 1,
+        "Role": "building",
+        "level": 5
+    },
+    {
+        "name": "coin10_lev5",
+        "x": 548.0724,
+        "y": -79.3035,
+        "z": -685.4399,
+        "rotationY": 0,
+        "scale": 1,
+        "Role": "default",
+        "level": 5
+    },
+    {
+        "name": "montanas2_lev5",
+        "x": 521.7585,
+        "y": 5.0886,
+        "z": -782.2916,
+        "rotationY": -3.0019,
+        "scale": 1,
+        "Role": "building",
+        "level": 5
+    },
+    {
+        "name": "housesnowroja_lev5",
+        "x": -307.8538,
+        "y": 7.3855,
+        "z": 32.2712,
+        "rotationY": 0,
+        "scale": 1,
+        "Role": "building",
+        "level": 5
+    },
+    {
+        "name": "coin_lev5",
+        "x": -111.1424,
+        "y": -0.0922,
+        "z": -117.0146,
+        "rotationY": 0,
+        "scale": 1,
+        "Role": "default",
+        "level": 5
+    },
+    {
+        "name": "housesnowrfr_lev5",
+        "x": -138.1613,
+        "y": 7.3855,
+        "z": 223.6941,
+        "rotationY": 0,
+        "scale": 1,
+        "Role": "building",
+        "level": 5
+    },
+    {
+        "name": "casaconjunto_lev5",
+        "x": -245.9262,
+        "y": 24.14,
+        "z": -576.3276,
+        "rotationY": 1.5783,
+        "scale": 1,
+        "Role": "building",
+        "level": 5
+    },
+    {
+        "name": "dmuñecodenievemontaña2_lev5",
+        "x": 234.1091,
+        "y": 12.743,
+        "z": -535.6272,
+        "rotationY": -2.4965,
+        "scale": 1,
+        "Role": "building",
+        "level": 5
+    },
+    {
+        "name": "tre2_lev5",
+        "x": 36.6977,
+        "y": 0,
+        "z": -64.1131,
+        "rotationY": 0,
+        "scale": 1,
+        "Role": "building",
+        "level": 5
+    },
+    {
+        "name": "casacompleta_lev5",
+        "x": 623.1378,
+        "y": 0,
+        "z": -694.8364,
+        "rotationY": 1.7406,
+        "scale": 1,
+        "Role": "building",
+        "level": 5
+    },
+    {
+        "name": "dmuñecodenievemontaña_lev5",
+        "x": 400.8804,
+        "y": 12.3983,
+        "z": -554.6655,
+        "rotationY": 2.2066,
+        "scale": 1,
+        "Role": "building",
+        "level": 5
+    }
+]

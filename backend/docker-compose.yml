@@ -1,0 +1,43 @@
+services:
+  mongodb:
+    image: mongo:7.0
+    container_name: backend-mongodb
+    restart: always
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: admin123
+    volumes:
+      - mongodb_data:/data/db
+      - ./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+    networks:
+      - backend-network
+
+  backend:
+    build: .
+    container_name: backend-express
+    restart: always
+    ports:
+      - "3000:3000"
+    environment:
+      NODE_ENV: development
+      PORT: 3000
+      MONGODB_URI: mongodb://admin:admin123@mongodb:27017/multimedia_db?authSource=admin
+      JWT_SECRET: tu_secreto_jwt_super_seguro_cambiar_en_produccion
+      JWT_EXPIRES_IN: 24h
+    depends_on:
+      - mongodb
+    volumes:
+      - .:/app
+      - /app/node_modules
+    networks:
+      - backend-network
+    command: npm run dev
+
+networks:
+  backend-network:
+    driver: bridge
+
+volumes:
+  mongodb_data:

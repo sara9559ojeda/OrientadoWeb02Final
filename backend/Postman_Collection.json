@@ -1,0 +1,395 @@
+{
+	"info": {
+		"_postman_id": "multimedia-game-api",
+		"name": "Juego 3D Multinivel - API",
+		"description": "Colección completa de endpoints para el backend del juego 3D multinivel",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "multimedia-game"
+	},
+	"item": [
+		{
+			"name": "Health Check",
+			"item": [
+				{
+					"name": "Health Check",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/health",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"health"
+							]
+						},
+						"description": "Verifica el estado del servidor"
+					},
+					"response": []
+				}
+			],
+			"description": "Endpoints para verificar el estado del servidor"
+		},
+		{
+			"name": "Autenticación",
+			"item": [
+				{
+					"name": "Registro de Usuario",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"usuario@example.com\",\n  \"password\": \"password123\",\n  \"name\": \"Nombre Usuario\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/auth/register",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"register"
+							]
+						},
+						"description": "Registra un nuevo usuario en el sistema. El campo 'name' es opcional."
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if (pm.response.code === 200) {",
+									"    var jsonData = pm.response.json();",
+									"    pm.environment.set(\"auth_token\", jsonData.token);",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"usuario@example.com\",\n  \"password\": \"password123\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/auth/login",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						},
+						"description": "Inicia sesión con email y contraseña. El token JWT se guarda automáticamente en la variable de entorno 'auth_token'."
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener Perfil",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/auth/me",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"me"
+							]
+						},
+						"description": "Obtiene el perfil del usuario autenticado. Requiere token JWT en el header Authorization."
+					},
+					"response": []
+				}
+			],
+			"description": "Endpoints para autenticación y gestión de usuarios"
+		},
+		{
+			"name": "Bloques",
+			"item": [
+				{
+					"name": "Obtener Todos los Bloques",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/blocks",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"blocks"
+							]
+						},
+						"description": "Obtiene todos los bloques del juego desde el archivo JSON. Devuelve un array con la información de posición y propiedades de cada bloque."
+					},
+					"response": []
+				}
+			],
+			"description": "Endpoints para obtener datos de bloques del juego"
+		},
+		{
+			"name": "Niveles",
+			"item": [
+				{
+					"name": "Obtener Todos los Niveles",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/levels",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"levels"
+							]
+						},
+						"description": "Obtiene todos los niveles activos del juego, ordenados por número de nivel."
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener Nivel por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/levels/:levelId",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"levels",
+								":levelId"
+							],
+							"variable": [
+								{
+									"key": "levelId",
+									"value": "1",
+									"description": "ID del nivel (número)"
+								}
+							]
+						},
+						"description": "Obtiene la configuración completa de un nivel específico por su ID."
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener Cantidad de Coins",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/levels/:levelId/coins-count",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"levels",
+								":levelId",
+								"coins-count"
+							],
+							"variable": [
+								{
+									"key": "levelId",
+									"value": "1",
+									"description": "ID del nivel (número)"
+								}
+							]
+						},
+						"description": "Obtiene solo la cantidad de coins (monedas) de un nivel específico. Útil para optimizar cuando solo se necesita este dato."
+					},
+					"response": []
+				}
+			],
+			"description": "Endpoints para gestionar niveles del juego"
+		},
+		{
+			"name": "Puntuaciones",
+			"item": [
+				{
+					"name": "Guardar Puntuación",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"totalPoints\": 150,\n  \"pointsByLevel\": {\n    \"level1\": 50,\n    \"level2\": 60,\n    \"level3\": 40\n  },\n  \"gameTime\": 1200.5\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/scores",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"scores"
+							]
+						},
+						"description": "Guarda una nueva puntuación del juego. Requiere autenticación. El campo 'gameTime' es opcional y debe estar en segundos."
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener Ranking Global",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/scores?limit=10",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"scores"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "10",
+									"description": "Número de resultados (máximo 100, por defecto 10)"
+								}
+							]
+						},
+						"description": "Obtiene el ranking global de puntuaciones. Por defecto devuelve el top 10, pero se puede especificar un límite con el parámetro 'limit' (máximo 100)."
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener Mis Puntuaciones",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/scores/me",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"scores",
+								"me"
+							]
+						},
+						"description": "Obtiene todas las puntuaciones del usuario autenticado, incluyendo la mejor puntuación y el total de partidas. Requiere autenticación."
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener Mejor Puntuación",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/scores/best",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"scores",
+								"best"
+							]
+						},
+						"description": "Obtiene la mejor puntuación del usuario autenticado. Requiere autenticación."
+					},
+					"response": []
+				}
+			],
+			"description": "Endpoints para gestionar puntuaciones del juego"
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:3000",
+			"type": "string"
+		},
+		{
+			"key": "auth_token",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
+

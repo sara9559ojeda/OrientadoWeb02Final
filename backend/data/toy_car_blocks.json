@@ -1,0 +1,730 @@
+[
+    {
+        "name": "mainbody_cube",
+        "x": -2.221,
+        "y": 53.4438,
+        "z": 2.1587,
+        "Role": "vehicle",
+        "level": 1
+    },
+    {
+        "name": "fr",
+        "x": 2.5275,
+        "y": 54.0824,
+        "z": -0.4332,
+        "Role": "vehicle",
+        "level": 1
+    },
+    {
+        "name": "rr",
+        "x": -1.3221,
+        "y": 54.0824,
+        "z": -0.4332,
+        "Role": "vehicle",
+        "level": 1
+    },
+    {
+        "name": "building_003",
+        "x": 14.3581,
+        "y": 130.8988,
+        "z": -0.0088,
+        "Role": "building",
+        "level": 1
+    },
+    {
+        "name": "building_004",
+        "x": -13.4509,
+        "y": 130.8988,
+        "z": -0.0088,
+        "Role": "building",
+        "level": 1
+    },
+    {
+        "name": "building_005",
+        "x": 98.6278,
+        "y": 130.8988,
+        "z": -0.0088,
+        "Role": "building",
+        "level": 1
+    },
+    {
+        "name": "building_007",
+        "x": 14.0772,
+        "y": 105.6179,
+        "z": -0.0088,
+        "Role": "building",
+        "level": 1
+    },
+    {
+        "name": "building_008",
+        "x": -97.4396,
+        "y": 156.1797,
+        "z": -0.0088,
+        "Role": "building",
+        "level": 1
+    },
+    {
+        "name": "building_009",
+        "x": 42.9082,
+        "y": 105.7774,
+        "z": -0.0088,
+        "Role": "building",
+        "level": 1
+    },
+    {
+        "name": "building_010",
+        "x": 70.5379,
+        "y": 79.7752,
+        "z": -0.0088,
+        "Role": "building",
+        "level": 1
+    },
+    {
+        "name": "building_018",
+        "x": 14.0772,
+        "y": 156.1797,
+        "z": -0.0088,
+        "Role": "building",
+        "level": 1
+    },
+    {
+        "name": "building_019",
+        "x": -41.8217,
+        "y": 105.0561,
+        "z": -0.0088,
+        "Role": "building",
+        "level": 1
+    },
+    {
+        "name": "building_020",
+        "x": -41.8217,
+        "y": 159.1728,
+        "z": -0.0088,
+        "Role": "building",
+        "level": 1
+    },
+    {
+        "name": "building_021",
+        "x": 70.257,
+        "y": 53.9325,
+        "z": -0.0088,
+        "Role": "building",
+        "level": 1
+    },
+    {
+        "name": "building_023",
+        "x": -14.0694,
+        "y": 105.7939,
+        "z": -0.0088,
+        "Role": "building",
+        "level": 1
+    },
+    {
+        "name": "building_024",
+        "x": 70.5379,
+        "y": 105.6179,
+        "z": -0.0088,
+        "Role": "building",
+        "level": 1
+    },
+    {
+        "name": "building_025",
+        "x": 14.0772,
+        "y": 79.7752,
+        "z": -0.0088,
+        "Role": "building",
+        "level": 1
+    },
+    {
+        "name": "building_026",
+        "x": -67.1026,
+        "y": 105.4899,
+        "z": -0.0088,
+        "Role": "building",
+        "level": 1
+    },
+    {
+        "name": "building_027",
+        "x": 42.448,
+        "y": 130.8988,
+        "z": -0.0088,
+        "Role": "building",
+        "level": 1
+    },
+    {
+        "name": "building_028",
+        "x": 70.5379,
+        "y": 130.8988,
+        "z": -0.0088,
+        "Role": "building",
+        "level": 1
+    },
+    {
+        "name": "building_029",
+        "x": -69.9116,
+        "y": 156.1797,
+        "z": -0.0088,
+        "Role": "building",
+        "level": 1
+    },
+    {
+        "name": "building_030",
+        "x": -41.8217,
+        "y": 130.8988,
+        "z": -0.0088,
+        "Role": "building",
+        "level": 1
+    },
+    {
+        "name": "building_031",
+        "x": 42.448,
+        "y": 79.7752,
+        "z": -0.0088,
+        "Role": "building",
+        "level": 1
+    },
+    {
+        "name": "building_032",
+        "x": 70.5379,
+        "y": 156.1797,
+        "z": -0.0088,
+        "Role": "building",
+        "level": 1
+    },
+    {
+        "name": "building_033",
+        "x": -14.2936,
+        "y": 156.1797,
+        "z": -0.0088,
+        "Role": "building",
+        "level": 1
+    },
+    {
+        "name": "building_034",
+        "x": 98.066,
+        "y": 156.1797,
+        "z": -0.0088,
+        "Role": "building",
+        "level": 1
+    },
+    {
+        "name": "building_035",
+        "x": 42.448,
+        "y": 156.1797,
+        "z": -0.0088,
+        "Role": "building",
+        "level": 1
+    },
+    {
+        "name": "building_036",
+        "x": -78.0968,
+        "y": 105.6179,
+        "z": -0.8195,
+        "Role": "building",
+        "level": 1
+    },
+    {
+        "name": "building_037",
+        "x": -13.4509,
+        "y": 79.7752,
+        "z": -0.0088,
+        "Role": "building",
+        "level": 1
+    },
+    {
+        "name": "building_001",
+        "x": -41.8217,
+        "y": 53.9325,
+        "z": -0.0088,
+        "Role": "building",
+        "level": 1
+    },
+    {
+        "name": "building_002",
+        "x": 42.448,
+        "y": 28.6516,
+        "z": -0.0088,
+        "Role": "building",
+        "level": 1
+    },
+    {
+        "name": "building_003_001",
+        "x": -69.9116,
+        "y": 79.2134,
+        "z": -0.0088,
+        "Role": "building",
+        "level": 1
+    },
+    {
+        "name": "building_004_001",
+        "x": -41.2599,
+        "y": 79.2134,
+        "z": -0.0088,
+        "Role": "building",
+        "level": 1
+    },
+    {
+        "name": "building_005_001",
+        "x": -100.8104,
+        "y": 78.9325,
+        "z": -0.0088,
+        "Role": "building",
+        "level": 1
+    },
+    {
+        "name": "building_006_001",
+        "x": -100.8104,
+        "y": 28.0898,
+        "z": -0.0088,
+        "Role": "building",
+        "level": 1
+    },
+    {
+        "name": "building_007_001",
+        "x": -69.9116,
+        "y": 31.4606,
+        "z": -0.0088,
+        "Role": "building",
+        "level": 1
+    },
+    {
+        "name": "building_008_001",
+        "x": 46.9424,
+        "y": 54.2134,
+        "z": -0.0088,
+        "Role": "building",
+        "level": 1
+    },
+    {
+        "name": "building_009_001",
+        "x": 70.5379,
+        "y": 28.6516,
+        "z": -0.0088,
+        "Role": "building",
+        "level": 1
+    },
+    {
+        "name": "building_011",
+        "x": 99.1896,
+        "y": 28.6516,
+        "z": -0.0088,
+        "Role": "building",
+        "level": 1
+    },
+    {
+        "name": "building_012",
+        "x": -67.6644,
+        "y": 53.9325,
+        "z": -0.0088,
+        "Role": "building",
+        "level": 1
+    },
+    {
+        "name": "building_014",
+        "x": -39.0127,
+        "y": 28.0898,
+        "z": -0.0088,
+        "Role": "building",
+        "level": 1
+    },
+    {
+        "name": "building_015",
+        "x": 97.5042,
+        "y": 50.5618,
+        "z": -0.0088,
+        "Role": "building",
+        "level": 1
+    },
+    {
+        "name": "building_016",
+        "x": -98.0014,
+        "y": 55.0561,
+        "z": -0.0088,
+        "Role": "building",
+        "level": 1
+    },
+    {
+        "name": "building_017",
+        "x": -10.361,
+        "y": 26.9663,
+        "z": -0.0088,
+        "Role": "building",
+        "level": 1
+    },
+    {
+        "name": "building_018_001",
+        "x": -69.9116,
+        "y": 2.5842,
+        "z": -0.0088,
+        "Role": "building",
+        "level": 1
+    },
+    {
+        "name": "building_019_001",
+        "x": -98.0014,
+        "y": 130.8988,
+        "z": -0.0088,
+        "Role": "building",
+        "level": 1
+    },
+    {
+        "name": "building_020_001",
+        "x": -100.8104,
+        "y": 107.5842,
+        "z": -0.0088,
+        "Role": "building",
+        "level": 1
+    },
+    {
+        "name": "building_001_001",
+        "x": 98.6278,
+        "y": 83.7078,
+        "z": -0.0088,
+        "Role": "building",
+        "level": 1
+    },
+    {
+        "name": "building_002_001",
+        "x": 98.6278,
+        "y": 4.4943,
+        "z": -0.0088,
+        "Role": "building",
+        "level": 1
+    },
+    {
+        "name": "building_003_002",
+        "x": -15.4172,
+        "y": 3.3707,
+        "z": -0.0088,
+        "Role": "building",
+        "level": 1
+    },
+    {
+        "name": "building_004_002",
+        "x": 98.6278,
+        "y": 110.1123,
+        "z": -0.0088,
+        "Role": "building",
+        "level": 1
+    },
+    {
+        "name": "building_005_002",
+        "x": 14.0772,
+        "y": 0,
+        "z": -0.0088,
+        "Role": "building",
+        "level": 1
+    },
+    {
+        "name": "building_006",
+        "x": -18.788,
+        "y": 54.4943,
+        "z": -0.0088,
+        "Role": "building",
+        "level": 1
+    },
+    {
+        "name": "building_007_002",
+        "x": 38.5154,
+        "y": 1.6854,
+        "z": -0.0088,
+        "Role": "building",
+        "level": 1
+    },
+    {
+        "name": "building_008_002",
+        "x": 73.3469,
+        "y": 3.3707,
+        "z": -0.0088,
+        "Role": "building",
+        "level": 1
+    },
+    {
+        "name": "building_009_002",
+        "x": 19.4143,
+        "y": 54.2134,
+        "z": -0.0088,
+        "Role": "building",
+        "level": 1
+    },
+    {
+        "name": "building_010_001",
+        "x": -41.8217,
+        "y": 0,
+        "z": -0.0088,
+        "Role": "building",
+        "level": 1
+    },
+    {
+        "name": "building_011_001",
+        "x": -95.1925,
+        "y": 2.8089,
+        "z": -0.0088,
+        "Role": "building",
+        "level": 1
+    },
+    {
+        "name": "coin_level1_01",
+        "x": 19.077199999999998,
+        "y": 52,
+        "z": 2.9912,
+        "Role": "default",
+        "level": 1
+    },
+    {
+        "name": "coin_level1_02",
+        "x": 24.077199999999998,
+        "y": 54,
+        "z": 5.9912,
+        "Role": "default",
+        "level": 1
+    },
+    {
+        "name": "coin_level1_03",
+        "x": 29.077199999999998,
+        "y": 56,
+        "z": 8.9912,
+        "Role": "default",
+        "level": 1
+    },
+    {
+        "name": "coin_level1_04",
+        "x": 34.0772,
+        "y": 58,
+        "z": 11.9912,
+        "Role": "default",
+        "level": 1
+    },
+    {
+        "name": "coin_level1_05",
+        "x": 39.0772,
+        "y": 60,
+        "z": 14.9912,
+        "Role": "default",
+        "level": 1
+    },
+    {
+        "name": "coin_level1_06",
+        "x": 44.0772,
+        "y": 62,
+        "z": 17.9912,
+        "Role": "default",
+        "level": 1
+    },
+    {
+        "name": "coin_level1_07",
+        "x": 49.0772,
+        "y": 64,
+        "z": 20.9912,
+        "Role": "default",
+        "level": 1
+    },
+    {
+        "name": "coin_level1_08",
+        "x": 54.0772,
+        "y": 66,
+        "z": 23.9912,
+        "Role": "default",
+        "level": 1
+    },
+    {
+        "name": "coin_level1_09",
+        "x": 59.0772,
+        "y": 68,
+        "z": 26.9912,
+        "Role": "default",
+        "level": 1
+    },
+    {
+        "name": "coin_level1_10",
+        "x": 64.0772,
+        "y": 70,
+        "z": 29.9912,
+        "Role": "default",
+        "level": 1
+    },
+    {
+        "name": "coin_level1_11",
+        "x": 69.0772,
+        "y": 72,
+        "z": 32.9912,
+        "Role": "finalPrize",
+        "level": 1
+    },
+    {
+        "name": "coin_level2_01",
+        "x": 55,
+        "y": 52,
+        "z": 53,
+        "Role": "default",
+        "level": 2
+    },
+    {
+        "name": "coin_level2_02",
+        "x": 60,
+        "y": 54,
+        "z": 56,
+        "Role": "default",
+        "level": 2
+    },
+    {
+        "name": "coin_level2_03",
+        "x": 65,
+        "y": 56,
+        "z": 59,
+        "Role": "default",
+        "level": 2
+    },
+    {
+        "name": "coin_level2_04",
+        "x": 70,
+        "y": 58,
+        "z": 62,
+        "Role": "default",
+        "level": 2
+    },
+    {
+        "name": "coin_level2_05",
+        "x": 75,
+        "y": 60,
+        "z": 65,
+        "Role": "default",
+        "level": 2
+    },
+    {
+        "name": "coin_level2_06",
+        "x": 80,
+        "y": 62,
+        "z": 68,
+        "Role": "default",
+        "level": 2
+    },
+    {
+        "name": "coin_level2_07",
+        "x": 85,
+        "y": 64,
+        "z": 71,
+        "Role": "default",
+        "level": 2
+    },
+    {
+        "name": "coin_level2_08",
+        "x": 90,
+        "y": 66,
+        "z": 74,
+        "Role": "default",
+        "level": 2
+    },
+    {
+        "name": "coin_level2_09",
+        "x": 95,
+        "y": 68,
+        "z": 77,
+        "Role": "default",
+        "level": 2
+    },
+    {
+        "name": "coin_level2_10",
+        "x": 100,
+        "y": 70,
+        "z": 80,
+        "Role": "default",
+        "level": 2
+    },
+    {
+        "name": "coin_level2_11",
+        "x": 105,
+        "y": 72,
+        "z": 83,
+        "Role": "finalPrize",
+        "level": 2
+    },
+    {
+        "name": "coin_level3_01",
+        "x": 105,
+        "y": 52,
+        "z": 103,
+        "Role": "default",
+        "level": 3
+    },
+    {
+        "name": "coin_level3_02",
+        "x": 110,
+        "y": 54,
+        "z": 106,
+        "Role": "default",
+        "level": 3
+    },
+    {
+        "name": "coin_level3_03",
+        "x": 115,
+        "y": 56,
+        "z": 109,
+        "Role": "default",
+        "level": 3
+    },
+    {
+        "name": "coin_level3_04",
+        "x": 120,
+        "y": 58,
+        "z": 112,
+        "Role": "default",
+        "level": 3
+    },
+    {
+        "name": "coin_level3_05",
+        "x": 125,
+        "y": 60,
+        "z": 115,
+        "Role": "default",
+        "level": 3
+    },
+    {
+        "name": "coin_level3_06",
+        "x": 130,
+        "y": 62,
+        "z": 118,
+        "Role": "default",
+        "level": 3
+    },
+    {
+        "name": "coin_level3_07",
+        "x": 135,
+        "y": 64,
+        "z": 121,
+        "Role": "default",
+        "level": 3
+    },
+    {
+        "name": "coin_level3_08",
+        "x": 140,
+        "y": 66,
+        "z": 124,
+        "Role": "default",
+        "level": 3
+    },
+    {
+        "name": "coin_level3_09",
+        "x": 145,
+        "y": 68,
+        "z": 127,
+        "Role": "default",
+        "level": 3
+    },
+    {
+        "name": "coin_level3_10",
+        "x": 150,
+        "y": 70,
+        "z": 130,
+        "Role": "default",
+        "level": 3
+    },
+    {
+        "name": "coin_level3_11",
+        "x": 155,
+        "y": 72,
+        "z": 133,
+        "Role": "finalPrize",
+        "level": 3
+    }
+]

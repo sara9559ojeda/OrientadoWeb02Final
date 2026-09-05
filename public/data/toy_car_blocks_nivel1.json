@@ -1,0 +1,192 @@
+[
+    {
+        "name": "circusbaby_lev1",
+        "x": 260.4257,
+        "y": 0.0,
+        "z": -380.5333,
+        "rotationY": -0.0,
+        "scale": 1.0,
+        "Role": "building",
+        "level": 1
+    },
+    {
+        "name": "coin7_lev1",
+        "x": -135.9359,
+        "y": 0.0,
+        "z": 5.7747,
+        "rotationY": -0.0,
+        "scale": 1.0,
+        "Role": "building",
+        "level": 1
+    },
+    {
+        "name": "tent1_lev1",
+        "x": 197.5299,
+        "y": 0.0,
+        "z": -330.9321,
+        "rotationY": 0.7336,
+        "scale": 1.0,
+        "Role": "building",
+        "level": 1
+    },
+    {
+        "name": "props_lev1",
+        "x": -105.7781,
+        "y": 0.0,
+        "z": -277.2629,
+        "rotationY": -0.0,
+        "scale": 1.0,
+        "Role": "building",
+        "level": 1
+    },
+    {
+        "name": "coin10_lev1",
+        "x": -92.2018,
+        "y": 0.0,
+        "z": -47.1067,
+        "rotationY": -0.0,
+        "scale": 1.0,
+        "Role": "building",
+        "level": 1
+    },
+    {
+        "name": "tent_lev1",
+        "x": -77.4794,
+        "y": 71.5162,
+        "z": -233.0507,
+        "rotationY": 0.7336,
+        "scale": 1.0,
+        "Role": "building",
+        "level": 1
+    },
+    {
+        "name": "coin9_lev1",
+        "x": 351.4583,
+        "y": 0.0,
+        "z": -154.3219,
+        "rotationY": -0.0,
+        "scale": 1.0,
+        "Role": "building",
+        "level": 1
+    },
+    {
+        "name": "coin4_lev1",
+        "x": 310.196,
+        "y": 0.0,
+        "z": -112.2629,
+        "rotationY": -0.0,
+        "scale": 1.0,
+        "Role": "building",
+        "level": 1
+    },
+    {
+        "name": "coin_lev1",
+        "x": 51.3546,
+        "y": 0.0,
+        "z": -60.5591,
+        "rotationY": -0.0,
+        "scale": 1.0,
+        "Role": "building",
+        "level": 1
+    },
+    {
+        "name": "basura_lev1",
+        "x": 304.6203,
+        "y": -22.3497,
+        "z": -274.3979,
+        "rotationY": -0.0,
+        "scale": 1.0,
+        "Role": "building",
+        "level": 1
+    },
+    {
+        "name": "tentgrande_lev1",
+        "x": 27.1562,
+        "y": 6.6195,
+        "z": -464.8642,
+        "rotationY": -1.5298,
+        "scale": 1.0,
+        "Role": "building",
+        "level": 1
+    },
+    {
+        "name": "coin5_lev1",
+        "x": -201.9285,
+        "y": 32.8094,
+        "z": -18.4206,
+        "rotationY": -0.0,
+        "scale": 1.0,
+        "Role": "building",
+        "level": 1
+    },
+    {
+        "name": "carrito_lev1",
+        "x": 252.8441,
+        "y": 0.0,
+        "z": -307.7346,
+        "rotationY": -0.0,
+        "scale": 1.0,
+        "Role": "building",
+        "level": 1
+    },
+    {
+        "name": "car_lev1",
+        "x": -316.9216,
+        "y": 0.0,
+        "z": -260.1761,
+        "rotationY": -1.3196,
+        "scale": 1.0,
+        "Role": "building",
+        "level": 1
+    },
+    {
+        "name": "coin6_lev1",
+        "x": 67.5916,
+        "y": 0.0,
+        "z": -114.9588,
+        "rotationY": -0.0,
+        "scale": 1.0,
+        "Role": "building",
+        "level": 1
+    },
+    {
+        "name": "coin2_lev1",
+        "x": 279.4872,
+        "y": 52.8821,
+        "z": -147.5907,
+        "rotationY": -0.0,
+        "scale": 1.0,
+        "Role": "building",
+        "level": 1
+    },
+    {
+        "name": "coin3_lev1",
+        "x": -64.4918,
+        "y": 72.3531,
+        "z": -75.4276,
+        "rotationY": -0.0,
+        "scale": 1.0,
+        "Role": "building",
+        "level": 1
+    },
+    {
+        "name": "coin8_lev1",
+        "x": 158.5196,
+        "y": 0.0,
+        "z": -53.193,
+        "rotationY": -0.0,
+        "scale": 1.0,
+        "Role": "building",
+        "level": 1
+    },
+    {
+        "name": "props2_lev1",
+        "x": 180.0075,
+        "y": 0.0,
+        "z": -262.7755,
+        "rotationY": -0.0,
+        "scale": 1.0,
+        "Role": "building",
+        "level": 1
+    }
+]

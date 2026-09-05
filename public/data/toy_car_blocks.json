@@ -1,0 +1,1434 @@
+[
+    {
+        "name": "coin_level2_01",
+        "x": 55,
+        "y": 2,
+        "z": 53,
+        "Role": "default",
+        "level": 2
+    },
+    {
+        "name": "coin_level2_02",
+        "x": 60,
+        "y": 2,
+        "z": 56,
+        "Role": "default",
+        "level": 2
+    },
+    {
+        "name": "coin_level2_03",
+        "x": 65,
+        "y": 2,
+        "z": 59,
+        "Role": "default",
+        "level": 2
+    },
+    {
+        "name": "coin_level2_04",
+        "x": 70,
+        "y": 2,
+        "z": 62,
+        "Role": "default",
+        "level": 2
+    },
+    {
+        "name": "coin_level2_05",
+        "x": 75,
+        "y": 2,
+        "z": 65,
+        "Role": "default",
+        "level": 2
+    },
+    {
+        "name": "coin_level2_06",
+        "x": 80,
+        "y": 2,
+        "z": 68,
+        "Role": "default",
+        "level": 2
+    },
+    {
+        "name": "coin_level2_07",
+        "x": 85,
+        "y": 2,
+        "z": 71,
+        "Role": "default",
+        "level": 2
+    },
+    {
+        "name": "coin_level2_08",
+        "x": 90,
+        "y": 2,
+        "z": 74,
+        "Role": "default",
+        "level": 2
+    },
+    {
+        "name": "coin_level2_09",
+        "x": 95,
+        "y": 2,
+        "z": 77,
+        "Role": "default",
+        "level": 2
+    },
+    {
+        "name": "coin_level2_10",
+        "x": 100,
+        "y": 2,
+        "z": 80,
+        "Role": "default",
+        "level": 2
+    },
+    {
+        "name": "coin_level2_11",
+        "x": 105,
+        "y": 2,
+        "z": 83,
+        "Role": "finalPrize",
+        "level": 2
+    },
+    {
+        "name": "coin_level3_01",
+        "x": 105,
+        "y": 2,
+        "z": 103,
+        "Role": "default",
+        "level": 3
+    },
+    {
+        "name": "coin_level3_02",
+        "x": 110,
+        "y": 2,
+        "z": 106,
+        "Role": "default",
+        "level": 3
+    },
+    {
+        "name": "coin_level3_03",
+        "x": 115,
+        "y": 2,
+        "z": 109,
+        "Role": "default",
+        "level": 3
+    },
+    {
+        "name": "coin_level3_04",
+        "x": 120,
+        "y": 2,
+        "z": 112,
+        "Role": "default",
+        "level": 3
+    },
+    {
+        "name": "coin_level3_05",
+        "x": 125,
+        "y": 2,
+        "z": 115,
+        "Role": "default",
+        "level": 3
+    },
+    {
+        "name": "coin_level3_06",
+        "x": 130,
+        "y": 2,
+        "z": 118,
+        "Role": "default",
+        "level": 3
+    },
+    {
+        "name": "coin_level3_07",
+        "x": 135,
+        "y": 2,
+        "z": 121,
+        "Role": "default",
+        "level": 3
+    },
+    {
+        "name": "coin_level3_08",
+        "x": 140,
+        "y": 2,
+        "z": 124,
+        "Role": "default",
+        "level": 3
+    },
+    {
+        "name": "coin_level3_09",
+        "x": 145,
+        "y": 2,
+        "z": 127,
+        "Role": "default",
+        "level": 3
+    },
+    {
+        "name": "coin_level3_10",
+        "x": 150,
+        "y": 2,
+        "z": 130,
+        "Role": "default",
+        "level": 3
+    },
+    {
+        "name": "coin_level3_11",
+        "x": 155,
+        "y": 2,
+        "z": 133,
+        "Role": "finalPrize",
+        "level": 3
+    },
+    {
+        "name": "barracks_firstage_level2",
+        "x": 22.0,
+        "y": 0,
+        "z": 5.0,
+        "rotationY": 1.57,
+        "scale": 3,
+        "Role": "building",
+        "level": 3
+    },
+    {
+        "name": "bell_tower",
+        "x": 16.0,
+        "y": 0,
+        "z": 18.0,
+        "rotationY": 0.78,
+        "scale": 3,
+        "Role": "building",
+        "level": 3
+    },
+    {
+        "name": "houses_firstage_1_level3",
+        "x": -5.0,
+        "y": 0,
+        "z": 24.0,
+        "rotationY": 3.14,
+        "scale": 3,
+        "Role": "building",
+        "level": 3
+    },
+    {
+        "name": "houses_secondage_1_level3",
+        "x": -20.0,
+        "y": 0,
+        "z": 14.0,
+        "rotationY": 2.36,
+        "scale": 3,
+        "Role": "building",
+        "level": 3
+    },
+    {
+        "name": "marketstand_1",
+        "x": -25.0,
+        "y": 0,
+        "z": -5.0,
+        "rotationY": 4.71,
+        "scale": 3,
+        "Role": "building",
+        "level": 3
+    },
+    {
+        "name": "mine",
+        "x": -18.0,
+        "y": 0,
+        "z": -20.0,
+        "rotationY": 0.0,
+        "scale": 3,
+        "Role": "building",
+        "level": 3
+    },
+    {
+        "name": "watchtower_secondage_level3",
+        "x": 5.0,
+        "y": 0,
+        "z": -24.0,
+        "rotationY": 1.57,
+        "scale": 3,
+        "Role": "building",
+        "level": 3
+    },
+    {
+        "name": "windmill_secondage",
+        "x": 20.0,
+        "y": 0,
+        "z": -16.0,
+        "rotationY": 3.14,
+        "scale": 3,
+        "Role": "building",
+        "level": 3
+    },
+    {
+        "name": "houses_firstage_1_level3",
+        "x": 36.0,
+        "y": 0,
+        "z": 8.0,
+        "rotationY": 0.0,
+        "scale": 3,
+        "Role": "building",
+        "level": 3
+    },
+    {
+        "name": "marketstand_1",
+        "x": 24.0,
+        "y": 0,
+        "z": 28.0,
+        "rotationY": 2.36,
+        "scale": 3,
+        "Role": "building",
+        "level": 3
+    },
+    {
+        "name": "windmill_secondage",
+        "x": -6.0,
+        "y": 0,
+        "z": 38.0,
+        "rotationY": 1.57,
+        "scale": 3,
+        "Role": "building",
+        "level": 3
+    },
+    {
+        "name": "barracks_firstage_level2",
+        "x": -30.0,
+        "y": 0,
+        "z": 24.0,
+        "rotationY": 4.71,
+        "scale": 3,
+        "Role": "building",
+        "level": 3
+    },
+    {
+        "name": "watchtower_secondage_level3",
+        "x": -38.0,
+        "y": 0,
+        "z": -5.0,
+        "rotationY": 0.78,
+        "scale": 3,
+        "Role": "building",
+        "level": 3
+    },
+    {
+        "name": "houses_secondage_1_level3",
+        "x": -26.0,
+        "y": 0,
+        "z": -30.0,
+        "rotationY": 3.14,
+        "scale": 3,
+        "Role": "building",
+        "level": 3
+    },
+    {
+        "name": "bell_tower",
+        "x": 6.0,
+        "y": 0,
+        "z": -38.0,
+        "rotationY": 0.0,
+        "scale": 3,
+        "Role": "building",
+        "level": 3
+    },
+    {
+        "name": "mine",
+        "x": 30.0,
+        "y": 0,
+        "z": -26.0,
+        "rotationY": 1.57,
+        "scale": 3,
+        "Role": "building",
+        "level": 3
+    },
+    {
+        "name": "marketstand_1",
+        "x": 52.0,
+        "y": 0,
+        "z": 10.0,
+        "rotationY": 3.14,
+        "scale": 3,
+        "Role": "building",
+        "level": 3
+    },
+    {
+        "name": "watchtower_secondage_level3",
+        "x": 36.0,
+        "y": 0,
+        "z": 40.0,
+        "rotationY": 0.78,
+        "scale": 3,
+        "Role": "building",
+        "level": 3
+    },
+    {
+        "name": "barracks_firstage_level2",
+        "x": -8.0,
+        "y": 0,
+        "z": 54.0,
+        "rotationY": 2.36,
+        "scale": 3,
+        "Role": "building",
+        "level": 3
+    },
+    {
+        "name": "windmill_secondage",
+        "x": -42.0,
+        "y": 0,
+        "z": 34.0,
+        "rotationY": 0.0,
+        "scale": 3,
+        "Role": "building",
+        "level": 3
+    },
+    {
+        "name": "bell_tower",
+        "x": -54.0,
+        "y": 0,
+        "z": -8.0,
+        "rotationY": 1.57,
+        "scale": 3,
+        "Role": "building",
+        "level": 3
+    },
+    {
+        "name": "houses_firstage_1_level3",
+        "x": -38.0,
+        "y": 0,
+        "z": -42.0,
+        "rotationY": 4.71,
+        "scale": 3,
+        "Role": "building",
+        "level": 3
+    },
+    {
+        "name": "mine",
+        "x": 10.0,
+        "y": 0,
+        "z": -54.0,
+        "rotationY": 3.14,
+        "scale": 3,
+        "Role": "building",
+        "level": 3
+    },
+    {
+        "name": "houses_secondage_1_level3",
+        "x": 42.0,
+        "y": 0,
+        "z": -36.0,
+        "rotationY": 0.78,
+        "scale": 3,
+        "Role": "building",
+        "level": 3
+    },
+    {
+        "name": "windmill_secondage",
+        "x": 68.0,
+        "y": 0,
+        "z": 12.0,
+        "rotationY": 0.0,
+        "scale": 3,
+        "Role": "building",
+        "level": 3
+    },
+    {
+        "name": "mine",
+        "x": 46.0,
+        "y": 0,
+        "z": 52.0,
+        "rotationY": 2.36,
+        "scale": 3,
+        "Role": "building",
+        "level": 3
+    },
+    {
+        "name": "houses_secondage_1_level3",
+        "x": -12.0,
+        "y": 0,
+        "z": 70.0,
+        "rotationY": 1.57,
+        "scale": 3,
+        "Role": "building",
+        "level": 3
+    },
+    {
+        "name": "bell_tower",
+        "x": -55.0,
+        "y": 0,
+        "z": 44.0,
+        "rotationY": 3.14,
+        "scale": 3,
+        "Role": "building",
+        "level": 3
+    },
+    {
+        "name": "houses_firstage_1_level3",
+        "x": -70.0,
+        "y": 0,
+        "z": -10.0,
+        "rotationY": 4.71,
+        "scale": 3,
+        "Role": "building",
+        "level": 3
+    },
+    {
+        "name": "barracks_firstage_level2",
+        "x": -50.0,
+        "y": 0,
+        "z": -55.0,
+        "rotationY": 0.78,
+        "scale": 3,
+        "Role": "building",
+        "level": 3
+    },
+    {
+        "name": "watchtower_secondage_level3",
+        "x": 14.0,
+        "y": 0,
+        "z": -68.0,
+        "rotationY": 0.0,
+        "scale": 3,
+        "Role": "building",
+        "level": 3
+    },
+    {
+        "name": "marketstand_1",
+        "x": 55.0,
+        "y": 0,
+        "z": -48.0,
+        "rotationY": 1.57,
+        "scale": 3,
+        "Role": "building",
+        "level": 3
+    },
+    {
+        "name": "bell_tower",
+        "x": 85.0,
+        "y": 0,
+        "z": 15.0,
+        "rotationY": 1.57,
+        "scale": 3,
+        "Role": "building",
+        "level": 3
+    },
+    {
+        "name": "mine",
+        "x": 58.0,
+        "y": 0,
+        "z": 65.0,
+        "rotationY": 3.14,
+        "scale": 3,
+        "Role": "building",
+        "level": 3
+    },
+    {
+        "name": "houses_secondage_1_level3",
+        "x": -15.0,
+        "y": 0,
+        "z": 88.0,
+        "rotationY": 0.78,
+        "scale": 3,
+        "Role": "building",
+        "level": 3
+    },
+    {
+        "name": "watchtower_secondage_level3",
+        "x": -66.0,
+        "y": 0,
+        "z": 55.0,
+        "rotationY": 2.36,
+        "scale": 3,
+        "Role": "building",
+        "level": 3
+    },
+    {
+        "name": "barracks_firstage_level2",
+        "x": -88.0,
+        "y": 0,
+        "z": -14.0,
+        "rotationY": 0.0,
+        "scale": 3,
+        "Role": "building",
+        "level": 3
+    },
+    {
+        "name": "windmill_secondage",
+        "x": -62.0,
+        "y": 0,
+        "z": -66.0,
+        "rotationY": 4.71,
+        "scale": 3,
+        "Role": "building",
+        "level": 3
+    },
+    {
+        "name": "houses_firstage_1_level3",
+        "x": 18.0,
+        "y": 0,
+        "z": -86.0,
+        "rotationY": 1.57,
+        "scale": 3,
+        "Role": "building",
+        "level": 3
+    },
+    {
+        "name": "marketstand_1",
+        "x": 68.0,
+        "y": 0,
+        "z": -60.0,
+        "rotationY": 3.14,
+        "scale": 3,
+        "Role": "building",
+        "level": 3
+    },
+    {
+        "name": "houses_firstage_1_level3",
+        "x": 100.0,
+        "y": 0,
+        "z": 18.0,
+        "rotationY": 2.36,
+        "scale": 3,
+        "Role": "building",
+        "level": 3
+    },
+    {
+        "name": "barracks_firstage_level2",
+        "x": 70.0,
+        "y": 0,
+        "z": 76.0,
+        "rotationY": 0.0,
+        "scale": 3,
+        "Role": "building",
+        "level": 3
+    },
+    {
+        "name": "watchtower_secondage_level3",
+        "x": -18.0,
+        "y": 0,
+        "z": 102.0,
+        "rotationY": 1.57,
+        "scale": 3,
+        "Role": "building",
+        "level": 3
+    },
+    {
+        "name": "marketstand_1",
+        "x": -78.0,
+        "y": 0,
+        "z": 70.0,
+        "rotationY": 3.14,
+        "scale": 3,
+        "Role": "building",
+        "level": 3
+    },
+    {
+        "name": "windmill_secondage",
+        "x": -104.0,
+        "y": 0,
+        "z": -16.0,
+        "rotationY": 4.71,
+        "scale": 3,
+        "Role": "building",
+        "level": 3
+    },
+    {
+        "name": "bell_tower",
+        "x": -74.0,
+        "y": 0,
+        "z": -78.0,
+        "rotationY": 0.78,
+        "scale": 3,
+        "Role": "building",
+        "level": 3
+    },
+    {
+        "name": "mine",
+        "x": 20.0,
+        "y": 0,
+        "z": -100.0,
+        "rotationY": 0.0,
+        "scale": 3,
+        "Role": "building",
+        "level": 3
+    },
+    {
+        "name": "houses_secondage_1_level3",
+        "x": 80.0,
+        "y": 0,
+        "z": -74.0,
+        "rotationY": 1.57,
+        "scale": 3,
+        "Role": "building",
+        "level": 3
+    },
+    {
+        "name": "modelo_mundo_4",
+        "x": 0,
+        "y": 0,
+        "z": 0,
+        "Role": "building",
+        "level": 4
+    },
+    {
+        "name": "modelo_mundo_5",
+        "x": 0,
+        "y": 0,
+        "z": 0,
+        "Role": "building",
+        "level": 5
+    },
+    {
+        "name": "old_house_1",
+        "x": 65,
+        "y": 0,
+        "z": 30,
+        "rotationY": 0.0,
+        "scale": 5,
+        "Role": "building",
+        "level": 2
+    },
+    {
+        "name": "old_castle",
+        "x": 30,
+        "y": 0,
+        "z": 65,
+        "rotationY": 0.78,
+        "scale": 5,
+        "Role": "building",
+        "level": 2
+    },
+    {
+        "name": "fantasy_house",
+        "x": -65,
+        "y": 0,
+        "z": 30,
+        "rotationY": 1.57,
+        "scale": 5,
+        "Role": "building",
+        "level": 2
+    },
+    {
+        "name": "desert_stone_house",
+        "x": 65,
+        "y": 0,
+        "z": -30,
+        "rotationY": 3.14,
+        "scale": 5,
+        "Role": "building",
+        "level": 2
+    },
+    {
+        "name": "ancient_building",
+        "x": -30,
+        "y": 0,
+        "z": -65,
+        "rotationY": 0.0,
+        "scale": 5,
+        "Role": "building",
+        "level": 2
+    },
+    {
+        "name": "stone_building",
+        "x": -65,
+        "y": 0,
+        "z": -30,
+        "rotationY": 2.36,
+        "scale": 5,
+        "Role": "building",
+        "level": 2
+    },
+    {
+        "name": "old_castle_1",
+        "x": 30,
+        "y": 0,
+        "z": -65,
+        "rotationY": 1.57,
+        "scale": 5,
+        "Role": "building",
+        "level": 2
+    },
+    {
+        "name": "old_house",
+        "x": -30,
+        "y": 0,
+        "z": 65,
+        "rotationY": 4.71,
+        "scale": 5,
+        "Role": "building",
+        "level": 2
+    },
+    {
+        "name": "old_castle",
+        "x": 60,
+        "y": 0,
+        "z": 40,
+        "rotationY": 0.0,
+        "scale": 5,
+        "Role": "building",
+        "level": 2
+    },
+    {
+        "name": "old_house",
+        "x": 80,
+        "y": 0,
+        "z": -20,
+        "rotationY": 1.57,
+        "scale": 5,
+        "Role": "building",
+        "level": 2
+    },
+    {
+        "name": "stone_building",
+        "x": 50,
+        "y": 0,
+        "z": -60,
+        "rotationY": 3.14,
+        "scale": 5,
+        "Role": "building",
+        "level": 2
+    },
+    {
+        "name": "fantasy_house",
+        "x": -50,
+        "y": 0,
+        "z": 60,
+        "rotationY": 0.78,
+        "scale": 5,
+        "Role": "building",
+        "level": 2
+    },
+    {
+        "name": "ancient_building",
+        "x": -70,
+        "y": 0,
+        "z": -30,
+        "rotationY": 2.36,
+        "scale": 5,
+        "Role": "building",
+        "level": 2
+    },
+    {
+        "name": "old_castle_1",
+        "x": -60,
+        "y": 0,
+        "z": 10,
+        "rotationY": 1.57,
+        "scale": 5,
+        "Role": "building",
+        "level": 2
+    },
+    {
+        "name": "desert_stone_house",
+        "x": 30,
+        "y": 0,
+        "z": 70,
+        "rotationY": 4.71,
+        "scale": 5,
+        "Role": "building",
+        "level": 2
+    },
+    {
+        "name": "old_house_1",
+        "x": -40,
+        "y": 0,
+        "z": -70,
+        "rotationY": 0.0,
+        "scale": 5,
+        "Role": "building",
+        "level": 2
+    },
+    {
+        "name": "old_house",
+        "x": 100,
+        "y": 0,
+        "z": 60,
+        "rotationY": 3.14,
+        "scale": 5,
+        "Role": "building",
+        "level": 2
+    },
+    {
+        "name": "old_castle",
+        "x": -100,
+        "y": 0,
+        "z": -50,
+        "rotationY": 0.78,
+        "scale": 5,
+        "Role": "building",
+        "level": 2
+    },
+    {
+        "name": "stone_building",
+        "x": 90,
+        "y": 0,
+        "z": -80,
+        "rotationY": 1.57,
+        "scale": 5,
+        "Role": "building",
+        "level": 2
+    },
+    {
+        "name": "fantasy_house",
+        "x": -90,
+        "y": 0,
+        "z": 80,
+        "rotationY": 2.36,
+        "scale": 5,
+        "Role": "building",
+        "level": 2
+    },
+    {
+        "name": "ancient_building",
+        "x": 70,
+        "y": 0,
+        "z": -100,
+        "rotationY": 0.0,
+        "scale": 5,
+        "Role": "building",
+        "level": 2
+    },
+    {
+        "name": "old_castle_1",
+        "x": -80,
+        "y": 0,
+        "z": -80,
+        "rotationY": 4.71,
+        "scale": 5,
+        "Role": "building",
+        "level": 2
+    },
+    {
+        "name": "desert_stone_house",
+        "x": -110,
+        "y": 0,
+        "z": 40,
+        "rotationY": 1.57,
+        "scale": 5,
+        "Role": "building",
+        "level": 2
+    },
+    {
+        "name": "old_house_1",
+        "x": 110,
+        "y": 0,
+        "z": -30,
+        "rotationY": 0.78,
+        "scale": 5,
+        "Role": "building",
+        "level": 2
+    },
+    {
+        "name": "old_castle",
+        "x": 20,
+        "y": 0,
+        "z": -120,
+        "rotationY": 3.14,
+        "scale": 5,
+        "Role": "building",
+        "level": 2
+    },
+    {
+        "name": "old_house",
+        "x": -120,
+        "y": 0,
+        "z": 20,
+        "rotationY": 0.0,
+        "scale": 5,
+        "Role": "building",
+        "level": 2
+    },
+    {
+        "name": "stone_building",
+        "x": 120,
+        "y": 0,
+        "z": 90,
+        "rotationY": 2.36,
+        "scale": 5,
+        "Role": "building",
+        "level": 2
+    },
+    {
+        "name": "fantasy_house",
+        "x": -130,
+        "y": 0,
+        "z": -60,
+        "rotationY": 1.57,
+        "scale": 5,
+        "Role": "building",
+        "level": 2
+    },
+    {
+        "name": "ancient_building",
+        "x": 130,
+        "y": 0,
+        "z": -60,
+        "rotationY": 4.71,
+        "scale": 5,
+        "Role": "building",
+        "level": 2
+    },
+    {
+        "name": "desert_stone_house",
+        "x": -20,
+        "y": 0,
+        "z": 130,
+        "rotationY": 0.78,
+        "scale": 5,
+        "Role": "building",
+        "level": 2
+    },
+    {
+        "name": "old_house_1",
+        "x": 150,
+        "y": 0,
+        "z": 0,
+        "rotationY": 0.0,
+        "scale": 5,
+        "Role": "building",
+        "level": 2
+    },
+    {
+        "name": "old_castle_1",
+        "x": -150,
+        "y": 0,
+        "z": 0,
+        "rotationY": 3.14,
+        "scale": 5,
+        "Role": "building",
+        "level": 2
+    },
+    {
+        "name": "old_house",
+        "x": 0,
+        "y": 0,
+        "z": 150,
+        "rotationY": 1.57,
+        "scale": 5,
+        "Role": "building",
+        "level": 2
+    },
+    {
+        "name": "old_castle",
+        "x": 0,
+        "y": 0,
+        "z": -150,
+        "rotationY": 4.71,
+        "scale": 5,
+        "Role": "building",
+        "level": 2
+    },
+    {
+        "name": "stone_building",
+        "x": 140,
+        "y": 0,
+        "z": 110,
+        "rotationY": 0.78,
+        "scale": 5,
+        "Role": "building",
+        "level": 2
+    },
+    {
+        "name": "fantasy_house",
+        "x": -140,
+        "y": 0,
+        "z": 110,
+        "rotationY": 2.36,
+        "scale": 5,
+        "Role": "building",
+        "level": 2
+    },
+    {
+        "name": "ancient_building",
+        "x": 140,
+        "y": 0,
+        "z": -110,
+        "rotationY": 1.57,
+        "scale": 5,
+        "Role": "building",
+        "level": 2
+    },
+    {
+        "name": "desert_stone_house",
+        "x": -140,
+        "y": 0,
+        "z": -110,
+        "rotationY": 0.0,
+        "scale": 5,
+        "Role": "building",
+        "level": 2
+    },
+    {
+        "name": "old_house_1",
+        "x": 160,
+        "y": 0,
+        "z": 60,
+        "rotationY": 3.14,
+        "scale": 5,
+        "Role": "building",
+        "level": 2
+    },
+    {
+        "name": "old_castle_1",
+        "x": -160,
+        "y": 0,
+        "z": -60,
+        "rotationY": 0.78,
+        "scale": 5,
+        "Role": "building",
+        "level": 2
+    },
+    {
+        "name": "old_house",
+        "x": 170,
+        "y": 0,
+        "z": -80,
+        "rotationY": 2.36,
+        "scale": 5,
+        "Role": "building",
+        "level": 2
+    },
+    {
+        "name": "old_castle",
+        "x": -170,
+        "y": 0,
+        "z": 80,
+        "rotationY": 1.57,
+        "scale": 5,
+        "Role": "building",
+        "level": 2
+    },
+    {
+        "name": "stone_building",
+        "x": -80,
+        "y": 0,
+        "z": 160,
+        "rotationY": 4.71,
+        "scale": 5,
+        "Role": "building",
+        "level": 2
+    },
+    {
+        "name": "fantasy_house",
+        "x": 80,
+        "y": 0,
+        "z": -160,
+        "rotationY": 0.0,
+        "scale": 5,
+        "Role": "building",
+        "level": 2
+    },
+    {
+        "name": "ancient_building",
+        "x": -160,
+        "y": 0,
+        "z": -80,
+        "rotationY": 3.14,
+        "scale": 5,
+        "Role": "building",
+        "level": 2
+    },
+    {
+        "name": "desert_stone_house",
+        "x": 160,
+        "y": 0,
+        "z": 80,
+        "rotationY": 0.78,
+        "scale": 5,
+        "Role": "building",
+        "level": 2
+    },
+    {
+        "name": "old_house_1",
+        "x": -50,
+        "y": 0,
+        "z": -150,
+        "rotationY": 1.57,
+        "scale": 5,
+        "Role": "building",
+        "level": 2
+    },
+    {
+        "name": "old_castle_1",
+        "x": 50,
+        "y": 0,
+        "z": 150,
+        "rotationY": 2.36,
+        "scale": 5,
+        "Role": "building",
+        "level": 2
+    },
+    {
+        "name": "old_house",
+        "x": 200,
+        "y": 0,
+        "z": 30,
+        "rotationY": 0.0,
+        "scale": 5,
+        "Role": "building",
+        "level": 2
+    },
+    {
+        "name": "old_castle",
+        "x": -200,
+        "y": 0,
+        "z": -30,
+        "rotationY": 3.14,
+        "scale": 5,
+        "Role": "building",
+        "level": 2
+    },
+    {
+        "name": "stone_building",
+        "x": 30,
+        "y": 0,
+        "z": 200,
+        "rotationY": 1.57,
+        "scale": 5,
+        "Role": "building",
+        "level": 2
+    },
+    {
+        "name": "fantasy_house",
+        "x": -30,
+        "y": 0,
+        "z": -200,
+        "rotationY": 4.71,
+        "scale": 5,
+        "Role": "building",
+        "level": 2
+    },
+    {
+        "name": "ancient_building",
+        "x": 180,
+        "y": 0,
+        "z": -140,
+        "rotationY": 0.78,
+        "scale": 5,
+        "Role": "building",
+        "level": 2
+    },
+    {
+        "name": "desert_stone_house",
+        "x": -180,
+        "y": 0,
+        "z": 140,
+        "rotationY": 2.36,
+        "scale": 5,
+        "Role": "building",
+        "level": 2
+    },
+    {
+        "name": "old_house_1",
+        "x": -90,
+        "y": 0,
+        "z": 190,
+        "rotationY": 1.57,
+        "scale": 5,
+        "Role": "building",
+        "level": 2
+    },
+    {
+        "name": "old_castle_1",
+        "x": 90,
+        "y": 0,
+        "z": -190,
+        "rotationY": 0.0,
+        "scale": 5,
+        "Role": "building",
+        "level": 2
+    },
+    {
+        "name": "mesa_lev1",
+        "x": 0.0,
+        "y": 0.0,
+        "z": 21.8811,
+        "rotationY": -0.0,
+        "scale": 1.0,
+        "Role": "building",
+        "level": 1
+    },
+    {
+        "name": "model9_lev1",
+        "x": 194.579,
+        "y": 9.5462,
+        "z": 52.0947,
+        "rotationY": -0.0,
+        "scale": 1.0,
+        "Role": "building",
+        "level": 1
+    },
+    {
+        "name": "model12_lev1",
+        "x": -137.5063,
+        "y": -0.9882,
+        "z": -13.5173,
+        "rotationY": -1.5776,
+        "scale": 1.0,
+        "Role": "building",
+        "level": 1
+    },
+    {
+        "name": "model11_lev1",
+        "x": 71.3736,
+        "y": -0.9882,
+        "z": -50.5477,
+        "rotationY": 0.7773,
+        "scale": 1.0,
+        "Role": "building",
+        "level": 1
+    },
+    {
+        "name": "model1_lev1",
+        "x": 54.422,
+        "y": -0.9882,
+        "z": -60.0357,
+        "rotationY": -0.0,
+        "scale": 1.0,
+        "Role": "building",
+        "level": 1
+    },
+    {
+        "name": "model10_lev1",
+        "x": -17.7805,
+        "y": -0.9882,
+        "z": -59.7509,
+        "rotationY": 1.6069,
+        "scale": 1.0,
+        "Role": "building",
+        "level": 1
+    },
+    {
+        "name": "model8_lev1",
+        "x": -150.4986,
+        "y": -0.9882,
+        "z": -106.5423,
+        "rotationY": 1.045,
+        "scale": 1.0,
+        "Role": "building",
+        "level": 1
+    },
+    {
+        "name": "model3_lev1",
+        "x": 86.471,
+        "y": -0.9882,
+        "z": -28.5347,
+        "rotationY": 2.9561,
+        "scale": 1.0,
+        "Role": "building",
+        "level": 1
+    },
+    {
+        "name": "model6_lev1",
+        "x": -74.3665,
+        "y": -0.9882,
+        "z": -75.8605,
+        "rotationY": -0.4068,
+        "scale": 1.0,
+        "Role": "building",
+        "level": 1
+    },
+    {
+        "name": "model2_lev1",
+        "x": -15.2319,
+        "y": 15.9885,
+        "z": -121.299,
+        "rotationY": -1.2714,
+        "scale": 1.0,
+        "Role": "building",
+        "level": 1
+    },
+    {
+        "name": "model17_lev1",
+        "x": 94.11,
+        "y": -2.9879,
+        "z": 132.0002,
+        "rotationY": 2.8972,
+        "scale": 1.0,
+        "Role": "building",
+        "level": 1
+    },
+    {
+        "name": "juegos_lev1",
+        "x": 111.1895,
+        "y": 0.0,
+        "z": -109.0927,
+        "rotationY": -0.0,
+        "scale": 1.0,
+        "Role": "building",
+        "level": 1
+    },
+    {
+        "name": "caja_lev1",
+        "x": -36.7906,
+        "y": 0.0,
+        "z": -4.2826,
+        "rotationY": -0.0,
+        "scale": 1.0,
+        "Role": "building",
+        "level": 1
+    },
+    {
+        "name": "model16_lev1",
+        "x": -26.0056,
+        "y": -0.6176,
+        "z": 134.3928,
+        "rotationY": 2.9331,
+        "scale": 1.0,
+        "Role": "building",
+        "level": 1
+    },
+    {
+        "name": "rootnode.015_lev1",
+        "x": 45.7891,
+        "y": 0.0,
+        "z": 146.4729,
+        "rotationY": -0.219,
+        "scale": 1.0,
+        "Role": "building",
+        "level": 1
+    },
+    {
+        "name": "model15_lev1",
+        "x": -137.5848,
+        "y": 0.0,
+        "z": 117.6706,
+        "rotationY": 2.5926,
+        "scale": 1.0,
+        "Role": "building",
+        "level": 1
+    },
+    {
+        "name": "model14_lev1",
+        "x": -260.8553,
+        "y": -0.1122,
+        "z": 67.2771,
+        "rotationY": -1.532,
+        "scale": 1.0,
+        "Role": "building",
+        "level": 1
+    },
+    {
+        "name": "model5_lev1",
+        "x": 55.5532,
+        "y": -0.9882,
+        "z": -146.0597,
+        "rotationY": 2.0439,
+        "scale": 1.0,
+        "Role": "building",
+        "level": 1
+    },
+    {
+        "name": "model4_lev1",
+        "x": 119.2856,
+        "y": -0.9882,
+        "z": -91.2278,
+        "rotationY": -2.0374,
+        "scale": 1.0,
+        "Role": "building",
+        "level": 1
+    },
+    {
+        "name": "model13_lev1",
+        "x": -122.8942,
+        "y": -0.9882,
+        "z": -76.9735,
+        "rotationY": -0.6343,
+        "scale": 1.0,
+        "Role": "building",
+        "level": 1
+    }
+]
