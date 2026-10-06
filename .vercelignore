@@ -1,0 +1,6 @@
+# Lo que NO hace falta subir a Vercel (el backend va en otro servicio)
+backend
+.claude
+# Archivos fuente de Blender: no los usa el juego en runtime (~58 MB)
+public/mundo1.blend
+public/mundo1.blend1

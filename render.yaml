@@ -1,0 +1,25 @@
+# Blueprint de Render para el backend (Express + MongoDB Atlas).
+# Render → New → Blueprint → elegir este repo.
+services:
+  - type: web
+    name: juego3d-backend
+    runtime: node
+    rootDir: backend
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      # Cadena de conexión de MongoDB Atlas (mongodb+srv://...). Se pide al crear el servicio.
+      - key: MONGODB_URI
+        sync: false
+      # Dominio del frontend en Vercel, p. ej. https://mi-juego.vercel.app
+      - key: CORS_ORIGINS
+        sync: false
+      # Render genera un secreto aleatorio para firmar los JWT
+      - key: JWT_SECRET
+        generateValue: true
+      - key: JWT_EXPIRES_IN
+        value: 24h

@@ -71,6 +71,29 @@ local. Los niveles y monedas usan valores por defecto.
 
 ---
 
+## Despliegue
+
+Tres servicios: **MongoDB Atlas** (base), **Render** (backend) y **Vercel** (frontend).
+
+1. **MongoDB Atlas** — crear un cluster gratis, un usuario de base de datos y en
+   *Network Access* permitir `0.0.0.0/0`. Copiar la cadena `mongodb+srv://...`.
+2. **Poblar la base** (una sola vez, desde tu máquina):
+   ```powershell
+   cd backend
+   $env:MONGODB_URI = "mongodb+srv://USUARIO:CLAVE@cluster.mongodb.net/multimedia_db"
+   npm run seed:all
+   ```
+3. **Render** — *New → Blueprint* sobre este repo (usa [`render.yaml`](render.yaml)).
+   Pide `MONGODB_URI` (la de Atlas) y `CORS_ORIGINS` (el dominio de Vercel; se puede
+   completar después del paso 4). Anotar la URL, p. ej. `https://juego3d-backend.onrender.com`.
+4. **Vercel** — *Add New → Project* sobre este repo (Vite se detecta solo). En
+   *Environment Variables* definir `VITE_API_URL = https://juego3d-backend.onrender.com/api`
+   y desplegar. Luego volver a Render y poner el dominio de Vercel en `CORS_ORIGINS`.
+
+> El plan gratis de Render duerme el servicio tras inactividad: la primera petición
+> tarda ~50 s y el login mostrará "servidor offline" hasta que despierte. Abrí
+> `/api/health` un minuto antes de presentar.
+
 ## Autenticación
 
 - **Con backend:** registrás una cuenta desde el botón *Registrarse* (email +
