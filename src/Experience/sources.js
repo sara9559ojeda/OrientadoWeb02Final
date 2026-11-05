@@ -35,16 +35,6 @@ export default [
     { name: 'enemyWalking', type: 'fbxModel', path: '/models/enemigos/Walking.fbx' },
     { name: 'enemyWheelbarrowWalk', type: 'fbxModel', path: '/models/enemigos/Wheelbarrow Walk.fbx' },
 
-    // ── Nivel 2 (originales) ────────────────────────────────────────────────
-    { name: 'ancient_building',   type: 'gltfModel', path: '/models/world 2/ancient_building.glb' },
-    { name: 'desert_stone_house', type: 'gltfModel', path: '/models/world 2/desert_stone_house.glb' },
-    { name: 'fantasy_house',      type: 'gltfModel', path: '/models/world 2/fantasy_house.glb' },
-    { name: 'old_castle',         type: 'gltfModel', path: '/models/world 2/old_castle.glb' },
-    { name: 'old_castle_1',       type: 'gltfModel', path: '/models/world 2/old_castle_1.glb' },
-    { name: 'old_house',          type: 'gltfModel', path: '/models/world 2/old_house.glb' },
-    { name: 'old_house_1',        type: 'gltfModel', path: '/models/world 2/old_house_1.glb' },
-    { name: 'stone_building',     type: 'gltfModel', path: '/models/world 2/stone_building.glb' },
-
     // ── Nivel 2 (exportados desde Blender con _lev2) ────────────────────────
     { name: 'storageh_lev2',          type: 'gltfModel', path: '/models/world 2/storageh_lev2.glb' },
     { name: 'p2_lev2',                type: 'gltfModel', path: '/models/world 2/p2_lev2.glb' },
@@ -61,7 +51,6 @@ export default [
     { name: 'floor4_lev2',            type: 'gltfModel', path: '/models/world 2/floor4_lev2.glb' },
     { name: 'floor5_lev2',            type: 'gltfModel', path: '/models/world 2/floor5_lev2.glb' },
     { name: 'floor6_lev2',            type: 'gltfModel', path: '/models/world 2/floor6_lev2.glb' },
-    { name: 'wallrocks_lev2',         type: 'gltfModel', path: '/models/world 2/wallrocks_lev2.glb' },
     { name: 'castle_lev2',            type: 'gltfModel', path: '/models/world 2/castle_lev2.glb' },
     { name: 'desert_stone_house_lev2',type: 'gltfModel', path: '/models/world 2/desert_stone_house_lev2.glb' },
     { name: 'fuerte_lev2',            type: 'gltfModel', path: '/models/world 2/fuerte_lev2.glb' },
@@ -73,21 +62,12 @@ export default [
     { name: 'old_castle_lev2',        type: 'gltfModel', path: '/models/world 2/old_castle_lev2.glb' },
     { name: 'old_castle_1_lev2',      type: 'gltfModel', path: '/models/world 2/old_castle_1_lev2.glb' },
     { name: 'old_castle_1.002_lev2',   type: 'gltfModel', path: '/models/world 2/old_castle_1.002_lev2.glb' },
-    { name: 'object_4.015_lev2',       type: 'gltfModel', path: '/models/world 2/object_4.015_lev2.glb' },
     { name: 'old_house_1_lev2',       type: 'gltfModel', path: '/models/world 2/old_house_1_lev2.glb' },
     { name: 'stone_building_lev2',    type: 'gltfModel', path: '/models/world 2/stone_building_lev2.glb' },
     { name: 'pared_lev2',             type: 'gltfModel', path: '/models/world 2/pared_lev2.glb' },
     { name: 'farm_lev2',              type: 'gltfModel', path: '/models/world 2/farm_lev2.glb' },
 
     // ── Nivel 3 ─────────────────────────────────────────────────────────────
-    { name: 'barracks_firstage_level2',   type: 'gltfModel', path: '/models/world 3/barracks_firstage_level2.glb' },
-    { name: 'bell_tower',                 type: 'gltfModel', path: '/models/world 3/bell_tower.glb' },
-    { name: 'houses_firstage_1_level3',   type: 'gltfModel', path: '/models/world 3/houses_firstage_1_level3.glb' },
-    { name: 'houses_secondage_1_level3',  type: 'gltfModel', path: '/models/world 3/houses_secondage_1_level3.glb' },
-    { name: 'marketstand_1',              type: 'gltfModel', path: '/models/world 3/marketstand_1.glb' },
-    { name: 'mine',                       type: 'gltfModel', path: '/models/world 3/mine.glb' },
-    { name: 'watchtower_secondage_level3',type: 'gltfModel', path: '/models/world 3/watchtower_secondage_level3.glb' },
-    { name: 'windmill_secondage',         type: 'gltfModel', path: '/models/world 3/windmill_secondage.glb' },
     { name: 'city_lev3',                  type: 'gltfModel', path: '/models/world 3/city_lev3.glb' },
     { name: 'barrio_lev3',                type: 'gltfModel', path: '/models/world 3/barrio_lev3.glb' },
     { name: 'road_lev3',                  type: 'gltfModel', path: '/models/world 3/road_lev3.glb' },
@@ -112,12 +92,9 @@ export default [
     { name: 'road20_lev3',                type: 'gltfModel', path: '/models/world 3/road20_lev3.glb' },
     { name: 'road21_lev3',                type: 'gltfModel', path: '/models/world 3/road21_lev3.glb' },
     { name: 'road22_lev3',                type: 'gltfModel', path: '/models/world 3/road22_lev3.glb' },
-    { name: 'road22.001_lev3',            type: 'gltfModel', path: '/models/world 3/road22.001_lev3.glb' },
-    { name: 'road22.002_lev3',            type: 'gltfModel', path: '/models/world 3/road22.002_lev3.glb' },
     { name: 'road22x1_lev3',              type: 'gltfModel', path: '/models/world 3/road22x1_lev3.glb' },
     { name: 'road25_lev3',                type: 'gltfModel', path: '/models/world 3/road25_lev3.glb' },
     { name: 'roadcorner_lev3',            type: 'gltfModel', path: '/models/world 3/roadcorner_lev3.glb' },
-    { name: 'roadcorner.001_lev3',        type: 'gltfModel', path: '/models/world 3/roadcorner.001_lev3.glb' },
     { name: 'roadcorner2_lev3',           type: 'gltfModel', path: '/models/world 3/roadcorner2_lev3.glb' },
     { name: 'roadq_lev3',                 type: 'gltfModel', path: '/models/world 3/roadq_lev3.glb' },
     { name: 'road19x1_lev3',              type: 'gltfModel', path: '/models/world 3/road19x1_lev3.glb' },
@@ -141,9 +118,7 @@ export default [
     { name: 'coin10_lev3',                type: 'gltfModel', path: '/models/world 3/coin10_lev3.glb' },
 
     // ── Nivel 4 (originales) ────────────────────────────────────────────────
-    { name: 'suelo_4', type: 'gltfModel', path: '/models/world 4/suelo_nivel4.glb' },
     { name: 'arbol_4', type: 'gltfModel', path: '/models/world 4/arbol_nivel4.glb' },
-    { name: 'Pawn',    type: 'gltfModel', path: '/models/world 4/Pawn.glb' },
 
     // ── Nivel 4 (exportados desde Blender con _lev4) ────────────────────────
     { name: 'suelo_nivel4_lev4',            type: 'gltfModel', path: '/models/world 4/suelo_nivel4_lev4.glb' },
@@ -161,18 +136,14 @@ export default [
     { name: 'pawn3_lev4',                   type: 'gltfModel', path: '/models/world 4/pawn3_lev4.glb' },
     { name: 'pawn4_lev4',                   type: 'gltfModel', path: '/models/world 4/pawn4_lev4.glb' },
     { name: 'pawn5_lev4',                   type: 'gltfModel', path: '/models/world 4/pawn5_lev4.glb' },
-    { name: 'root_lev4',                    type: 'gltfModel', path: '/models/world 4/root_lev4.glb' },
     { name: 'low_poly_chess_knights_lev4',  type: 'gltfModel', path: '/models/world 4/low_poly_chess_knights_lev4.glb' },
     { name: 'low_poly_chess_knights2_lev4', type: 'gltfModel', path: '/models/world 4/low_poly_chess_knights2_lev4.glb' },
-    { name: 'low_poly_chess_knights3_lev4', type: 'gltfModel', path: '/models/world 4/low_poly_chess_knights3_lev4.glb' },
     { name: 'low_poly_chess_knights4_lev4', type: 'gltfModel', path: '/models/world 4/low_poly_chess_knights4_lev4.glb' },
     { name: 'low_poly_chess_knights5_lev4', type: 'gltfModel', path: '/models/world 4/low_poly_chess_knights5_lev4.glb' },
     { name: 'alfombra_lev4',               type: 'gltfModel', path: '/models/world 4/alfombra_lev4.glb' },
     { name: 'livingroom_lev4',             type: 'gltfModel', path: '/models/world 4/livingroom_lev4.glb' },
 
     // ── Nivel 5 ─────────────────────────────────────────────────────────────
-    { name: 'modelo_mundo_5',                  type: 'gltfModel', path: '/models/world 5/suelo_nivel5.glb' },
-    { name: 'arbol_mundo5',                    type: 'gltfModel', path: '/models/world 5/arbol mundo5.glb' },
     { name: 'snow1_lev5',                          type: 'gltfModel', path: '/models/world 5/snow1_lev5.glb' },
     { name: 'snow2_lev5',                          type: 'gltfModel', path: '/models/world 5/snow2_lev5.glb' },
     { name: 'snow3_lev5',                          type: 'gltfModel', path: '/models/world 5/snow3_lev5.glb' },
@@ -223,7 +194,5 @@ export default [
     { name: 'coin7_lev5',                          type: 'gltfModel', path: '/models/world 5/coin7_lev5.glb' },
     { name: 'coin8_lev5',                          type: 'gltfModel', path: '/models/world 5/coin8_lev5.glb' },
     { name: 'coin9_lev5',                          type: 'gltfModel', path: '/models/world 5/coin9_lev5.glb' },
-    { name: 'coin10_lev5',                         type: 'gltfModel', path: '/models/world 5/coin10_lev5.glb' },
-    { name: 'empty_lev5',                          type: 'gltfModel', path: '/models/world 5/empty_lev5.glb' },
-    { name: 'group1213442301.001_lev5',            type: 'gltfModel', path: '/models/world 5/group1213442301.001_lev5.glb' }
+    { name: 'coin10_lev5',                         type: 'gltfModel', path: '/models/world 5/coin10_lev5.glb' }
 ]
