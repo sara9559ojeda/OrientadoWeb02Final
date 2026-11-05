@@ -51,17 +51,6 @@ app.use(cors({
 app.use(express.json({ limit: '10kb' }));
 app.use(express.urlencoded({ extended: true, limit: '10kb' }));
 
-// Rate limit contra fuerza bruta en login/registro (por IP)
-const authLimiter = rateLimit({
-  windowMs: 15 * 60 * 1000,
-  limit: 100,
-  standardHeaders: 'draft-7',
-  legacyHeaders: false,
-  message: { message: 'Demasiados intentos, inténtalo de nuevo en unos minutos' },
-});
-app.use('/api/auth/login', authLimiter);
-app.use('/api/auth/register', authLimiter);
-
 // /api/health responde siempre (aunque Mongo siga conectando); el resto de /api necesita BD.
 app.get('/api/health', (req, res) => {
   const db = mongoose.connection.readyState === 1 ? 'connected' : 'connecting';
@@ -75,6 +64,18 @@ app.use('/api', (req, res, next) => {
     message: 'Base de datos no disponible todavía, inténtalo de nuevo en unos segundos',
   });
 });
+
+// Rate limit contra fuerza bruta en login/registro (por IP). Va DESPUÉS del 503: así los
+// reintentos del frontend mientras Mongo arranca (Render dormido) no gastan el cupo.
+const authLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  limit: 100,
+  standardHeaders: 'draft-7',
+  legacyHeaders: false,
+  message: { message: 'Demasiados intentos, inténtalo de nuevo en unos minutos' },
+});
+app.use('/api/auth/login', authLimiter);
+app.use('/api/auth/register', authLimiter);
 
 // Rutas
 app.use('/api', routes);

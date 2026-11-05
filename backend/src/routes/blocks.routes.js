@@ -9,13 +9,29 @@ router.get('/', async (req, res) => {
   try {
     // Obtener parámetros de consulta opcionales
     const { level, role } = req.query;
-    
-    // Construir filtro
+
+    // Validar los parámetros: llegan de la URL y no deben producir errores 500
+    // ni permitir operadores de MongoDB (p. ej. ?role[$ne]=x).
     const filter = {};
-    if (level) {
-      filter.level = parseInt(level);
+    if (level !== undefined && level !== '') {
+      const levelNumber = typeof level === 'string' ? Number(level) : NaN;
+      if (!Number.isInteger(levelNumber)) {
+        res.status(400).json({
+          success: false,
+          message: 'El parámetro level debe ser un número entero',
+        });
+        return;
+      }
+      filter.level = levelNumber;
     }
-    if (role) {
+    if (role !== undefined && role !== '') {
+      if (typeof role !== 'string') {
+        res.status(400).json({
+          success: false,
+          message: 'El parámetro role debe ser un texto',
+        });
+        return;
+      }
       filter.Role = role;
     }
 

@@ -14,20 +14,21 @@ router.post(
     body('totalPoints')
       .isInt({ min: 0 })
       .withMessage('Los puntos totales deben ser un número entero positivo'),
+    // El frontend envía `gameTime: null` cuando no mide el tiempo: null cuenta como "no enviado".
     body('pointsByLevel.level1')
-      .optional()
+      .optional({ values: 'null' })
       .isInt({ min: 0 })
       .withMessage('Los puntos del nivel 1 deben ser un número entero positivo'),
     body('pointsByLevel.level2')
-      .optional()
+      .optional({ values: 'null' })
       .isInt({ min: 0 })
       .withMessage('Los puntos del nivel 2 deben ser un número entero positivo'),
     body('pointsByLevel.level3')
-      .optional()
+      .optional({ values: 'null' })
       .isInt({ min: 0 })
       .withMessage('Los puntos del nivel 3 deben ser un número entero positivo'),
     body('gameTime')
-      .optional()
+      .optional({ values: 'null' })
       .isFloat({ min: 0 })
       .withMessage('El tiempo de juego debe ser un número positivo'),
   ],
