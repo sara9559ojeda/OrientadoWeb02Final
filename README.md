@@ -94,6 +94,19 @@ Tres servicios: **MongoDB Atlas** (base), **Render** (backend) y **Vercel** (fro
 > tarda ~50 s y el login mostrará "servidor offline" hasta que despierte. Abrí
 > `/api/health` un minuto antes de presentar.
 
+### Peso de los modelos (`public/models/world 2` … `world 5`)
+
+Los `.glb` de los niveles 2–5 están **comprimidos** (de 375 MB a ~70 MB; `dist` pasó
+de ~531 MB a ~211 MB). Con [`@gltf-transform`](https://gltf-transform.dev/) se aplicó,
+a cada archivo: `dedup` → texturas a **WebP** (calidad 80, máx. 2048 px) →
+`quantize` → `reorder` → `meshopt` (nivel *medium*). La geometría no se simplifica:
+la desviación máxima de la caja envolvente frente al original fue de 0,0033 %.
+
+`src/Experience/Utils/Resources.js` registra `MeshoptDecoder` en el `GLTFLoader`; **es
+necesario** para leer estos archivos. Los modelos nuevos que se exporten de Blender
+deben pasar por el mismo proceso (o seguirán funcionando, solo que más pesados).
+Los originales sin comprimir están en el historial de git (commit anterior al de la compresión).
+
 ## Autenticación
 
 - **Con backend:** registrás una cuenta desde el botón *Registrarse* (email +
@@ -431,7 +444,11 @@ docker compose up -d     # MongoDB + API en contenedores
 
 ## Notas conocidas
 
-- Muchos modelos `.glb` de edificios no están incluidos en el repo → los niveles se
-  ven con el piso y los personajes pero sin edificios. El juego funciona igual.
+- El bloque `wallrocks_lev2` del nivel 2 (`public/data/toy_car_blocks_nivel2.json`)
+  apunta a un `.glb` que no existe en el repo: ese bloque no se dibuja y la consola
+  avisa "Modelo no encontrado". El nivel funciona igual.
+- El nivel 1 está fuera del juego: sus modelos no están y el juego arranca en el nivel 2.
+- Los 5 modelos de enemigos (`public/models/enemigos/*.fbx`, ~88 MB) siguen sin
+  comprimir: son FBX y `gltf-transform` solo trabaja con glTF.
 - El bucle de `requestAnimationFrame` se pausa cuando la pestaña pierde el foco; al
   volver, el `delta` acotado evita comportamientos raros en la física y la IA.
