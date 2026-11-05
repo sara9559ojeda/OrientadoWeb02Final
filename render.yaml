@@ -12,13 +12,16 @@ services:
     envVars:
       - key: NODE_ENV
         value: production
+      # Node LTS compatible con las dependencias (Render usa su versión por defecto si se omite)
+      - key: NODE_VERSION
+        value: "20"
       # Cadena de conexión de MongoDB Atlas (mongodb+srv://...). Se pide al crear el servicio.
       - key: MONGODB_URI
         sync: false
       # Dominio del frontend en Vercel, p. ej. https://mi-juego.vercel.app
       - key: CORS_ORIGINS
         sync: false
-      # Render genera un secreto aleatorio para firmar los JWT
+      # Render genera un secreto aleatorio para firmar los JWT (en producción es obligatorio y no puede ser el de ejemplo)
       - key: JWT_SECRET
         generateValue: true
       - key: JWT_EXPIRES_IN

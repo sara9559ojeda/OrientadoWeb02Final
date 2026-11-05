@@ -1,4 +1,5 @@
 import { Router } from 'express';
+import { publicError } from '../config/env.js';
 import { Level } from '../models/Level.js';
 
 const router = Router();
@@ -17,7 +18,7 @@ router.get('/', async (req, res) => {
     res.status(500).json({
       success: false,
       message: 'Error al obtener niveles',
-      error: error.message,
+      error: publicError(error),
     });
   }
 });
@@ -54,7 +55,7 @@ router.get('/:levelId', async (req, res) => {
     res.status(500).json({
       success: false,
       message: 'Error al obtener el nivel',
-      error: error.message,
+      error: publicError(error),
     });
   }
 });
@@ -93,7 +94,7 @@ router.get('/:levelId/coins-count', async (req, res) => {
     res.status(500).json({
       success: false,
       message: 'Error al obtener cantidad de coins',
-      error: error.message,
+      error: publicError(error),
       coinsCount: 10, // Valor por defecto en caso de error
     });
   }

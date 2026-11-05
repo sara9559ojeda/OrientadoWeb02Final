@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
+import BackendStatus from './BackendStatus';
 import './Register.css';
 
 const Register = ({ onSwitchToLogin }) => {
@@ -9,7 +10,7 @@ const Register = ({ onSwitchToLogin }) => {
   const [name, setName] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
-  const { register, backendAvailable } = useAuth();
+  const { register, backendStatus } = useAuth();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -158,7 +159,7 @@ const Register = ({ onSwitchToLogin }) => {
             {loading ? (
               <>
                 <span className="spinner"></span>
-                Creando cuenta...
+                {backendStatus === 'checking' ? 'Despertando servidor...' : 'Creando cuenta...'}
               </>
             ) : (
               <>
@@ -186,14 +187,8 @@ const Register = ({ onSwitchToLogin }) => {
           </div>
         </div>
 
-        {/* Estado del backend */}
-        {backendAvailable !== undefined && (
-          <div className={`backend-status ${backendAvailable ? 'online' : 'offline'}`}>
-            {backendAvailable
-              ? '◉ BACKEND CONECTADO — REGISTRO DISPONIBLE'
-              : '◎ BACKEND NO DISPONIBLE — REGISTRO NO DISPONIBLE'}
-          </div>
-        )}
+        {/* Estado del backend (con aviso de "despertando" mientras Render arranca) */}
+        <BackendStatus variant="register" />
       </div>
     </div>
   );

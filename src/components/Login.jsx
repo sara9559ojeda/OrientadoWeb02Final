@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
+import BackendStatus from './BackendStatus';
 import './Login.css';
 
 const Login = ({ onSwitchToRegister }) => {
@@ -7,7 +8,7 @@ const Login = ({ onSwitchToRegister }) => {
   const [password, setPassword] = useState('');
   const [error, setError]       = useState('');
   const [loading, setLoading]   = useState(false);
-  const { login, backendAvailable } = useAuth();
+  const { login, backendStatus } = useAuth();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -114,7 +115,7 @@ const Login = ({ onSwitchToRegister }) => {
             {loading ? (
               <>
                 <span className="spinner" />
-                Autenticando...
+                {backendStatus === 'checking' ? 'Despertando servidor...' : 'Autenticando...'}
               </>
             ) : (
               <>
@@ -128,14 +129,8 @@ const Login = ({ onSwitchToRegister }) => {
           </button>
         </form>
 
-        {/* Estado del backend */}
-        {backendAvailable !== undefined && (
-          <div className={`backend-status ${backendAvailable ? 'online' : 'offline'}`}>
-            {backendAvailable
-              ? '◉ SERVIDOR EN LÍNEA'
-              : '◎ SERVIDOR OFFLINE — MODO LOCAL ACTIVO'}
-          </div>
-        )}
+        {/* Estado del backend (con aviso de "despertando" mientras Render arranca) */}
+        <BackendStatus variant="login" />
 
         {/* Footer */}
         <div className="card-footer">

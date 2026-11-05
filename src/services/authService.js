@@ -1,5 +1,5 @@
 // Servicio de autenticación con fallback hardcodeado
-import { API_ENDPOINTS, checkBackendHealth } from '../config/api.js';
+import { API_ENDPOINTS, waitForBackend } from '../config/api.js';
 
 // Credenciales de puerta trasera (hardcodeadas)
 const BACKDOOR_CREDENTIALS = {
@@ -21,24 +21,75 @@ const generateBackdoorToken = () => {
   }));
 };
 
+// Mensaje cuando el backend responde 503 (Render despertando / BD aún conectando)
+export const SERVER_WAKING_MESSAGE =
+  'El servidor se está despertando. Espera unos segundos e inténtalo de nuevo (puede tardar hasta un minuto).';
+
+// Comprobación en curso (compartida) y su AbortController, para poder cancelarla
+let pendingCheck = null;
+let pendingController = null;
+const statusListeners = new Set();
+
 /**
- * Verifica si el backend está disponible (con cache)
+ * Suscribe un callback que se llama cuando empieza una comprobación del backend
+ * (running=true) y cuando termina (running=false, available=resultado).
+ * Devuelve la función para desuscribirse.
+ */
+export const onBackendCheckChange = (listener) => {
+  statusListeners.add(listener);
+  return () => statusListeners.delete(listener);
+};
+
+/**
+ * Verifica si el backend está disponible (con cache de 30 s).
+ * Usa un health check paciente (hasta ~60 s con reintentos) para tolerar que
+ * Render esté despertando el servicio. Las llamadas simultáneas comparten la
+ * misma comprobación.
+ * @param {{ force?: boolean }} [options] force=true ignora la cache
  * @returns {Promise<boolean>}
  */
-export const isBackendAvailable = async () => {
+export const isBackendAvailable = async ({ force = false } = {}) => {
   const now = Date.now();
-  
+
   // Usar cache si está disponible y no ha expirado
-  if (backendAvailableCache !== null && (now - backendCheckTime) < CACHE_DURATION) {
+  if (!force && backendAvailableCache !== null && (now - backendCheckTime) < CACHE_DURATION) {
     return backendAvailableCache;
   }
-  
-  // Verificar backend
-  const available = await checkBackendHealth();
-  backendAvailableCache = available;
-  backendCheckTime = now;
-  
-  return available;
+
+  // Si ya hay una comprobación en marcha, esperar a la misma
+  if (pendingCheck) return pendingCheck;
+
+  const controller = new AbortController();
+  pendingController = controller;
+  statusListeners.forEach((l) => l(true, undefined));
+
+  pendingCheck = waitForBackend({ signal: controller.signal })
+    .then((available) => {
+      backendAvailableCache = available;
+      backendCheckTime = Date.now();
+      pendingCheck = null;
+      pendingController = null;
+      statusListeners.forEach((l) => l(false, available));
+      return available;
+    });
+
+  return pendingCheck;
+};
+
+/**
+ * Cancela la espera del backend en curso: se considera offline (permite usar
+ * el acceso local sin backend).
+ */
+export const cancelBackendCheck = () => {
+  pendingController?.abort();
+};
+
+/**
+ * Invalida la cache del estado del backend (p. ej. tras recibir un 503).
+ */
+export const invalidateBackendCache = () => {
+  backendAvailableCache = null;
+  backendCheckTime = 0;
 };
 
 /**
@@ -83,32 +134,37 @@ export const login = async (email, password) => {
   }
 
   // SEGUNDO: Si NO son credenciales de backdoor, ir al backend para obtener JWT
+  let response;
   try {
-    const response = await fetch(API_ENDPOINTS.auth.login, {
+    response = await fetch(API_ENDPOINTS.auth.login, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({ email, password }),
     });
-
-    if (!response.ok) {
-      // Si el backend responde con error, lanzar excepción
-      const errorData = await response.json().catch(() => ({}));
-      throw new Error(errorData.message || 'Credenciales inválidas');
-    }
-
-    // Si el backend responde correctamente, devolver el JWT
-    const data = await response.json();
-    console.log('✅ Login exitoso con backend, token JWT recibido');
-    return data;
   } catch (error) {
-    // Si hay error de conexión (red, backend caído, etc.)
+    // Error de conexión (red, backend caído, etc.)
     console.error('❌ Error conectando con el backend:', error);
-    
-    // Si no son credenciales de backdoor y hay error de conexión, lanzar error
     throw new Error('No se pudo conectar con el servidor. Verifica tu conexión.');
   }
+
+  // 503: el servidor está despertando / la BD aún conecta -> mensaje de reintento
+  if (response.status === 503) {
+    invalidateBackendCache();
+    throw new Error(SERVER_WAKING_MESSAGE);
+  }
+
+  if (!response.ok) {
+    // Si el backend responde con error, lanzar excepción con su mensaje
+    const errorData = await response.json().catch(() => ({}));
+    throw new Error(errorData.message || 'Credenciales inválidas');
+  }
+
+  // Si el backend responde correctamente, devolver el JWT
+  const data = await response.json();
+  console.log('✅ Login exitoso con backend, token JWT recibido');
+  return data;
 };
 
 /**
@@ -134,6 +190,12 @@ export const register = async (email, password, name = '') => {
       },
       body: JSON.stringify({ email, password, name }),
     });
+
+    // 503: el servidor está despertando / la BD aún conecta -> mensaje de reintento
+    if (response.status === 503) {
+      invalidateBackendCache();
+      throw new Error(SERVER_WAKING_MESSAGE);
+    }
 
     if (!response.ok) {
       const errorData = await response.json().catch(() => ({}));

@@ -1,5 +1,5 @@
-import React, { createContext, useContext, useEffect, useMemo, useState } from 'react';
-import { getToken, isBackendAvailable, isTokenValid, login, register, removeToken, saveToken } from '../services/authService';
+import React, { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
+import { cancelBackendCheck, getToken, isBackendAvailable, isTokenValid, login, onBackendCheckChange, register, removeToken, saveToken } from '../services/authService';
 
 const AuthContext = createContext(null);
 
@@ -17,29 +17,44 @@ export const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true); // Iniciar en true para verificar backend primero
   const [backendAvailable, setBackendAvailable] = useState(false);
   const [checkingBackend, setCheckingBackend] = useState(true);
+  // Instante en que empezó la comprobación en curso (para mostrar el tiempo de espera)
+  const [checkStartedAt, setCheckStartedAt] = useState(() => Date.now());
+
+  // Refleja en el estado cada vez que empieza/termina una comprobación del backend
+  useEffect(() => onBackendCheckChange((running, available) => {
+    if (running) {
+      setCheckStartedAt(Date.now());
+    } else {
+      setBackendAvailable(available);
+    }
+    setCheckingBackend(running);
+  }), []);
+
+  // Comprueba el backend. Con Render dormido puede tardar hasta ~60 s, por eso
+  // NO bloquea la app: el login se muestra enseguida con el aviso "Despertando…".
+  const checkBackend = useCallback(async (force = false) => {
+    try {
+      const available = await isBackendAvailable({ force });
+      setBackendAvailable(available);
+      console.log(available ? '✅ Backend disponible' : '⚠️ Backend no disponible');
+    } catch (error) {
+      console.error('Error verificando backend:', error);
+      setBackendAvailable(false);
+    } finally {
+      setCheckingBackend(false);
+    }
+  }, []);
 
   // Verificar disponibilidad del backend al iniciar
   useEffect(() => {
-    const checkBackend = async () => {
-      try {
-        const available = await isBackendAvailable();
-        setBackendAvailable(available);
-        console.log(available ? '✅ Backend disponible' : '⚠️ Backend no disponible');
-      } catch (error) {
-        console.error('Error verificando backend:', error);
-        setBackendAvailable(false);
-      } finally {
-        setCheckingBackend(false);
-      }
-    };
-    
     checkBackend();
-  }, []);
+  }, [checkBackend]);
+
+  // 'checking' | 'online' | 'offline'
+  const backendStatus = checkingBackend ? 'checking' : (backendAvailable ? 'online' : 'offline');
 
   // Validar token al iniciar y periódicamente
   useEffect(() => {
-    if (checkingBackend) return; // Esperar a que termine la verificación del backend
-    
     const validateToken = async () => {
       const savedToken = getToken();
       
@@ -84,7 +99,7 @@ export const AuthProvider = ({ children }) => {
     }, 5 * 60 * 1000); // 5 minutos
     
     return () => clearInterval(interval);
-  }, [backendAvailable, checkingBackend]);
+  }, []);
 
   const handleLogin = async (email, password) => {
     try {
@@ -146,8 +161,14 @@ export const AuthProvider = ({ children }) => {
     login: handleLogin,
     register: handleRegister,
     logout: handleLogout,
-    loading: loading || checkingBackend,
+    loading,
     backendAvailable,
+    backendStatus,
+    checkStartedAt,
+    // Dejar de esperar al servidor (permite el acceso local/offline)
+    skipBackendWait: cancelBackendCheck,
+    // Volver a comprobar el servidor ignorando la cache
+    retryBackendCheck: () => checkBackend(true),
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

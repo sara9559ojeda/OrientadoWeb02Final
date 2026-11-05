@@ -1,4 +1,5 @@
 import { Router } from 'express';
+import { publicError } from '../config/env.js';
 import { Block } from '../models/Block.js';
 
 const router = Router();
@@ -29,7 +30,7 @@ router.get('/', async (req, res) => {
     res.status(500).json({
       success: false,
       message: 'Error al obtener bloques',
-      error: error.message,
+      error: publicError(error),
       blocks: [], // Devolver array vacío en caso de error
     });
   }
@@ -61,7 +62,7 @@ router.get('/:levelId', async (req, res) => {
     res.status(500).json({
       success: false,
       message: 'Error al obtener bloques del nivel',
-      error: error.message,
+      error: publicError(error),
     });
   }
 });

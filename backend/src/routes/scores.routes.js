@@ -1,4 +1,5 @@
 import { Router } from 'express';
+import { publicError } from '../config/env.js';
 import { body, validationResult } from 'express-validator';
 import { authenticate } from '../middleware/auth.js';
 import { GameScore } from '../models/GameScore.js';
@@ -71,7 +72,7 @@ router.post(
       res.status(500).json({
         success: false,
         message: 'Error al guardar puntuación',
-        error: error.message,
+        error: publicError(error),
       });
     }
   }
@@ -95,7 +96,7 @@ router.get('/', async (req, res) => {
     res.status(500).json({
       success: false,
       message: 'Error al obtener ranking',
-      error: error.message,
+      error: publicError(error),
     });
   }
 });
@@ -127,7 +128,7 @@ router.get('/me', authenticate, async (req, res) => {
     res.status(500).json({
       success: false,
       message: 'Error al obtener puntuaciones',
-      error: error.message,
+      error: publicError(error),
     });
   }
 });
@@ -156,7 +157,7 @@ router.get('/best', authenticate, async (req, res) => {
     res.status(500).json({
       success: false,
       message: 'Error al obtener mejor puntuación',
-      error: error.message,
+      error: publicError(error),
     });
   }
 });
