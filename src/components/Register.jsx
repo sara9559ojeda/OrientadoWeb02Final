@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
+import AuthLayout from './AuthLayout';
 import BackendStatus from './BackendStatus';
-import './Register.css';
 
 const Register = ({ onSwitchToLogin }) => {
   const [email, setEmail] = useState('');
@@ -32,7 +32,7 @@ const Register = ({ onSwitchToLogin }) => {
 
     try {
       const result = await register(email, password, name);
-      
+
       if (!result.success) {
         setError(result.error || 'Error al registrar usuario');
         setLoading(false);
@@ -44,155 +44,122 @@ const Register = ({ onSwitchToLogin }) => {
   };
 
   return (
-    <div className="register-container">
-      {/* Partículas de fondo animadas */}
-      <div className="particles">
-        {[...Array(20)].map((_, i) => (
-          <div key={i} className="particle" style={{ 
-            left: `${Math.random() * 100}%`,
-            animationDelay: `${Math.random() * 5}s`,
-            animationDuration: `${5 + Math.random() * 5}s`
-          }} />
-        ))}
-      </div>
+    <AuthLayout title="Crea tu cuenta" subtitle="Únete a la aventura">
+      <form onSubmit={handleSubmit} className="auth-form">
 
-      {/* Tarjeta principal */}
-      <div className="register-card">
-        {/* Header con información */}
-        <div className="card-header">
-          <div className="avatar">
-            <div className="avatar-inner">+</div>
-          </div>
-          <div className="user-info">
-            <h2 className="user-name">Crear Cuenta</h2>
-            <p className="user-title">Únete a la aventura</p>
-          </div>
-        </div>
-
-        {/* Formulario */}
-        <form onSubmit={handleSubmit} className="register-form">
-          <div className="form-group">
-            <div className="input-wrapper">
-              <svg className="input-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-              </svg>
-              <input
-                id="name"
-                type="text"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                placeholder="Nombre (opcional)"
-                disabled={loading}
-                className="modern-input"
-              />
-            </div>
-          </div>
-
-          <div className="form-group">
-            <div className="input-wrapper">
-              <svg className="input-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207" />
-              </svg>
-              <input
-                id="email"
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Correo electrónico"
-                required
-                disabled={loading}
-                className="modern-input"
-              />
-            </div>
-          </div>
-
-          <div className="form-group">
-            <div className="input-wrapper">
-              <svg className="input-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-              </svg>
-              <input
-                id="password"
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                placeholder="Contraseña (mín. 6 caracteres)"
-                required
-                disabled={loading}
-                className="modern-input"
-              />
-            </div>
-          </div>
-
-          <div className="form-group">
-            <div className="input-wrapper">
-              <svg className="input-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-              </svg>
-              <input
-                id="confirmPassword"
-                type="password"
-                value={confirmPassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
-                placeholder="Confirmar contraseña"
-                required
-                disabled={loading}
-                className="modern-input"
-              />
-            </div>
-          </div>
-
-          {error && (
-            <div className="error-message">
-              <svg className="error-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-              {error}
-            </div>
-          )}
-
-          <button 
-            type="submit" 
-            className={`register-button ${loading ? 'loading' : ''}`}
+        <div className="auth-field">
+          <label htmlFor="name" className="sr-only">Nombre (opcional)</label>
+          <svg className="auth-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.6}
+              d="M16 8a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+          </svg>
+          <input
+            id="name"
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            placeholder="Nombre (opcional)"
+            autoComplete="name"
             disabled={loading}
-          >
-            {loading ? (
-              <>
-                <span className="spinner"></span>
-                {backendStatus === 'checking' ? 'Despertando servidor...' : 'Creando cuenta...'}
-              </>
-            ) : (
-              <>
-                <span>Crear Cuenta</span>
-                <svg className="button-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                </svg>
-              </>
-            )}
-          </button>
-        </form>
-
-        {/* Enlace para cambiar a login */}
-        <div className="card-footer">
-          <div className="switch-form">
-            <span>¿Ya tienes una cuenta?</span>
-            <button 
-              type="button" 
-              onClick={onSwitchToLogin}
-              className="switch-button"
-              disabled={loading}
-            >
-              Iniciar Sesión
-            </button>
-          </div>
+            className="auth-input"
+          />
         </div>
 
-        {/* Estado del backend (con aviso de "despertando" mientras Render arranca) */}
-        <BackendStatus variant="register" />
-      </div>
-    </div>
+        <div className="auth-field">
+          <label htmlFor="email" className="sr-only">Correo electrónico</label>
+          <svg className="auth-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.6}
+              d="M3 7.5A2.5 2.5 0 015.5 5h13A2.5 2.5 0 0121 7.5v9a2.5 2.5 0 01-2.5 2.5h-13A2.5 2.5 0 013 16.5v-9zm0 .5l9 6 9-6" />
+          </svg>
+          <input
+            id="email"
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="Correo electrónico"
+            autoComplete="email"
+            required
+            disabled={loading}
+            className="auth-input"
+          />
+        </div>
+
+        <div className="auth-field">
+          <label htmlFor="password" className="sr-only">Contraseña (mínimo 6 caracteres)</label>
+          <svg className="auth-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.6}
+              d="M7 11V8a5 5 0 0110 0v3m-11 0h12a1 1 0 011 1v7a1 1 0 01-1 1H6a1 1 0 01-1-1v-7a1 1 0 011-1z" />
+          </svg>
+          <input
+            id="password"
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="Contraseña (mín. 6 caracteres)"
+            autoComplete="new-password"
+            required
+            disabled={loading}
+            className="auth-input"
+          />
+        </div>
+
+        <div className="auth-field">
+          <label htmlFor="confirmPassword" className="sr-only">Confirmar contraseña</label>
+          <svg className="auth-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.6}
+              d="M9 12l2 2 4-4m5-1.5c0 5.2-3.4 8.9-8 10-4.6-1.1-8-4.8-8-10V6l8-3 8 3v2.5z" />
+          </svg>
+          <input
+            id="confirmPassword"
+            type="password"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+            placeholder="Confirmar contraseña"
+            autoComplete="new-password"
+            required
+            disabled={loading}
+            className="auth-input"
+          />
+        </div>
+
+        {error && (
+          <div className="auth-error" role="alert">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+                d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <span>{error}</span>
+          </div>
+        )}
+
+        <button type="submit" className="auth-button" disabled={loading}>
+          {loading ? (
+            <>
+              <span className="auth-spinner" aria-hidden="true" />
+              {backendStatus === 'checking' ? 'Despertando servidor...' : 'Creando cuenta...'}
+            </>
+          ) : (
+            'Crear cuenta'
+          )}
+        </button>
+      </form>
+
+      {/* Estado del backend (con aviso de "despertando" mientras Render arranca) */}
+      <BackendStatus variant="register" />
+
+      <p className="auth-switch">
+        ¿Ya tienes una cuenta?{' '}
+        <button
+          type="button"
+          onClick={onSwitchToLogin}
+          className="auth-link"
+          disabled={loading}
+        >
+          Inicia sesión
+        </button>
+      </p>
+    </AuthLayout>
   );
 };
 
 export default Register;
-

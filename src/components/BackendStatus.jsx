@@ -5,7 +5,7 @@ import { useAuth } from '../context/AuthContext';
  * Indicador del estado del backend para las pantallas de login y registro.
  * - checking: el servidor (Render free) puede estar despertando, se reintenta hasta ~60 s.
  * - online / offline: resultado final de la comprobación.
- * Los estilos (.backend-status*) viven en Login.css y Register.css.
+ * Los estilos (.auth-status*) viven en Auth.css.
  *
  * @param {{ variant: 'login' | 'register' }} props
  */
@@ -24,14 +24,14 @@ const BackendStatus = ({ variant = 'login' }) => {
 
   if (backendStatus === 'checking') {
     return (
-      <div className="backend-status checking" role="status" aria-live="polite">
-        <div className="backend-status-line">
-          <span className="backend-status-spinner" aria-hidden="true" />
+      <div className="auth-status checking" role="status" aria-live="polite">
+        <div className="auth-status-line">
+          <span className="auth-status-spinner" aria-hidden="true" />
           <span>Despertando el servidor… puede tardar hasta un minuto</span>
         </div>
-        <div className="backend-status-sub">Esperando respuesta · {elapsed} s</div>
+        <div className="auth-status-sub">Esperando respuesta · {elapsed} s</div>
         {variant === 'login' && (
-          <button type="button" className="backend-status-action" onClick={skipBackendWait}>
+          <button type="button" className="auth-status-action" onClick={skipBackendWait}>
             Omitir espera y usar modo offline
           </button>
         )}
@@ -43,19 +43,22 @@ const BackendStatus = ({ variant = 'login' }) => {
   let text;
   if (variant === 'register') {
     text = online
-      ? '◉ BACKEND CONECTADO — REGISTRO DISPONIBLE'
-      : '◎ BACKEND NO DISPONIBLE — REGISTRO NO DISPONIBLE';
+      ? 'Backend conectado: registro disponible'
+      : 'Backend no disponible: registro no disponible';
   } else {
     text = online
-      ? '◉ SERVIDOR EN LÍNEA'
-      : '◎ SERVIDOR OFFLINE — MODO LOCAL ACTIVO';
+      ? 'Servidor en línea'
+      : 'Servidor sin conexión: modo local activo';
   }
 
   return (
-    <div className={`backend-status ${online ? 'online' : 'offline'}`} role="status" aria-live="polite">
-      <div>{text}</div>
+    <div className={`auth-status ${online ? 'online' : 'offline'}`} role="status" aria-live="polite">
+      <div className="auth-status-line">
+        <span className="auth-status-dot" aria-hidden="true" />
+        <span>{text}</span>
+      </div>
       {!online && (
-        <button type="button" className="backend-status-action" onClick={retryBackendCheck}>
+        <button type="button" className="auth-status-action" onClick={retryBackendCheck}>
           Reintentar conexión
         </button>
       )}

@@ -163,11 +163,18 @@ En móvil hay un joystick en pantalla ([`src/controls/MobileControls.js`](src/co
 
 ### Interfaz de login / registro
 
-Login y registro comparten el **mismo tema** (oscuro/púrpura, fuentes Rajdhani +
-Orbitron). Cada CSS está **aislado** bajo su contenedor (`.login-container` /
-`.register-container`) para que no se pisen las clases comunes. Los `input`
-incluyen un override de `:-webkit-autofill` para que el autocompletado de Chrome
-no rompa el tema oscuro.
+Login y registro comparten un layout minimalista ([`AuthLayout.jsx`](src/components/AuthLayout.jsx)):
+marca arriba a la izquierda, titular serif centrado y una tarjeta redondeada con el
+formulario. Tiene **tema claro y oscuro** con un botón arriba a la derecha
+([`ThemeToggle.jsx`](src/components/ThemeToggle.jsx)):
+
+- Los colores son variables CSS `--auth-*` en [`Auth.css`](src/components/Auth.css);
+  el tema claro se activa con `<html data-theme="light">`.
+- [`src/theme.js`](src/theme.js) decide el tema inicial: el elegido por la persona
+  (guardado en `localStorage`) y, si no hay, el del sistema (`prefers-color-scheme`).
+  Se aplica antes de renderizar React para evitar parpadeo.
+- Los `input` sobrescriben `:-webkit-autofill` para que el autocompletado respete el tema.
+- El tema solo afecta a estas pantallas; el HUD del juego no cambia.
 
 ---
 
@@ -437,7 +444,7 @@ docker compose up -d     # MongoDB + API en contenedores
 | **Nivel 1** | Fuera del flujo (modelos ausentes). El juego arranca en el nivel 2. | [`World.js`](src/Experience/World/World.js) |
 | **Nombres de nivel** | Constante `LEVEL_NAMES` centralizada; se refleja en HUD, botones y carteles. | [`World.js`](src/Experience/World/World.js) |
 | **Sesión** | Token **solo en memoria**; refrescar la página cierra la sesión. | [`authService.js`](src/services/authService.js) |
-| **UI login/registro** | Tema unificado, CSS aislado por contenedor, fix de `:-webkit-autofill`. | `src/components/Login.css`, `Register.css` |
+| **UI login/registro** | Layout común, tema claro/oscuro con variables CSS, fix de `:-webkit-autofill`. | `src/components/Auth.css`, `AuthLayout.jsx`, `src/theme.js` |
 | **Backend** | Express + MongoDB + JWT, contenedores con Docker Compose. Fallback offline con puerta trasera. | [`backend/`](backend/) |
 
 ---
