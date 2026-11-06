@@ -37,6 +37,7 @@ export default class GameUI {
     this._buildLeft()
     this._buildRight()
     this._buildCompass()
+    this._buildAIPanel()
 
     this.toasts = h('div', 'gu-toasts', null, { role: 'status', 'aria-live': 'polite' })
     this.root.appendChild(this.toasts)
@@ -69,11 +70,19 @@ export default class GameUI {
     this.progress.appendChild(this.progressBar)
     this.objective.append(this.objectiveLabel, this.objectiveText, row, this.progress)
 
+    this.noise = h('div', 'gu-panel gu-noise')
+    this.noiseLabel = h('span', 'gu-noise-label', 'Ruido')
+    this.noiseBars = h('span', 'gu-noise-bars', null, { 'aria-hidden': 'true' })
+    for (let i = 0; i < 3; i++) this.noiseBars.appendChild(h('i'))
+    this.noiseValue = h('strong', 'gu-noise-value', 'Silencioso')
+    this.noise.append(this.noiseLabel, this.noiseBars, this.noiseValue)
+    this.noise.title = 'Los mutantes oyen según tu ruido: correr y saltar se oye de lejos'
+
     this.skipBtn = h('button', 'gu-link gu-skip', '')
     this.skipBtn.type = 'button'
     this.skipBtn.hidden = true
 
-    left.append(this.chapter, this.objective, this.skipBtn)
+    left.append(this.chapter, this.objective, this.noise, this.skipBtn)
     this.root.appendChild(left)
   }
 
@@ -149,6 +158,64 @@ export default class GameUI {
     if (this.compassTitle.textContent !== title) this.compassTitle.textContent = title
     this.compassDist.textContent = `${Math.round(info.distance)} m`
     this.compassIcon.style.transform = `rotate(${info.angle}rad)`
+  }
+
+  /** Medidor de ruido del jugador: level = { id, label, bars }. */
+  setNoise(level) {
+    this.noise.dataset.level = level.id
+    this.noiseValue.textContent = level.label
+    Array.from(this.noiseBars.children).forEach((bar, i) => bar.classList.toggle('on', i < level.bars))
+  }
+
+  // ── Panel de IA ─────────────────────────────────────────
+  _buildAIPanel() {
+    this.aiPanel = h('aside', 'gu-panel gu-ai', null, { 'aria-label': 'Panel de IA de los enemigos' })
+    this.aiPanel.hidden = true
+    const head = h('div', 'gu-ai-head')
+    head.append(h('strong', null, 'IA de los mutantes'), h('span', 'gu-kicker', 'Tecla I'))
+    this.aiList = h('ul', 'gu-ai-list')
+    this.aiFeed = h('ul', 'gu-ai-feed', null, { 'aria-live': 'polite' })
+    const legend = h('p', 'gu-ai-legend', 'Cono = vista · anillo rojo = alarma · ❓ investiga · ❗ persigue · 🎯 flanquea · 🔍 busca')
+    this.aiPanel.append(head, this.aiList, h('div', 'gu-kicker', 'Eventos'), this.aiFeed, legend)
+    this.root.appendChild(this.aiPanel)
+    this.aiFeedItems = []
+  }
+
+  get aiPanelVisible() {
+    return !this.aiPanel.hidden
+  }
+
+  setAIPanelVisible(on) {
+    this.aiPanel.hidden = !on
+  }
+
+  /** rows: [{ label, stateLabel, state, speed, dist, flank }] */
+  updateAIPanel(rows) {
+    if (this.aiPanel.hidden) return
+    this.aiList.replaceChildren()
+    if (!rows.length) {
+      this.aiList.appendChild(h('li', 'gu-ai-empty', 'Aún no hay enemigos en escena'))
+      return
+    }
+    rows.forEach((r) => {
+      const li = h('li', `gu-ai-row is-${r.state.toLowerCase()}`)
+      const name = h('span', 'gu-ai-name', r.label)
+      const st = h('span', 'gu-ai-state', r.stateLabel)
+      const meta = h('span', 'gu-ai-meta', `${Math.round(r.dist)} m · ${r.speed.toFixed(1)} m/s`)
+      li.append(name, st, meta)
+      this.aiList.appendChild(li)
+    })
+  }
+
+  /** Registro de lo que hace la IA (alarmas, flanqueos…). */
+  aiEvent(text, tone = 'info') {
+    const item = h('li', `gu-ai-event is-${tone}`, text)
+    this.aiFeed.prepend(item)
+    while (this.aiFeed.children.length > 5) this.aiFeed.lastChild.remove()
+    // Los eventos importantes también salen como aviso aunque el panel esté cerrado
+    if (tone === 'warn' && this.aiPanel.hidden) {
+      this.toast({ icon: '📢', text, tone: 'warn', duration: 2600 })
+    }
   }
 
   // ── Avisos ──────────────────────────────────────────────

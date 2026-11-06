@@ -260,6 +260,7 @@ export default class Experience {
 
 
   destroy() {
+    this.world?.dispose?.()
     this.ui?.destroy()
     this.menu?.destroy()
     this.sizes.off('resize')

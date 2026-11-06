@@ -34,6 +34,7 @@ export default class CircularMenu {
       { icon: '🚶', title: 'Modo caminata', onClick: onWalkMode },
       { icon: '🖥️', title: 'Pantalla completa', onClick: onFullscreen },
       { icon: '🥽', title: 'Modo VR', onClick: () => this.vrIntegration.toggleVR() },
+      { icon: '🧠', title: 'Panel de IA (tecla I)', onClick: () => window.experience?.world?.toggleAIPanel() },
       { icon: '↺', title: 'Reiniciar partida', onClick: () => this.confirmRestart() },
       { icon: 'ℹ️', title: 'Acerca del juego', onClick: () => this.showAboutModal() },
     ]

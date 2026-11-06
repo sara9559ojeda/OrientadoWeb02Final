@@ -9,7 +9,9 @@ import { chapterFor, EPILOGUE, GAME_OVER, OBJECTIVES, PROLOGUE } from '../../sto
 import AmbientSound from './AmbientSound.js'
 import Coins from './Coins.js'
 import CoinsParticles from './CoinsParticles.js'
-import Enemy from './Enemy.js'
+import Enemy, { STATE_LABELS } from './Enemy.js'
+import { archetypeFor, LEVEL_ROSTER } from './enemyArchetypes.js'
+import EnemyDirector, { NOISE_LEVELS } from './EnemyDirector.js'
 import Environment from './Environment.js'
 import Floor from './Floor.js'
 import Fox from './Fox.js'
@@ -72,6 +74,13 @@ export default class World {
 
         // Sistema de enemigos
         this.enemies = [] // Array para guardar los enemigos
+        this.director = new EnemyDirector(experience) // sentidos compartidos y coordinación de la IA
+        this.director.onEvent = (text, tone) => this.ui?.aiEvent(text, tone)
+        this.director.onNoiseChange = (level) => this.ui?.setNoise(level)
+        this._onKeyAI = (e) => {
+            if (e.code === 'KeyI' && !['INPUT', 'TEXTAREA'].includes(e.target?.tagName)) this.toggleAIPanel()
+        }
+        window.addEventListener('keydown', this._onKeyAI)
         this.enemyModels = [] // Array con los recursos de modelos de enemigos disponibles
         this.gameOver = false // Flag para controlar si el juego ha terminado
         this.roundActive = false // true cuando el jugador pulsó "Comenzar misión" del capítulo
@@ -232,6 +241,7 @@ export default class World {
         this.coins?.forEach(c => c.update(delta))
 
         // Actualizar enemigos
+        if (this.roundActive && this.robot) this.director.update(this.robot)
         if (this.roundActive && this.enemies && this.enemies.length > 0 && this.robot) {
             const canCatch = performance.now() >= this.graceUntil
             this.enemies.forEach(enemy => {
@@ -247,8 +257,9 @@ export default class World {
             })
         }
 
-        // Brújula hacia el siguiente objetivo
+        // Brújula hacia el siguiente objetivo y panel de IA
         this.updateCompass()
+        this.refreshAIPanel()
 
         // Actualizar partículas de la moneda
         if (this.coinsParticles && this.robot && this.coins.length > 0) {
@@ -565,6 +576,13 @@ export default class World {
         this.updateCoinsCounter()
         this.updatePointsHUD()
         this.ui.setObjective(OBJECTIVES.collect)
+        this.ui.setNoise(NOISE_LEVELS.quiet)
+    }
+
+    /** Libera listeners y efectos al destruir la experiencia (reiniciar o cerrar sesión). */
+    dispose() {
+        window.removeEventListener('keydown', this._onKeyAI)
+        this.clearEnemies()
     }
 
     skipToNextLevel() {
@@ -1275,9 +1293,11 @@ export default class World {
             'enemyFastRun', 'enemyMutantWalking', 'enemyWalk', 'enemyWalking', 'enemyWheelbarrowWalk'
         ]
 
+        // Guardamos el nombre del recurso: de él depende el arquetipo (comportamiento y marcha)
         this.enemyModels = []
         enemyModelNames.forEach(modelName => {
-            if (this.resources.items[modelName]) this.enemyModels.push(this.resources.items[modelName])
+            const model = this.resources.items[modelName]
+            if (model) this.enemyModels.push({ name: modelName, model })
         })
 
         // Los enemigos aparecen cuando el jugador pulsa "Comenzar misión" (scheduleEnemies)
@@ -1287,26 +1307,67 @@ export default class World {
         if (!this.robot || !this.robot.body || this.enemyModels.length === 0) return
 
         this.clearEnemies()
-        let numberOfEnemies = this.currentLevel === 1 ? 1 : (this.currentLevel === 2 ? 3 : 5)
+        const roster = LEVEL_ROSTER[this.currentLevel] || LEVEL_ROSTER[3]
+        const numberOfEnemies = this.currentLevel === 2 ? 3 : 5
 
         const robotPos = this.robot.body.position
         const spawnDistance = 100
 
-        for (let i = 0; i < numberOfEnemies; i++) {
-            const angle = Math.random() * Math.PI * 2
-            const x = robotPos.x + Math.cos(angle) * spawnDistance
-            const z = robotPos.z + Math.sin(angle) * spawnDistance
-            const y = 1 // Altura del suelo
+        // Los guardianes patrullan alrededor de un fragmento de núcleo lejano
+        const fragments = (this.loader?.prizes || [])
+            .filter(p => p.pivot && !p.collected)
+            .map(p => p.pivot.position)
+            .filter(p => Math.hypot(p.x - robotPos.x, p.z - robotPos.z) > 40)
+        let guardIndex = Math.floor(Math.random() * Math.max(fragments.length, 1))
 
-            const randomModel = this.enemyModels[Math.floor(Math.random() * this.enemyModels.length)]
+        for (let i = 0; i < numberOfEnemies; i++) {
+            const name = roster[i % roster.length]
+            const entry = this.enemyModels.find(m => m.name === name) || this.enemyModels[i % this.enemyModels.length]
+            const arch = archetypeFor(entry.name)
+
+            let x, z, patrolCenter
+            if (arch.guardsFragment && fragments.length > 0) {
+                const f = fragments[guardIndex++ % fragments.length]
+                x = f.x + 8
+                z = f.z + 8
+                patrolCenter = { x: f.x, y: 1, z: f.z }
+            } else {
+                const angle = Math.random() * Math.PI * 2
+                x = robotPos.x + Math.cos(angle) * spawnDistance
+                z = robotPos.z + Math.sin(angle) * spawnDistance
+            }
 
             try {
-                const enemy = new Enemy(this.experience, randomModel, { x, y, z })
+                const enemy = new Enemy(this.experience, entry.model, { x, y: 1, z }, {
+                    modelName: entry.name, id: i, patrolCenter,
+                })
                 enemy.setTarget(this.robot)
-
+                this.director.register(enemy)
+                enemy.setDebugVisible(this.director.debug)
                 this.enemies.push(enemy)
-            } catch (error) { }
+            } catch (error) {
+                console.warn('No se pudo crear un enemigo:', error)
+            }
         }
+
+        const names = this.enemies.map(e => e.label).join(', ')
+        this.ui?.aiEvent(`Patrullan ${this.enemies.length} mutantes: ${names}`, 'info')
+    }
+
+    toggleAIPanel() {
+        const on = !this.ui.aiPanelVisible
+        this.ui.setAIPanelVisible(on)
+        this.director.setDebug(on)
+        this.refreshAIPanel(true)
+    }
+
+    refreshAIPanel(force = false) {
+        if (!this.ui?.aiPanelVisible) return
+        const now = performance.now()
+        if (!force && now - (this._lastAIPanel || 0) < 250) return
+        this._lastAIPanel = now
+        const rows = this.director.snapshot().map(r => ({ ...r, stateLabel: STATE_LABELS[r.state] || r.state }))
+        this.ui.updateAIPanel(rows)
     }
 
     clearEnemies() {
@@ -1314,6 +1375,7 @@ export default class World {
             if (enemy) enemy.remove()
         })
         this.enemies = []
+        this.director?.clear()
     }
 
     onEnemyCollision() {

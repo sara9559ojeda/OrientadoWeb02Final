@@ -181,81 +181,109 @@ formulario. Tiene **tema claro y oscuro** con un botón arriba a la derecha
 ## IA de enemigos (Yuka)
 
 Los enemigos usan **IA de agentes para videojuegos**, implementada sobre la
-librería **Yuka** — [`src/Experience/World/Enemy.js`](src/Experience/World/Enemy.js).
+librería **Yuka**. Cada mutante decide por sí solo, pero además **se comunican
+entre ellos** y la IA se puede *ver* mientras se juega.
+
+| Archivo | Papel |
+|---|---|
+| [`Enemy.js`](src/Experience/World/Enemy.js) | Agente individual: sentidos, máquina de estados, movimiento y animación |
+| [`enemyArchetypes.js`](src/Experience/World/enemyArchetypes.js) | Cinco "personalidades" y qué mutantes aparecen en cada nivel |
+| [`EnemyDirector.js`](src/Experience/World/EnemyDirector.js) | Lo que comparten: ruido del jugador, alarmas, memoria de grupo y flanqueo |
+
+### Qué se ve en el juego
+
+- **Tecla `I`** (o el botón 🧠 del menú): abre el panel *IA de los mutantes* con el
+  estado de cada enemigo, su distancia, su velocidad y un registro de eventos
+  ("Cazador dio la alarma: 2 aliados acuden", "Acechador intenta cortarte el paso").
+- Sobre cada enemigo flota su **tipo** y un icono de lo que piensa:
+  ❓ investiga · ❗ te persigue · 🎯 te rodea · 🔍 te busca.
+- Con el panel abierto se dibuja en el suelo el **cono de visión** de cada uno
+  (azul = tranquilo, ámbar = alerta, rojo = persiguiendo).
+- Un indicador de **Ruido** en el HUD muestra cuánto se te oye.
+- Cuando un enemigo da la alarma aparece un **anillo rojo** que se expande por el suelo.
 
 ### Modelo híbrido: Yuka decide, cannon-es mueve
 
-El punto clave del diseño: Yuka calcula **qué hacer y hacia dónde ir**, pero el
-movimiento real lo ejecuta el cuerpo físico de cannon-es.
+Yuka calcula **qué hacer y hacia dónde ir**; el movimiento real lo ejecuta el cuerpo
+físico de cannon-es, así que el enemigo choca de verdad con el escenario.
 
 ```
-                 percepción (raycast)
-                        │
-                        ▼
-  YUKA.StateMachine ──► YUKA.Vehicle + steering behaviors
-                        │  (produce una "velocidad deseada")
-                        ▼
-        se aplica como FUERZA al CANNON.Body del enemigo
-                        │
-                        ▼
-        cannon-es resuelve colisiones con edificios y jugador
+   sentidos (vista + oído)        EnemyDirector (ruido, alarmas, roles)
+              │                              │
+              ▼                              ▼
+   YUKA.StateMachine ──► YUKA.Vehicle + steering behaviors
+                         │  (produce una "velocidad deseada")
+                         ▼
+         se aplica como FUERZA al CANNON.Body del enemigo
+                         │
+                         ▼
+         cannon-es resuelve colisiones con edificios y jugador
 ```
 
-Así el enemigo choca de verdad con el escenario (no lo atraviesa), y a la vez
-tiene comportamiento de alto nivel. Cada frame:
+### 1. Sentidos
 
-1. Se sincroniza `vehicle.position` desde el cuerpo físico.
-2. Se actualiza la percepción (con *throttle* de 120 ms).
-3. `stateMachine.update()` + `vehicle.update(dt)` → Yuka calcula `vehicle.velocity`.
-4. Esa velocidad se convierte en `body.applyForce(...)`, con tope de velocidad.
-5. Se rota el modelo y se sincroniza la parte visual.
+- **Vista:** un enemigo solo te ve si estás **dentro de su cono** (campo de visión
+  y alcance propios de cada tipo) **y** un *raycast* no choca antes con un edificio.
+  Por la espalda no te ve, salvo que estés muy cerca (zona de proximidad).
+- **Oído:** depende del **ruido que haces**. Quieto ≈ 8 m, caminando ≈ 22 m,
+  corriendo con Shift o saltando ≈ 70 m. Cada tipo oye mejor o peor
+  (el Bruto oye ×1.6). Si te oye sin verte, va a **investigar** el lugar del ruido.
+- La percepción se calcula cada 120 ms, no cada frame (rendimiento).
 
-### 1. Cerebro: máquina de estados (`YUKA.StateMachine`)
+### 2. Cerebro: máquina de estados (`YUKA.StateMachine`)
 
 ```
-PATROL ──(te ve)──▶ CHASE ──(te pierde)──▶ SEARCH ──(4 s)──▶ PATROL
-                      ▲                        │
-                      └──────(te vuelve a ver)─┘
+            ┌────────(oye ruido)────────┐
+            ▼                           │
+PATROL ──▶ INVESTIGATE ──(te ve)──▶ CHASE ◀──▶ FLANK
+  ▲            │                       │   (rodea al jugador)
+  │            ▼                  (te pierde)
+  └──(4 s)── SEARCH ◀──────────────────┘
 ```
 
 | Estado | Conducta de Yuka | Comportamiento |
 |--------|------------------|----------------|
-| **PatrolState** | `WanderBehavior` + `ArriveBehavior` (correa al spawn) | Deambula alrededor de donde apareció |
-| **ChaseState** | `ArriveBehavior` (deceleración 1 = agresivo) | Va hacia tu posición actual |
-| **SearchState** | `ArriveBehavior` hacia la última posición conocida | Busca ~4 s y vuelve a patrullar |
+| **PATROL** | `WanderBehavior` + `ArriveBehavior` | Deambula cerca de su zona (el Guardián custodia un fragmento) |
+| **INVESTIGATE** | `ArriveBehavior` | Va al punto donde oyó el ruido o donde un aliado dio la alarma |
+| **CHASE** | `PursuitBehavior` | Te persigue **prediciendo** hacia dónde vas, no hacia donde estás |
+| **FLANK** | `ArriveBehavior` | Se adelanta por un lateral para cortarte el paso |
+| **SEARCH** | `ArriveBehavior` | Va a tu última posición conocida y mira alrededor antes de rendirse |
 
-### 2. Sentidos: percepción
+Además todos usan `ObstacleAvoidanceBehavior` (esquivan edificios) y se separan
+entre sí para no amontonarse.
 
-- **Vista:** un *raycast* en el mundo físico (`world.raycastClosest`) del enemigo
-  hacia el jugador. Si choca con un edificio (cuerpo con `mass === 0`) antes de
-  llegar → no te ve. Alcance: 300 unidades.
-- **Oído:** a menos de 14 unidades te detecta aunque haya un muro en medio.
-- Los rayos se lanzan cada 120 ms, no cada frame (rendimiento).
+### 3. Interacción entre enemigos (`EnemyDirector`)
 
-### 3. Esquive de obstáculos
+1. **Alarma:** los tipos "gritones" (Cazador, Guardián) avisan a los aliados a menos
+   de 90 m, que acuden a investigar.
+2. **Memoria compartida:** si un aliado te ve, los demás saben dónde estás durante
+   2,5 s aunque no te vean.
+3. **Flanqueo:** si varios te persiguen, el más cercano va de frente y los demás
+   se reparten a izquierda y derecha para cortarte la huida.
+4. **Ruido del jugador:** el director lo calcula y es el que "oyen" todos.
+
+### 4. Cinco personalidades (`enemyArchetypes.js`)
+
+Cada modelo 3D tiene un tipo propio, con su velocidad, campo de visión, oído y ritmo
+de paso:
+
+| Tipo | Modelo | Rasgo |
+|---|---|---|
+| **Cazador** | Fast Run | Muy rápido, da la alarma |
+| **Bruto** | Mutant Walking | Lento pero oye muy bien |
+| **Acechador** | Walk | Te rodea (flanquea) |
+| **Errante** | Walking | Patrulla un área amplia, campo de visión ancho |
+| **Guardián** | Wheelbarrow Walk | Custodia un fragmento y da la alarma |
+
+La animación está **sincronizada con la velocidad real**: el `timeScale` del clip se
+calcula como `velocidad medida / velocidad de paso del tipo`, así los pies no
+patinan (un mutante lento ya no "corre" sin avanzar).
+
+### 5. Esquive de obstáculos
 
 `YUKA.ObstacleAvoidanceBehavior` con una lista de obstáculos que se **reconstruye
 cada 500 ms** a partir de los cuerpos físicos estáticos del mundo (se descartan el
-piso gigante y los cuerpos dinámicos). Yuka proyecta una caja de detección
-proporcional a la velocidad y desvía al enemigo alrededor de los edificios.
-
-### Configuración
-
-Todo lo ajustable está en el objeto `this.ai` del constructor:
-
-```js
-this.ai = {
-  detectionRange: 300,     // rango de visión (con línea de vista)
-  hearingRange: 14,        // rango de "oído" (atraviesa muros)
-  loseSightGrace: 4000,    // ms buscando tras perder de vista (ms)
-  patrolRadius: 16,        // radio de patrulla alrededor del spawn
-  perceptionMs: 120,       // cada cuánto se lanza el raycast de visión
-  obstacleRefreshMs: 500,  // cada cuánto se recalcula la lista de obstáculos
-}
-```
-
-Se puede sobrescribir por enemigo pasando `{ speed, ai: {...} }` como 4.º
-argumento del constructor.
+piso gigante y los cuerpos dinámicos).
 
 ### Diseño defensivo
 
@@ -263,19 +291,24 @@ argumento del constructor.
   llega un `delta` gigante que dispare la simulación.
 - **`try/catch` alrededor de Yuka** — si algo fallara, cae a persecución directa
   en línea recta.
-- **API pública intacta** (`constructor`, `setTarget`, `checkCollisionWithTarget`,
-  `remove`) → `World.js` no necesitó ningún cambio para adoptar Yuka.
+- **Sin fugas al reintentar:** `remove()` desregistra al enemigo del director y libera
+  sus sprites y su cono; la geometría del modelo se comparte y no se libera.
 
 ### Cómo se probó
 
-El bucle `requestAnimationFrame` se congela cuando la pestaña no está en foco, así
-que la IA se validó con un **banco de pruebas manual**: se pausa el tiempo, se
-fija `time.delta`, y se llama a `enemy.update()` + `world.step()` en bucle. Se
-verificó:
+Con el juego en marcha se colocó al jugador y a los enemigos desde la consola y se
+comprobó cada comportamiento:
 
-- Transiciones PATROL → CHASE → SEARCH → PATROL con los tiempos esperados.
-- Línea de visión bloqueada por un muro de prueba.
-- Esquive de un obstáculo hasta alcanzar al objetivo (sin quedar trabado, sin `NaN`).
+- **Vista:** de frente a 60 m → CHASE; por la espalda a 60 m en silencio → PATROL;
+  por la espalda a 8 m → CHASE (proximidad).
+- **Oído:** andar a 30 m no despierta al enemigo; andar a 22 m o correr a 60 m →
+  PATROL → INVESTIGATE → CHASE.
+- **Alarma:** el Cazador que te ve avisa y el Bruto aliado pasa a CHASE.
+- **Flanqueo:** con tres perseguidores, uno va de frente y los otros dos rodean por
+  lados opuestos.
+- **Animación:** `timeScale` ≈ velocidad medida / velocidad de paso (p. ej. 4,7 m/s
+  con paso 3,6 → ×1,3).
+- **Game Over y reintentar:** se limpian enemigos, sprites y director sin errores.
 
 ---
 

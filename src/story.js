@@ -22,13 +22,14 @@ export const CONTROLS = [
   { keys: ['Shift'], label: 'Correr' },
   { keys: ['Espacio'], label: 'Saltar' },
   { keys: ['5'], label: 'Cambiar de cámara' },
+  { keys: ['I'], label: 'Ver cómo piensan los mutantes' },
 ]
 
 export const CHAPTERS = {
   2: {
     kicker: 'Capítulo 1 de 4',
     title: 'Murallas Antiguas',
-    text: 'El primer núcleo cayó entre las ruinas de una fortaleza. Los mutantes patrullan las murallas: si te oyen, te persiguen. Si te pierden de vista, te buscan donde te vieron por última vez.',
+    text: 'El primer núcleo cayó entre las ruinas de una fortaleza. Los mutantes te ven solo frente a ellos, te oyen según el ruido que hagas (correr se oye de lejos) y se avisan entre sí. Si te pierden de vista, te buscan donde te vieron por última vez.',
     objective: 'Recupera los fragmentos de núcleo',
   },
   3: {
