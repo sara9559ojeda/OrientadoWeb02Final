@@ -110,15 +110,11 @@ export const isJWTToken = (token) => {
  * @returns {Promise<{token: string, refreshToken: string, user: object}>}
  */
 export const login = async (email, password) => {
-  // Verificar si el backend está disponible
-  const backendAvailable = await isBackendAvailable();
-  
-  // Si son credenciales de backdoor y backend NO está disponible, usar backdoor
+  // Acceso local: las credenciales mostradas en la pantalla de login siempre entran,
+  // haya backend o no, y sin esperar al servidor (puede tardar hasta un minuto en despertar).
+  // La sesión local no tiene JWT: se puede jugar, pero las puntuaciones no se guardan en el servidor.
   if (email === BACKDOOR_CREDENTIALS.email && password === BACKDOOR_CREDENTIALS.password) {
-    if (backendAvailable) {
-      throw new Error('El backend está disponible. Por favor, usa credenciales válidas del servidor.');
-    }
-    console.warn('⚠️ Usando puerta trasera (backdoor) - Acceso directo sin BD');
+    console.warn('⚠️ Usando acceso local (backdoor) - Sin BD, las puntuaciones no se guardan');
     const backdoorToken = generateBackdoorToken();
     return {
       token: backdoorToken,
@@ -133,7 +129,9 @@ export const login = async (email, password) => {
     };
   }
 
-  // SEGUNDO: Si NO son credenciales de backdoor, ir al backend para obtener JWT
+  // Credenciales normales: ir al backend para obtener el JWT
+  // (espera paciente si el servidor está despertando)
+  await isBackendAvailable();
   let response;
   try {
     response = await fetch(API_ENDPOINTS.auth.login, {
