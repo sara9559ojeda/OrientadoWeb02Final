@@ -1,0 +1,592 @@
+/* Sistema de interfaz del juego.
+   Usa los mismos tokens --auth-* del login (src/components/Auth.css), así que
+   respeta el tema claro/oscuro y mantiene una sola identidad visual.
+   Todo lo que se dibuja sobre el canvas 3D (HUD, tarjetas, avisos, menús) sale de aquí. */
+
+:root {
+  --gu-font: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --gu-font-display: 'Newsreader', Georgia, 'Times New Roman', serif;
+  --gu-panel: color-mix(in srgb, var(--auth-card) 80%, transparent);
+  --gu-panel-solid: var(--auth-card);
+  --gu-line: var(--auth-border);
+  --gu-gold: var(--auth-warn);
+  --gu-radius: 14px;
+  --gu-radius-sm: 10px;
+  --gu-gap: 10px;
+  --gu-edge: clamp(10px, 2vw, 18px);
+  --gu-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+/* Contenedor raíz: no intercepta clics salvo en sus hijos interactivos */
+.gu-root {
+  position: fixed;
+  inset: 0;
+  z-index: 9000;
+  pointer-events: none;
+  font-family: var(--gu-font);
+  color: var(--auth-text);
+  -webkit-font-smoothing: antialiased;
+}
+
+.gu-root *,
+.gu-card-backdrop *,
+.gu-menu-btn,
+.gu-menu-btn * {
+  box-sizing: border-box;
+}
+
+/* ── Paneles ─────────────────────────────────────────── */
+.gu-panel {
+  background: var(--gu-panel);
+  border: 1px solid var(--gu-line);
+  border-radius: var(--gu-radius);
+  box-shadow: var(--gu-shadow);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  color: var(--auth-text);
+}
+
+/* ── HUD ─────────────────────────────────────────────── */
+.gu-hud-left {
+  position: absolute;
+  top: var(--gu-edge);
+  left: var(--gu-edge);
+  display: flex;
+  flex-direction: column;
+  gap: var(--gu-gap);
+  width: min(300px, calc(100vw - 2 * var(--gu-edge) - 140px));
+  min-width: 220px;
+}
+
+.gu-chapter {
+  padding: 10px 14px;
+}
+
+.gu-kicker {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--auth-text-muted);
+}
+
+.gu-chapter-title {
+  margin-top: 2px;
+  font-family: var(--gu-font-display);
+  font-size: 1.375rem;
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+
+.gu-objective {
+  padding: 12px 14px;
+}
+
+.gu-objective-text {
+  margin-top: 2px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+.gu-objective.is-done .gu-objective-text {
+  color: var(--auth-ok);
+}
+
+.gu-progress-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-top: 10px;
+  font-size: 0.8125rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.gu-progress-row strong {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.gu-progress {
+  height: 6px;
+  margin-top: 6px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: var(--auth-chip-bg);
+}
+
+.gu-progress > span {
+  display: block;
+  width: 0;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--gu-gold);
+  transition: width 0.4s ease, background-color 0.3s ease;
+}
+
+.gu-objective.is-done .gu-progress > span {
+  background: var(--auth-ok);
+}
+
+/* Cuadro del lado derecho: puntos */
+.gu-hud-right {
+  position: absolute;
+  top: var(--gu-edge);
+  right: var(--gu-edge);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: var(--gu-gap);
+}
+
+.gu-points {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  padding: 9px 14px;
+  font-size: 0.8125rem;
+  color: var(--auth-text-muted);
+}
+
+.gu-points strong {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--auth-text);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── Brújula ─────────────────────────────────────────── */
+.gu-compass {
+  position: absolute;
+  top: var(--gu-edge);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 16px 8px 10px;
+  font-size: 0.8125rem;
+  transition: opacity 0.25s ease;
+}
+
+.gu-compass[hidden] {
+  display: none;
+}
+
+.gu-compass-arrow {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--auth-chip-bg);
+  color: var(--gu-gold);
+}
+
+.gu-compass-arrow svg {
+  width: 20px;
+  height: 20px;
+  transition: transform 0.1s linear;
+}
+
+.gu-compass.is-portal .gu-compass-arrow {
+  color: var(--auth-ok);
+}
+
+.gu-compass-label {
+  line-height: 1.2;
+}
+
+.gu-compass-label small {
+  display: block;
+  color: var(--auth-text-muted);
+  font-size: 0.6875rem;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── Botones ─────────────────────────────────────────── */
+.gu-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 0 20px;
+  border: 1px solid transparent;
+  border-radius: var(--gu-radius-sm);
+  background: var(--auth-primary);
+  color: var(--auth-on-primary);
+  font-family: var(--gu-font);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  line-height: 1;
+  cursor: pointer;
+  pointer-events: auto;
+  transition: background-color 0.15s ease, border-color 0.15s ease, transform 0.1s ease;
+}
+
+.gu-btn:hover {
+  background: var(--auth-primary-hover);
+  border-color: transparent; /* anula button:hover de index.css */
+}
+
+.gu-btn:active {
+  transform: translateY(1px);
+}
+
+.gu-btn:focus-visible,
+.gu-menu-btn:focus-visible,
+.gu-link:focus-visible {
+  outline: 2px solid var(--auth-focus);
+  outline-offset: 2px;
+}
+
+.gu-btn--ghost {
+  background: transparent;
+  border-color: var(--gu-line);
+  color: var(--auth-text);
+}
+
+.gu-btn--ghost:hover {
+  background: var(--auth-chip-hover);
+  border-color: var(--auth-text-muted);
+}
+
+.gu-btn--danger {
+  background: var(--auth-danger-bg);
+  border-color: var(--auth-danger-border);
+  color: var(--auth-danger);
+}
+
+.gu-btn--danger:hover {
+  background: var(--auth-danger-bg);
+  border-color: var(--auth-danger);
+}
+
+.gu-btn--small {
+  min-height: 34px;
+  padding: 0 12px;
+  font-size: 0.8125rem;
+}
+
+/* Atajo para saltar de nivel */
+.gu-skip {
+  align-self: flex-start;
+  pointer-events: auto;
+}
+
+.gu-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  border: 1px dashed var(--auth-text-muted);
+  border-radius: 8px;
+  background: var(--gu-panel);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  color: var(--auth-text-muted);
+  font-family: var(--gu-font);
+  font-size: 0.75rem;
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.gu-link:hover {
+  color: var(--auth-text);
+  background: var(--gu-panel);
+  border-color: var(--auth-text-muted);
+}
+
+/* Botones redondos del menú de ajustes */
+.gu-menu-btn {
+  position: fixed;
+  z-index: 9100;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid var(--gu-line);
+  border-radius: 50%;
+  background: var(--gu-panel);
+  color: var(--auth-text);
+  font-size: 1.125rem;
+  cursor: pointer;
+  pointer-events: auto;
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  box-shadow: var(--gu-shadow);
+  transition: background-color 0.15s ease, transform 0.15s ease;
+}
+
+.gu-menu-btn:hover {
+  background: var(--auth-chip-hover);
+  border-color: var(--auth-text-muted);
+  transform: scale(1.06);
+}
+
+.gu-float-br {
+  position: fixed;
+  right: var(--gu-edge);
+  bottom: var(--gu-edge);
+  z-index: 9100;
+}
+
+/* ── Tarjetas (historia, pausa, game over, final) ────── */
+.gu-card-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: grid;
+  place-items: center;
+  padding: 16px;
+  overflow-y: auto;
+  background: color-mix(in srgb, var(--auth-bg) 60%, transparent);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  font-family: var(--gu-font);
+  color: var(--auth-text);
+  animation: gu-fade 0.25s ease both;
+}
+
+.gu-card {
+  width: min(560px, 100%);
+  max-height: calc(100vh - 32px);
+  overflow-y: auto;
+  padding: clamp(20px, 4vw, 32px);
+  background: var(--gu-panel-solid);
+  border: 1px solid var(--gu-line);
+  border-radius: 20px;
+  box-shadow: var(--auth-shadow);
+  animation: gu-rise 0.3s ease both;
+}
+
+.gu-card--danger {
+  border-color: var(--auth-danger-border);
+}
+
+.gu-card--danger .gu-kicker {
+  color: var(--auth-danger);
+}
+
+.gu-card--success .gu-kicker {
+  color: var(--auth-ok);
+}
+
+.gu-card-icon {
+  font-size: 1.75rem;
+  line-height: 1;
+  margin-bottom: 10px;
+}
+
+.gu-card-title {
+  margin: 6px 0 0;
+  font-family: var(--gu-font-display);
+  font-size: clamp(1.75rem, 5vw, 2.25rem);
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+}
+
+.gu-card-body {
+  margin-top: 14px;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--auth-text-muted);
+}
+
+.gu-card-body p {
+  margin: 0 0 0.75em;
+}
+
+.gu-card-body p:last-child {
+  margin-bottom: 0;
+}
+
+.gu-card-body--pre {
+  white-space: pre-line;
+}
+
+.gu-controls {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 8px;
+  margin: 18px 0 0;
+  padding: 14px;
+  list-style: none;
+  border: 1px solid var(--gu-line);
+  border-radius: var(--gu-radius);
+  background: var(--auth-input-bg);
+}
+
+.gu-controls li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.8125rem;
+  color: var(--auth-text-muted);
+}
+
+.gu-keys {
+  display: inline-flex;
+  gap: 4px;
+  min-width: 64px;
+}
+
+.gu-key {
+  display: inline-grid;
+  place-items: center;
+  min-width: 26px;
+  height: 26px;
+  padding: 0 7px;
+  border: 1px solid var(--gu-line);
+  border-bottom-width: 2px;
+  border-radius: 6px;
+  background: var(--auth-card);
+  color: var(--auth-text);
+  font-family: var(--gu-font);
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.gu-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 18px 0 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.875rem;
+}
+
+.gu-stats li {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: var(--auth-input-bg);
+  color: var(--auth-text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.gu-stats li strong {
+  color: var(--auth-text);
+  font-weight: 600;
+}
+
+.gu-card-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.gu-card-actions .gu-btn {
+  flex: 1 1 180px;
+}
+
+/* ── Avisos temporales ───────────────────────────────── */
+.gu-toasts {
+  position: absolute;
+  top: 84px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  width: min(420px, calc(100vw - 32px));
+}
+
+.gu-toast {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  max-width: 100%;
+  padding: 10px 16px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.3;
+  animation: gu-toast 0.25s ease both;
+}
+
+.gu-toast.is-leaving {
+  animation: gu-toast-out 0.25s ease both;
+}
+
+.gu-toast-icon {
+  font-size: 1.125rem;
+}
+
+.gu-toast--success {
+  border-color: var(--auth-ok);
+}
+
+.gu-toast--info {
+  border-color: var(--auth-accent);
+}
+
+.gu-toast--warn {
+  border-color: var(--gu-gold);
+}
+
+/* ── Animaciones ─────────────────────────────────────── */
+@keyframes gu-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes gu-rise {
+  from { opacity: 0; transform: translateY(12px) scale(0.98); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes gu-toast {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes gu-toast-out {
+  from { opacity: 1; transform: none; }
+  to { opacity: 0; transform: translateY(-8px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gu-card-backdrop,
+  .gu-card,
+  .gu-toast,
+  .gu-toast.is-leaving,
+  .gu-progress > span,
+  .gu-compass-arrow svg {
+    animation: none;
+    transition: none;
+  }
+}
+
+/* ── Pantallas pequeñas ──────────────────────────────── */
+@media (max-width: 640px) {
+  .gu-hud-left {
+    width: min(240px, calc(100vw - 2 * var(--gu-edge) - 110px));
+    min-width: 0;
+  }
+
+  .gu-chapter-title {
+    font-size: 1.125rem;
+  }
+
+  .gu-compass {
+    top: auto;
+    bottom: 84px;
+  }
+
+  .gu-toasts {
+    top: auto;
+    bottom: 140px;
+  }
+
+  .gu-card-actions .gu-btn {
+    flex-basis: 100%;
+  }
+}

@@ -3,6 +3,7 @@ import { Howler } from 'howler'
 import * as THREE from 'three'
 import CircularMenu from '../controls/CircularMenu.js'
 import VRIntegration from '../integrations/VRIntegration.js'
+import GameUI from '../ui/GameUI.js'
 import Camera from './Camera.js'
 import Renderer from './Renderer.js'
 import sources from './sources.js'
@@ -57,7 +58,8 @@ export default class Experience {
 
 
     // Modal y VR
-    this.modal = new ModalManager({ container: document.body })
+    this.ui = new GameUI()
+    this.modal = new ModalManager({ ui: this.ui })
     this.vr = new VRIntegration({
       renderer: this.renderer.instance,
       scene: this.scene,
@@ -69,6 +71,7 @@ export default class Experience {
     // Menú
     this.menu = new CircularMenu({
       container: document.body,
+      ui: this.ui,
       vrIntegration: this.vr,
       onAudioToggle: () => this.world.toggleAudio(),
       onWalkMode: () => {
@@ -86,17 +89,7 @@ export default class Experience {
     //Generar obstaculos - DESHABILITADO
     // this._startObstacleWaves()
 
-    //Iniciar juego
-    this.modal.show({
-      icon: '🚀',
-      message: 'Recoge todas las monedas\n¡y evita los obstáculos!',
-      buttons: [
-        {
-          text: '▶️ Iniciar juego',
-          onClick: () => this.startGame()
-        }
-      ]
-    })
+    // La partida arranca desde la tarjeta de introducción (World.beginChapter → startGame)
 
     // Activar tiempos
     if (this.tracker) {
@@ -267,6 +260,8 @@ export default class Experience {
 
 
   destroy() {
+    this.ui?.destroy()
+    this.menu?.destroy()
     this.sizes.off('resize')
     this.time.off('tick')
 
@@ -288,6 +283,8 @@ export default class Experience {
   }
 
   startGame() {
+    if (this.gameStarted) return
+    this.gameStarted = true
     console.log('🎮 Juego iniciado')
     this.isThirdPerson = true // ⬅️ asegurar el modo
     this.tracker.start()

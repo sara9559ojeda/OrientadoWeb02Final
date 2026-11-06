@@ -7,8 +7,8 @@ const LoadingScreen = ({ progress = 0 }) => {
         <div className="loading-logo">
           <div className="spinner"></div>
         </div>
-        <h2 className="loading-title">Cargando juego...</h2>
-        <p className="loading-subtitle">Preparando el mundo 3D</p>
+        <h2 className="loading-title">Núcleo Perdido</h2>
+        <p className="loading-subtitle">Preparando los mundos…</p>
         <div className="loading-bar-container">
           <div className="loading-bar" style={{ width: `${progress}%` }}></div>
         </div>

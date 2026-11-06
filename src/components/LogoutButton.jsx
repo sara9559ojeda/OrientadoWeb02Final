@@ -6,7 +6,17 @@ const LogoutButton = () => {
   const { logout, user } = useAuth();
 
   const handleLogout = () => {
-    if (window.confirm('¿Estás seguro de que quieres cerrar sesión?')) {
+    const ui = window.experience?.ui;
+    if (ui) {
+      ui.card({
+        title: '¿Cerrar sesión?',
+        text: 'Perderás el progreso de la partida en curso.',
+        actions: [
+          { label: 'Cerrar sesión', variant: 'danger', onClick: logout },
+          { label: 'Seguir jugando', variant: 'ghost', onClick: () => {} },
+        ],
+      });
+    } else if (window.confirm('¿Estás seguro de que quieres cerrar sesión?')) {
       logout();
     }
   };

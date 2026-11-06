@@ -30,7 +30,8 @@ export default class MobileControls {
       width: '120px',
       height: '120px',
       borderRadius: '50%',
-      background: 'rgba(0,0,0,0.3)',
+      background: 'var(--gu-panel, rgba(0,0,0,0.3))',
+      border: '1px solid var(--gu-line, transparent)',
       zIndex: '9999',
       touchAction: 'none',
       userSelect: 'none'
@@ -44,7 +45,8 @@ export default class MobileControls {
       width: '50px',
       height: '50px',
       borderRadius: '50%',
-      background: 'rgba(255,255,255,0.8)',
+      background: 'var(--auth-text, #fff)',
+      opacity: '0.85',
       transform: 'translate(-50%, -50%)',
       transition: '0.1s',
       pointerEvents: 'none'
@@ -71,13 +73,13 @@ export default class MobileControls {
       width: '60px',
       height: '60px',
       borderRadius: '50%',
-      background: 'rgba(255, 255, 255, 0.5)',
-      color: '#000',
+      background: 'var(--gu-panel, rgba(255,255,255,0.5))',
+      color: 'var(--auth-text, #000)',
       fontSize: '24px',
       fontWeight: 'bold',
       zIndex: 9999,
-      border: 'none',
-      boxShadow: '0 0 10px rgba(0,0,0,0.3)'
+      border: '1px solid var(--gu-line, transparent)',
+      boxShadow: 'var(--gu-shadow, none)'
     })
 
     this.jumpButton.addEventListener('touchstart', () => {

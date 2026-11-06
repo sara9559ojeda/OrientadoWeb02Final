@@ -1,46 +1,58 @@
+/* Usuario y cierre de sesión: mismo lenguaje visual que el HUD (src/ui/game-ui.css) */
 .logout-container {
   position: fixed;
-  top: 70px;
-  right: 20px;
-  z-index: 10000;
+  top: calc(var(--gu-edge, 16px) + 54px);
+  right: var(--gu-edge, 16px);
+  z-index: 9100;
   display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 0.5rem;
-  background: rgba(0, 0, 0, 0.7);
-  padding: 0.75rem 1rem;
-  border-radius: 8px;
-  backdrop-filter: blur(10px);
+  align-items: center;
+  gap: 10px;
+  max-width: min(320px, calc(100vw - 32px));
+  padding: 6px 6px 6px 14px;
+  background: var(--gu-panel);
+  border: 1px solid var(--gu-line);
+  border-radius: var(--gu-radius);
+  box-shadow: var(--gu-shadow);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  font-family: var(--gu-font);
+  color: var(--auth-text);
 }
 
 .user-info {
-  color: white;
-  font-size: 0.9rem;
+  min-width: 0;
 }
 
 .user-email {
-  font-weight: 600;
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--auth-text-muted);
 }
 
 .logout-button {
-  background: #e74c3c;
-  color: white;
-  border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 0.9rem;
+  flex: none;
+  min-height: 34px;
+  padding: 0 12px;
+  border: 1px solid var(--auth-danger-border);
+  border-radius: var(--gu-radius-sm);
+  background: var(--auth-danger-bg);
+  color: var(--auth-danger);
+  font-family: var(--gu-font);
+  font-size: 0.8125rem;
   font-weight: 600;
-  transition: all 0.3s ease;
+  cursor: pointer;
+  transition: border-color 0.15s ease;
 }
 
 .logout-button:hover {
-  background: #c0392b;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(231, 76, 60, 0.4);
+  border-color: var(--auth-danger);
 }
 
-.logout-button:active {
-  transform: translateY(0);
+.logout-button:focus-visible {
+  outline: 2px solid var(--auth-focus);
+  outline-offset: 2px;
 }
-

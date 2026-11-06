@@ -1,117 +1,25 @@
-// src/Utils/ModalManager.js
+// Fachada de modales sobre la interfaz única del juego (src/ui/GameUI.js).
+// Conserva la API show({ icon, message, buttons }) / hide() que usan GameTracker, VR y World.
 export default class ModalManager {
-  constructor({ container = document.body } = {}) {
-    this.container = container
-    this._createModal()
+  constructor({ ui } = {}) {
+    this.ui = ui
   }
 
-  _createModal() {
-    // Overlay
-    this.overlay = document.createElement('div')
-    Object.assign(this.overlay.style, {
-      position: 'fixed',
-      top: 0,
-      left: 0,
-      width: '100%',
-      height: '100%',
-      background: 'rgba(0,0,0,0.5)',
-      display: 'none',
-      alignItems: 'center',
-      justifyContent: 'center',
-      zIndex: 10000
-    })
-    this.container.appendChild(this.overlay)
+  show({ icon = '', title = '', message = '', buttons = [], variant = 'default' } = {}) {
+    if (!this.ui) return
 
-    // Modal box
-    this.box = document.createElement('div')
-    Object.assign(this.box.style, {
-      background: '#222',
-      color: '#fff',
-      padding: '20px',
-      borderRadius: '8px',
-      maxWidth: '320px',
-      textAlign: 'center',
-      position: 'relative'
-    })
-    this.overlay.appendChild(this.box)
+    const actions = Array.isArray(buttons) && buttons.length > 0
+      ? buttons.map((btn, i) => ({
+        label: btn.text || 'Aceptar',
+        variant: btn.variant ?? (i === 0 ? undefined : 'ghost'),
+        onClick: btn.onClick,
+      }))
+      : [{ label: 'Cerrar', onClick: () => {} }]
 
-    // Icon
-    this.icon = document.createElement('div')
-    Object.assign(this.icon.style, {
-      fontSize: '32px',
-      marginBottom: '12px'
-    })
-    this.box.appendChild(this.icon)
-
-    // Message text
-    this.text = document.createElement('div')
-    Object.assign(this.text.style, {
-      fontSize: '16px',
-      marginBottom: '16px',
-      whiteSpace: 'pre-line'
-    })
-    this.box.appendChild(this.text)
-
-    // Dynamic buttons container
-    this.buttonsContainer = document.createElement('div')
-    Object.assign(this.buttonsContainer.style, {
-      display: 'flex',
-      flexDirection: 'column',
-      gap: '10px',
-      marginBottom: '12px'
-    })
-    this.box.appendChild(this.buttonsContainer)
-
-    // Close button
-    this.closeBtn = document.createElement('button')
-    this.closeBtn.innerText = 'Cerrar'
-    Object.assign(this.closeBtn.style, {
-      padding: '6px 12px',
-      border: 'none',
-      borderRadius: '4px',
-      background: '#00fff7',
-      color: '#000',
-      cursor: 'pointer'
-    })
-    this.closeBtn.onclick = () => this.hide()
-    this.box.appendChild(this.closeBtn)
-  }
-
-  show({ icon = 'ℹ️', message = '', buttons = [] } = {}) {
-    this.icon.innerText = icon
-    this.text.innerText = message
-    this.overlay.style.display = 'flex'
-
-    // Limpiar botones anteriores
-    this.buttonsContainer.innerHTML = ''
-
-    // Agregar botones personalizados si se proporcionan
-    if (Array.isArray(buttons) && buttons.length > 0) {
-      buttons.forEach(btn => {
-        const button = document.createElement('button')
-        button.innerText = btn.text || 'Aceptar'
-        button.onclick = () => {
-          btn.onClick?.()
-          this.hide()
-        }
-        Object.assign(button.style, {
-          padding: '8px',
-          background: '#00fff7',
-          color: '#000',
-          fontWeight: 'bold',
-          border: 'none',
-          borderRadius: '4px',
-          cursor: 'pointer'
-        })
-        this.buttonsContainer.appendChild(button)
-      })
-      this.closeBtn.style.display = 'none'
-    } else {
-      this.closeBtn.style.display = 'inline-block'
-    }
+    this.ui.card({ icon, title, text: message, actions, variant })
   }
 
   hide() {
-    this.overlay.style.display = 'none'
+    this.ui?.closeCard()
   }
 }

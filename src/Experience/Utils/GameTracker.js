@@ -68,13 +68,13 @@ export default class GameTracker {
             message: `¡Felicidades!\nTerminaste la partida.\n⏱ Tu tiempo: ${currentTime}s\n\n🏆 Mejores tiempos:\n${ranking}`,
             buttons: [
                 {
-                    text: '🔁 Reintentar',
+                    text: 'Reintentar',
                     onClick: () => {
                         window.experience.resetGame()
                     }
                 },
                 {
-                    text: '❌ Cancelar',
+                    text: 'Cerrar',
                     onClick: () => {
                         this.modal.hide()
                         this.showReplayButton()
@@ -95,22 +95,9 @@ export default class GameTracker {
 
         const btn = document.createElement('button')
         btn.id = 'replay-button'
-        btn.innerText = '🎮 Volver a jugar'
-
-        Object.assign(btn.style, {
-            position: 'fixed',
-            bottom: '20px',
-            right: '20px',
-            padding: '10px 16px',
-            fontSize: '16px',
-            background: '#00fff7',
-            color: '#000',
-            border: 'none',
-            borderRadius: '8px',
-            boxShadow: '0 0 12px #00fff7',
-            cursor: 'pointer',
-            zIndex: 9999
-        })
+        btn.className = 'gu-btn gu-float-br'
+        btn.type = 'button'
+        btn.innerText = 'Volver a jugar'
 
         btn.onclick = () => {
             this.hideGameButtons()
@@ -120,61 +107,6 @@ export default class GameTracker {
         document.body.appendChild(btn)
     }
 
-
-
-    //Finalizar partida
-    showCancelButton() {
-        if (this.finished || document.getElementById('cancel-button')) return
-
-        const btn = document.createElement('button')
-        btn.id = 'cancel-button'
-        btn.innerText = '✖' // Ícono simple
-        btn.title = 'Cancelar juego'
-
-        Object.assign(btn.style, {
-            position: 'fixed',
-            top: '16px',
-            left: '16px',
-            width: '44px',
-            height: '44px',
-            padding: '0',
-            fontSize: '24px',
-            lineHeight: '44px',
-            textAlign: 'center',
-            background: 'rgba(255, 77, 77, 0.9)',
-            color: '#fff',
-            border: 'none',
-            borderRadius: '50%',
-            boxShadow: '0 0 8px rgba(0, 0, 0, 0.3)',
-            cursor: 'pointer',
-            zIndex: 9999,
-            userSelect: 'none'
-        })
-
-        // Confirmación al presionar
-        btn.onclick = () => {
-            this.modal?.show({
-                icon: '⚠️',
-                message: '¿Deseas cancelar la partida en curso?\nPerderás tu progreso actual.',
-                buttons: [
-                    {
-                        text: '❌ Cancelar juego',
-                        onClick: () => {
-                            this.hideGameButtons()
-                            this.modal.hide()
-                            window.experience.resetGame()
-                        }
-                    },
-                    {
-                        text: '↩️ Seguir jugando',
-                        onClick: () => this.modal.hide()
-                    }
-                ]
-            })
-        }
-
-        document.body.appendChild(btn)
-    }
 
 
     hideGameButtons() {
