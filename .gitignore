@@ -32,3 +32,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Entorno virtual para generar la voz de Aurora
+.tts-venv/

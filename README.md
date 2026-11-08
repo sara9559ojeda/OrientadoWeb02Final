@@ -144,12 +144,26 @@ rato: habla en momentos clave (prólogo, inicio de cada capítulo, primer fragme
 consejos enseñan la mecánica de la IA ("rompe su línea de visión… deja de correr: así
 dejarán de oírte").
 
-- Usa la **síntesis de voz del navegador** (`speechSynthesis`), sin archivos de audio; elige
-  la mejor voz en español disponible (en Edge suenan las "Natural").
-- Cada frase sale también como **subtítulo**, así que funciona aunque el navegador no tenga
-  voz en español.
-- Se silencia con el botón 🎙️ del menú ⚙️; el ajuste se guarda en `localStorage`.
+- Son **grabaciones con voz neuronal** (`es-MX-DaliaNeural`) guardadas como mp3 en
+  [`public/audio/narration/`](public/audio/narration) (15 frases, ~650 KB). Suenan igual en
+  cualquier navegador y no dependen de internet al jugar. Si una grabación no cargara,
+  el juego usa la voz del navegador como respaldo.
+- Cada frase sale también como **subtítulo**.
+- Se silencia con el botón 🎙️ del menú ⚙️ (los subtítulos siguen); el ajuste se guarda en
+  `localStorage`.
 - Tiene prioridades (normal / alta / crítica) y una pausa entre frases para no saturar.
+
+**Regenerar o cambiar las frases.** El texto vive en `NARRATION` (`src/story.js`) y los mp3 se
+generan a partir de él con [`scripts/generate-narration.py`](scripts/generate-narration.py)
+(usa el paquete `edge-tts` y necesita internet solo en ese momento; solo regenera lo que cambió):
+
+```bash
+python -m venv .tts-venv
+.tts-venv/Scripts/python -m pip install edge-tts
+.tts-venv/Scripts/python scripts/generate-narration.py
+```
+
+Para cambiar la voz, edita `VOICE` en el script (lista: `python -m edge_tts --list-voices`).
 
 ### Niveles
 

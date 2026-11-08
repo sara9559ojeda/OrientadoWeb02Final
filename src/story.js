@@ -105,6 +105,10 @@ export const NARRATION = {
   ],
   epilogue:
     'Lo lograste, Alba. Aurora vuelve a brillar, y es gracias a ti.',
+
+  // Al reactivar la voz desde el menú
+  voiceOn:
+    'Aquí estoy, Alba.',
 }
 
 export const GAME_OVER = {
