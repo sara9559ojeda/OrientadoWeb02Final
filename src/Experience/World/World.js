@@ -7,7 +7,7 @@ import { getCoinsCountByLevel } from '../../services/levelsService.js'
 import { getRanking, saveScore } from '../../services/scoresService.js'
 import { chapterFor, EPILOGUE, GAME_OVER, OBJECTIVES, PROLOGUE } from '../../story.js'
 import AmbientSound from './AmbientSound.js'
-import Coins from './Coins.js'
+import Coins, { COIN_HEIGHT } from './Coins.js'
 import CoinsParticles from './CoinsParticles.js'
 import Enemy, { STATE_LABELS } from './Enemy.js'
 import { archetypeFor, LEVEL_ROSTER } from './enemyArchetypes.js'
@@ -294,9 +294,9 @@ export default class World {
         this.loader.prizes.forEach((prize, idx) => {
             if (prize.collected || !prize.pivot) return
 
-            const dist = prize.pivot.position.distanceTo(pos)
-            // 💥 FIX: Ampliado a 3.0 para recoger las monedas sin problema
-            if (dist < 3.0 && moved) {
+            // Distancia sobre el suelo: el fragmento flota alto y el cuerpo físico está bajo
+            const dist = Math.hypot(prize.pivot.position.x - pos.x, prize.pivot.position.z - pos.z)
+            if (dist < 3.5 && moved) {
                 // 📊 PASO 4: Rastrear coin del JSON recolectado
                 const coinLevel = prize.level || this.currentLevel
                 const coinRole = prize.role || 'default'
@@ -343,9 +343,10 @@ export default class World {
             this.coins.forEach((coin, idx) => {
                 if (coin.collected || !coin.pivot) return
 
-                const dist = coin.pivot.position.distanceTo(robotPos)
-                // 💥 FIX: Ampliado a 3.0
-                if (dist < 3.0 && moved) {
+                // Distancia en el suelo: la moneda flota alto y el cuerpo físico está bajo,
+                // así que la altura no cuenta para recogerla.
+                const dist = Math.hypot(coin.pivot.position.x - robotPos.x, coin.pivot.position.z - robotPos.z)
+                if (dist < 3.5 && moved) {
                     coin.collect()
                     this.coins.splice(idx, 1)
                     this.coinsCollected++
@@ -523,7 +524,7 @@ export default class World {
             const distance = 80 + Math.random() * 20
             const x = robotPos.x + Math.cos(angle) * distance
             const z = robotPos.z + Math.sin(angle) * distance
-            const y = 1.5 // 💥 FIX: Mantenemos la moneda elevada
+            const y = COIN_HEIGHT // a la altura del pecho del personaje
 
             const coinsPosition = new THREE.Vector3(x, y, z)
 

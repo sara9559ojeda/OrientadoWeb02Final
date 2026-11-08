@@ -1,5 +1,10 @@
 import * as THREE from 'three'
 
+// El personaje mide ~5-6 m: a 4.2 m la moneda queda a la altura del pecho/hombros
+// (antes flotaba a 1.5 m, a la altura de las rodillas).
+export const COIN_HEIGHT = 4.2
+const COIN_BOB = 0.25 // amplitud del balanceo vertical
+
 export default class Coins {
     constructor({ model, position, scene }) {
         this.scene = scene
@@ -32,7 +37,7 @@ export default class Coins {
         // Rotar la moneda lentamente
         this.pivot.rotation.y += delta * 2
         // Hacer que flote ligeramente
-        this.pivot.position.y = 1.5 + Math.sin(Date.now() * 0.001 + this.pivot.position.x) * 0.1
+        this.pivot.position.y = COIN_HEIGHT + Math.sin(Date.now() * 0.001 + this.pivot.position.x) * COIN_BOB
     }
 
     collect() {
