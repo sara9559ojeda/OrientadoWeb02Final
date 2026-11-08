@@ -234,6 +234,33 @@ export default class GameUI {
     }, duration)
   }
 
+  // ── Subtítulos de la narradora ──────────────────────────
+  /**
+   * Muestra la frase de la narradora abajo, sobre cualquier tarjeta. text=null la quita.
+   * Vive fuera de .gu-root para quedar por encima de las tarjetas (z-index mayor).
+   */
+  subtitle(text, speaker = '', duration = 4000) {
+    clearTimeout(this._subTimer)
+    if (!text) {
+      this.subtitleEl?.classList.remove('is-visible')
+      return
+    }
+    if (!this.subtitleEl) {
+      this.subtitleEl = h('div', 'gu-subtitle', null, { role: 'status', 'aria-live': 'polite' })
+      this.subtitleSpeaker = h('span', 'gu-subtitle-speaker')
+      this.subtitleText = h('span', 'gu-subtitle-text')
+      this.subtitleEl.append(this.subtitleSpeaker, this.subtitleText)
+      document.body.appendChild(this.subtitleEl)
+    }
+    this.subtitleSpeaker.textContent = speaker
+    this.subtitleText.textContent = text
+    this.subtitleEl.classList.add('is-visible')
+    // Con una tarjeta abierta se pega al borde inferior para no tapar su contenido.
+    // Se evalúa en el siguiente tick porque a veces la frase se dice antes de crear la tarjeta.
+    setTimeout(() => this.subtitleEl?.classList.toggle('is-over-card', this.hasCard), 0)
+    this._subTimer = setTimeout(() => this.subtitleEl?.classList.remove('is-visible'), duration)
+  }
+
   // ── Tarjetas ────────────────────────────────────────────
   /**
    * Muestra una tarjeta modal centrada.
@@ -328,6 +355,8 @@ export default class GameUI {
 
   destroy() {
     this.closeCard()
+    clearTimeout(this._subTimer)
+    this.subtitleEl?.remove()
     this.root?.remove()
   }
 }

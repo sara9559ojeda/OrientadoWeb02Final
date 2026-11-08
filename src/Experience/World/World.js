@@ -12,6 +12,7 @@ import CoinsParticles from './CoinsParticles.js'
 import Enemy, { STATE_LABELS } from './Enemy.js'
 import { archetypeFor, LEVEL_ROSTER } from './enemyArchetypes.js'
 import EnemyDirector, { NOISE_LEVELS } from './EnemyDirector.js'
+import Narrator from '../Utils/Narrator.js'
 import Environment from './Environment.js'
 import Floor from './Floor.js'
 import Fox from './Fox.js'
@@ -75,7 +76,12 @@ export default class World {
         // Sistema de enemigos
         this.enemies = [] // Array para guardar los enemigos
         this.director = new EnemyDirector(experience) // sentidos compartidos y coordinación de la IA
-        this.director.onEvent = (text, tone) => this.ui?.aiEvent(text, tone)
+        this.narrator = new Narrator({ ui: this.ui }) // voz de Aurora: historia y consejos en momentos clave
+        this.director.onEvent = (text, tone) => {
+            this.ui?.aiEvent(text, tone)
+            // La primera vez que un mutante te ve, Aurora avisa y enseña cómo escapar
+            if (tone === 'warn') this.narrator.say('spotted', { priority: 'high', once: true })
+        }
         this.director.onNoiseChange = (level) => this.ui?.setNoise(level)
         this._onKeyAI = (e) => {
             if (e.code === 'KeyI' && !['INPUT', 'TEXTAREA'].includes(e.target?.tagName)) this.toggleAIPanel()
@@ -317,6 +323,7 @@ export default class World {
                     this.jsonCoinsCollected[coinLevel] = (this.jsonCoinsCollected[coinLevel] || 0) + 1
                     this.updateCoinsCounter()
                     this.showCoinNotification()
+                    this.narrateProgress()
                     console.log(`🪙 Moneda fija recogida: ${this.coinsCollected}/${this.maxCoins} (JSON: ${this.jsonCoinsCollected[coinLevel]}/${this.jsonCoinsTotal[coinLevel]})`)
                     if (this.coinsCollected >= this.maxCoins) {
                         this.clearEnemies()
@@ -583,6 +590,7 @@ export default class World {
     /** Libera listeners y efectos al destruir la experiencia (reiniciar o cerrar sesión). */
     dispose() {
         window.removeEventListener('keydown', this._onKeyAI)
+        this.narrator?.destroy()
         this.clearEnemies()
     }
 
@@ -636,6 +644,16 @@ export default class World {
         })
     }
 
+    /** Aurora comenta el progreso en tres hitos (primero, mitad, último); el resto del tiempo calla. */
+    narrateProgress() {
+        const n = this.coinsCollected
+        const total = this.maxCoins
+        if (n >= total) return // el núcleo completo lo anuncia onAllCoinsCollected
+        if (n === 1) this.narrator.say('firstFragment', { once: true })
+        else if (total >= 4 && n === Math.ceil(total / 2)) this.narrator.say('halfway', { once: true })
+        else if (total >= 3 && n === total - 1) this.narrator.say('lastFragment', { once: true })
+    }
+
     // ── Capítulos y arranque de ronda ────────────────────────────────────────
     // Cuando un nivel termina de cargar se pide aquí empezar la ronda: se muestra la
     // historia del capítulo y los enemigos no aparecen hasta que el jugador pulsa "Comenzar".
@@ -659,13 +677,17 @@ export default class World {
             return
         }
 
-        const showChapter = () => this.ui.card({
-            kicker: chapter.kicker,
-            title: chapter.title,
-            text: chapter.text,
-            controls: !this.experience.gameStarted, // la guía de controles solo la primera vez
-            actions: [{ label: 'Comenzar misión', onClick: start }],
-        })
+        const showChapter = () => {
+            this.ui.card({
+                kicker: chapter.kicker,
+                title: chapter.title,
+                text: chapter.text,
+                controls: !this.experience.gameStarted, // la guía de controles solo la primera vez
+                actions: [{ label: 'Comenzar misión', onClick: start }],
+            })
+            // Aurora introduce el capítulo; si el jugador ya pulsó "Continuar", corta el prólogo
+            this.narrator.say(`chapter${level}`, { priority: 'high', force: true })
+        }
 
         if (!this.experience.gameStarted) {
             this.ui.card({
@@ -674,6 +696,7 @@ export default class World {
                 paragraphs: PROLOGUE.paragraphs,
                 actions: [{ label: 'Continuar', onClick: showChapter }],
             })
+            this.narrator.say('prologue', { priority: 'critical', once: true })
         } else {
             showChapter()
         }
@@ -1222,6 +1245,7 @@ export default class World {
         if (!allDefaultCoinsCollected || !finalPrizeCollected || this.portal) return
 
         this.ui.setObjective(OBJECTIVES.portal, true)
+        this.narrator.say('coreComplete', { priority: 'critical' })
         this.ui.toast({
             icon: '⚡',
             text: this.currentLevel >= 5 ? 'Último núcleo completo. ¡El portal ha aparecido!' : `Núcleo completo. Se abrió un portal hacia ${levelName(this.currentLevel + 1)}`,
@@ -1390,6 +1414,7 @@ export default class World {
 
         this.roundActive = false
         this.ui.setCompass(null)
+        this.narrator.say('gameOver', { priority: 'critical' })
         this.ui.card({
             kicker: 'Game over',
             title: GAME_OVER.title,
@@ -1509,6 +1534,7 @@ export default class World {
         })
 
         this.ui.setCompass(null)
+        this.narrator.say('epilogue', { priority: 'critical' })
         this.ui.card({
             kicker: EPILOGUE.kicker,
             title: EPILOGUE.title,

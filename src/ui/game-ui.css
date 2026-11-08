@@ -705,3 +705,64 @@
 @media (max-width: 640px) {
   .gu-ai { right: var(--gu-edge); left: var(--gu-edge); width: auto; bottom: calc(var(--gu-edge) + 100px); max-height: 34vh; }
 }
+
+/* ── Subtítulos de la narradora ──────────────────────── */
+.gu-subtitle {
+  box-sizing: border-box;
+  position: fixed;
+  left: 50%;
+  bottom: 96px;
+  z-index: 10100; /* por encima de las tarjetas (10000) */
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  width: max-content;
+  max-width: min(640px, calc(100vw - 32px));
+  padding: 12px 18px;
+  font-family: var(--gu-font);
+  font-size: 0.9375rem;
+  line-height: 1.45;
+  color: var(--auth-text);
+  background: color-mix(in srgb, var(--auth-card) 88%, transparent);
+  border: 1px solid var(--gu-line);
+  border-left: 3px solid var(--gu-gold);
+  border-radius: var(--gu-radius);
+  box-shadow: var(--gu-shadow);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  pointer-events: none;
+  opacity: 0;
+  transform: translate(-50%, 8px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.gu-subtitle.is-visible {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+.gu-subtitle-speaker {
+  flex: none;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gu-gold);
+}
+
+/* Con una tarjeta abierta: al borde inferior y más compacto, debajo del contenido */
+.gu-subtitle.is-over-card {
+  bottom: 10px;
+  padding: 8px 14px;
+  font-size: 0.875rem;
+  line-height: 1.35;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gu-subtitle { transition: none; }
+}
+
+@media (max-width: 640px) {
+  .gu-subtitle { bottom: 150px; flex-direction: column; gap: 2px; }
+  .gu-subtitle.is-over-card { bottom: 10px; }
+}

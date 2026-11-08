@@ -67,6 +67,46 @@ export const EPILOGUE = {
   text: 'Los cuatro Núcleos Madre están de nuevo en su sitio. Las luces de Aurora regresan, una a una. Alba, la guardiana más joven, salvó la Ciudadela.',
 }
 
+// ── Voz de Aurora ───────────────────────────────────────────────────────────
+// Aurora es el espíritu de la Ciudadela: la inteligencia que la gobierna y que sigue viva
+// aunque los núcleos se hayan apagado. Solo habla en momentos clave (no narra todo el rato)
+// y, además de contar la historia, enseña a Alba a sobrevivir a los mutantes.
+// Cada entrada es una frase o una lista de variantes (se elige una al azar).
+export const NARRATOR_NAME = 'Aurora'
+
+export const NARRATION = {
+  prologue:
+    'Alba… soy Aurora, la voz de la Ciudadela. Los mutantes se llevaron los Núcleos Madre y mi luz se apaga. Eres mi última esperanza.',
+
+  chapter2:
+    'Estas ruinas guardaron el primer núcleo. Escucha bien: los mutantes te oyen cuando corres. Avanza con cuidado.',
+  chapter3:
+    'La aldea está a oscuras, Alba, y hay más mutantes que antes. No dejes que te rodeen.',
+  chapter4:
+    'Algunos mutantes custodian los fragmentos. Obsérvalos desde lejos antes de acercarte.',
+  chapter5:
+    'El último núcleo, Alba. Ya has llegado muy lejos. Aurora cree en ti.',
+
+  firstFragment:
+    'Lo sentí. Un fragmento de núcleo vuelve a la luz. Sigue así.',
+  halfway:
+    'Ya tenemos la mitad. La Ciudadela vuelve a respirar.',
+  lastFragment:
+    'Solo falta uno, Alba. Ya casi lo tienes.',
+  coreComplete:
+    'El núcleo está completo. Corre al portal antes de que te encuentren.',
+
+  spotted:
+    '¡Te han visto! Rompe su línea de visión tras un edificio y deja de correr: así dejarán de oírte.',
+  gameOver: [
+    'No te rindas, Alba. Aurora todavía te necesita.',
+    'Respira. Ahora ya sabes cómo piensan. Inténtalo otra vez.',
+    'Aún queda luz. Levántate y vuelve a intentarlo.',
+  ],
+  epilogue:
+    'Lo lograste, Alba. Aurora vuelve a brillar, y es gracias a ti.',
+}
+
 export const GAME_OVER = {
   title: 'Los mutantes te atraparon',
   text: 'Los fragmentos que llevabas se perdieron, pero el núcleo sigue ahí fuera. Inténtalo de nuevo.',

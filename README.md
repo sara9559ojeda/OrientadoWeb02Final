@@ -131,6 +131,26 @@ Ver [`README_AUTH.md`](README_AUTH.md) para el detalle del flujo.
 En cada nivel: recoger todas las monedas sin que te atrape un enemigo. Al
 completarlas aparece un **portal**; caminá hasta él para pasar al siguiente nivel.
 
+### Historia y voz narradora
+
+Eres **Alba**, la guardiana más joven de la Ciudadela Aurora. Los mutantes robaron los
+cuatro Núcleos Madre y los esparcieron por cuatro mundos; cada nivel es un capítulo
+(todo el texto vive en [`src/story.js`](src/story.js)).
+
+**Aurora**, el espíritu de la Ciudadela, te guía con una voz narradora
+([`src/Experience/Utils/Narrator.js`](src/Experience/Utils/Narrator.js)). No narra todo el
+rato: habla en momentos clave (prólogo, inicio de cada capítulo, primer fragmento, mitad,
+último fragmento, portal listo, la primera vez que te ven, Game Over y final) y sus
+consejos enseñan la mecánica de la IA ("rompe su línea de visión… deja de correr: así
+dejarán de oírte").
+
+- Usa la **síntesis de voz del navegador** (`speechSynthesis`), sin archivos de audio; elige
+  la mejor voz en español disponible (en Edge suenan las "Natural").
+- Cada frase sale también como **subtítulo**, así que funciona aunque el navegador no tenga
+  voz en español.
+- Se silencia con el botón 🎙️ del menú ⚙️; el ajuste se guarda en `localStorage`.
+- Tiene prioridades (normal / alta / crítica) y una pausa entre frases para no saturar.
+
 ### Niveles
 
 El juego arranca directamente en el **segundo nivel** (`initializeWorld()` llama a
