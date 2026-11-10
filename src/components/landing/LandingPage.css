@@ -77,6 +77,8 @@
 .landing-story p:not(.landing-eyebrow) { max-width: 360px; color: var(--auth-text-muted); margin: 0 0 18px; font-size: 14px; }
 .landing-story-signature { display: flex; align-items: center; gap: 17px; padding-top: 22px; margin-top: 30px; border-top: 1px solid var(--auth-border); font-family: var(--landing-serif); font-size: 20px; }
 .landing-story-signature > span:first-child { font-size: 35px; color: var(--landing-gold); }
+.landing-story-signature small { display: block; margin-top: 8px; font: 8px/1.5 'Inter', sans-serif; letter-spacing: 0.13em; color: var(--auth-text-muted); }
+.landing-worlds { position: relative; padding-top: 90px; }
 @media (prefers-reduced-motion: no-preference) {
 }
 @keyframes landing-wave { }
