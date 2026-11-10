@@ -217,4 +217,5 @@
   .landing-page h1 { font-size: 45px; }
 }
 @media (prefers-reduced-motion: reduce) {
+  .landing-page *, .landing-page *::before, .landing-page *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
 }
