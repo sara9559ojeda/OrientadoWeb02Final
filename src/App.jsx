@@ -5,6 +5,7 @@ import LoadingScreen from './components/LoadingScreen';
 import Login from './components/Login';
 import LogoutButton from './components/LogoutButton';
 import Register from './components/Register';
+import LandingPage from './components/landing/LandingPage';
 import { useAuth } from './context/AuthContext';
 import Experience from './Experience/Experience';
 
@@ -13,9 +14,19 @@ const App = () => {
   const experienceRef = useRef(null);
   const { isAuthenticated, loading } = useAuth();
   const [showRegister, setShowRegister] = useState(false);
+  const [showLanding, setShowLanding] = useState(() => window.location.hash !== '#iniciar-sesion');
   const [experienceLoading, setExperienceLoading] = useState(false);
   const [loadingProgress, setLoadingProgress] = useState(0);
   const [experienceReady, setExperienceReady] = useState(false);
+
+  useEffect(() => {
+    const updateEntryScreen = () => {
+      setShowLanding(window.location.hash !== '#iniciar-sesion');
+      setShowRegister(false);
+    };
+    window.addEventListener('hashchange', updateEntryScreen);
+    return () => window.removeEventListener('hashchange', updateEntryScreen);
+  }, []);
 
 
   useEffect(() => {
@@ -110,6 +121,10 @@ const App = () => {
       experienceRef.current = null;
     }
   }, [isAuthenticated]);
+
+  if (!isAuthenticated && showLanding) {
+    return <LandingPage onEnter={() => { window.location.hash = 'iniciar-sesion'; }} />;
+  }
 
   // Mostrar loading mientras se verifica la autenticación
   if (loading) {
