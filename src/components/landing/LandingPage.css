@@ -41,6 +41,8 @@
 .landing-journey { position: relative; }
 .landing-visual { position: sticky; top: 0; height: calc(100svh - 88px); margin-bottom: calc(-100svh + 88px); pointer-events: none; }
 .landing-scene-frame { position: absolute; inset: 0 0 0 43%; overflow: hidden; }
+.landing-scene-frame::before { content: ''; position: absolute; inset: 14% 5%; border-radius: 50%; background: radial-gradient(ellipse, color-mix(in srgb, var(--landing-gold) 7%, transparent), transparent 66%); }
+.landing-scene-canvas { width: 100%; height: 100%; display: block; position: relative; z-index: 1; opacity: 0; transition: opacity 1s; }
 @media (prefers-reduced-motion: no-preference) {
 }
 @keyframes landing-wave { }
