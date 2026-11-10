@@ -201,6 +201,8 @@
   .landing-key-art { transform: scale(0.85); transform-origin: left; }
   .landing-fragment-art { gap: 3px; }
   .landing-fragment-art span { font-size: 42px; }
+  .landing-fragment-art span:nth-child(2) { font-size: 58px; }
+  .landing-finale { padding-block: 70px; }
 }
 @media (max-width: 360px) {
 }
