@@ -10,12 +10,13 @@ export default class ThirdPersonCamera {
         const isMobile = isMobileDevice()
 
         // Distancia y altura adaptada - Aumentada para mejor campo de visión
+        // Los personajes miden ~6 m, así que la cámara debe estar bastante lejos para verlo entero
         this.offset = isMobile
-            ? new THREE.Vector3(0, 5.0, -8)  // móvil: más alto y atrás
-            : new THREE.Vector3(0, 4.5, -7)  // Desktop: más alto para ver partículas
+            ? new THREE.Vector3(0, 14, -24)  // móvil: un poco más lejos (pantalla estrecha)
+            : new THREE.Vector3(0, 12, -20)  // Desktop
 
-        // Fijar altura para evitar sacudidas - Aumentada
-        this.fixedY = isMobile ? 5.0 : 4.5
+        // Fijar altura para evitar sacudidas
+        this.fixedY = isMobile ? 14 : 12
     }
 
     update() {
@@ -49,7 +50,7 @@ export default class ThirdPersonCamera {
         const lookAtDistance = 20 // Distancia hacia adelante donde queremos que mire la cámara
         const lookAt = new THREE.Vector3(
             basePosition.x + direction.x * lookAtDistance,
-            basePosition.y + 1.5, // Altura del punto de mira (a la altura del robot)
+            basePosition.y + 3, // Altura del punto de mira (pecho del personaje)
             basePosition.z + direction.z * lookAtDistance
         )
         this.camera.lookAt(lookAt)

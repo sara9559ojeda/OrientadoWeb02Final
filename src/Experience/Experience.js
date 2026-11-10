@@ -288,6 +288,7 @@ export default class Experience {
     this.gameStarted = true
     console.log('🎮 Juego iniciado')
     this.isThirdPerson = true // ⬅️ asegurar el modo
+    this.camera.placeBehindCharacter() // cámara lejos y detrás del personaje
     this.tracker.start()
     // this._startObstacleWaves() // DESHABILITADO - no se generan cubos automáticamente
     if (this.menu && this.menu.toggleButton && this.menu.toggleButton.style) {

@@ -1,6 +1,11 @@
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 
+// Cámara de seguimiento (tercera persona): distancia horizontal, altura y punto al que mira
+export const FOLLOW_DISTANCE = 22
+export const FOLLOW_HEIGHT = 13
+export const FOLLOW_TARGET_HEIGHT = 3
+
 export default class Camera {
     constructor(experience) {
         this.experience = experience
@@ -32,8 +37,9 @@ export default class Camera {
         this.controls.minPolarAngle = 0
         this.controls.maxPolarAngle = Math.PI
         // Distancia mínima y máxima
-        this.controls.minDistance = 2
-        this.controls.maxDistance = 100
+        // Los personajes miden ~6 m: con menos de 10 m de distancia ocupan toda la pantalla
+        this.controls.minDistance = 10
+        this.controls.maxDistance = 120
         // Target inicial cerca del origen donde están los edificios
         this.controls.target.set(0, 2, 0)
     }
@@ -52,18 +58,43 @@ export default class Camera {
         }
     }
     
+    /**
+     * Coloca la cámara detrás del personaje, lejos y algo elevada, al empezar la partida.
+     * Luego el jugador puede acercar/alejar con la rueda y orbitar con el ratón.
+     */
+    placeBehindCharacter(distance = FOLLOW_DISTANCE, height = FOLLOW_HEIGHT) {
+        const robot = this.experience.world?.robot
+        if (!robot || !robot.body) {
+            this._pendingPlacement = { distance, height } // el personaje aún no cargó: se aplica luego
+            return
+        }
+        this._pendingPlacement = null
+        const p = robot.body.position
+        const dir = new THREE.Vector3(0, 0, 1)
+        if (robot.group) dir.applyEuler(robot.group.rotation).normalize()
+        this.controls.target.set(p.x, FOLLOW_TARGET_HEIGHT, p.z)
+        this.instance.position.set(p.x - dir.x * distance, height, p.z - dir.z * distance)
+        this.controls.update()
+    }
+
     updateTargetToFollowCharacter() {
         // Obtener referencia al robot desde la experiencia
         const robot = this.experience.world?.robot
         if (!robot || !robot.body) return
-        
+
+        if (this._pendingPlacement) {
+            const { distance, height } = this._pendingPlacement
+            this.placeBehindCharacter(distance, height)
+        }
+
         // Obtener la posición del robot
         const robotPosition = robot.body.position
-        const targetHeight = 1.5 // Altura del target (a la altura del robot)
+        const targetHeight = FOLLOW_TARGET_HEIGHT // a la altura del pecho del personaje (~6 m de alto)
         
         // Actualizar el target de OrbitControls para que siga al robot
         // Usar lerp para un seguimiento suave pero responsivo
         const targetPosition = new THREE.Vector3(robotPosition.x, targetHeight, robotPosition.z)
+        const previousTarget = this.controls.target.clone()
         this.controls.target.lerp(targetPosition, 0.15) // Factor de suavizado (más responsivo que 0.1)
         
         // Si el robot se está moviendo, hacer el seguimiento más rápido
@@ -72,5 +103,9 @@ export default class Camera {
             // Cuando se mueve, seguir más rápido
             this.controls.target.lerp(targetPosition, 0.25)
         }
+
+        // La cámara acompaña al personaje: se desplaza lo mismo que el target, así conserva la
+        // distancia y el ángulo elegidos (orbitar y hacer zoom siguen funcionando).
+        this.instance.position.add(this.controls.target.clone().sub(previousTarget))
     }
 }
