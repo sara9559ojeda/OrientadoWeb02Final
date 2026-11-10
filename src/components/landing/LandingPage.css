@@ -79,6 +79,7 @@
 .landing-story-signature > span:first-child { font-size: 35px; color: var(--landing-gold); }
 .landing-story-signature small { display: block; margin-top: 8px; font: 8px/1.5 'Inter', sans-serif; letter-spacing: 0.13em; color: var(--auth-text-muted); }
 .landing-worlds { position: relative; padding-top: 90px; }
+.landing-worlds-intro { width: 47%; }
 @media (prefers-reduced-motion: no-preference) {
 }
 @keyframes landing-wave { }
