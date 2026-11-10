@@ -35,3 +35,7 @@ dist-ssr
 
 # Entorno virtual para generar la voz de Aurora
 .tts-venv/
+
+.vercel
+.env.*
+!.env.example

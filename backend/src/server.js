@@ -4,7 +4,7 @@ import express from 'express';
 import helmet from 'helmet';
 import rateLimit from 'express-rate-limit';
 import mongoose from 'mongoose';
-import { connectDBWithRetry } from './config/database.js';
+import { connectDBWithRetry, ensureDBConnection } from './config/database.js';
 import { getJwtSecret, isProduction } from './config/env.js';
 import routes from './routes/index.js';
 
@@ -52,12 +52,18 @@ app.use(express.json({ limit: '10kb' }));
 app.use(express.urlencoded({ extended: true, limit: '10kb' }));
 
 // /api/health responde siempre (aunque Mongo siga conectando); el resto de /api necesita BD.
-app.get('/api/health', (req, res) => {
+app.get('/api/health', async (req, res) => {
+  if (process.env.VERCEL) {
+    await ensureDBConnection().catch(() => {});
+  }
   const db = mongoose.connection.readyState === 1 ? 'connected' : 'connecting';
   res.json({ status: 'OK', message: 'Servidor funcionando correctamente', db });
 });
 
-app.use('/api', (req, res, next) => {
+app.use('/api', async (req, res, next) => {
+  if (process.env.VERCEL) {
+    await ensureDBConnection().catch(() => {});
+  }
   if (mongoose.connection.readyState === 1) return next();
   res.status(503).json({
     success: false,
@@ -125,7 +131,7 @@ app.use((err, req, res, next) => {
 
 // Iniciar servidor primero (para que /api/health responda y Render detecte el puerto)
 // y conectar a MongoDB en segundo plano con reintentos.
-const server = app.listen(PORT, HOST, () => {
+const server = process.env.VERCEL ? null : app.listen(PORT, HOST, () => {
   console.log(`🚀 Servidor escuchando en http://${HOST}:${PORT}`);
   console.log(`📝 Entorno: ${process.env.NODE_ENV || 'development'}`);
   connectDBWithRetry();
@@ -133,6 +139,7 @@ const server = app.listen(PORT, HOST, () => {
 
 // Apagado ordenado (Render envía SIGTERM en cada deploy)
 const shutdown = (signal) => {
+  if (!server) return;
   console.log(`🛑 ${signal} recibido, cerrando...`);
   server.close(async () => {
     await mongoose.connection.close().catch(() => {});

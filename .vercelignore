@@ -1,3 +1,9 @@
 # Lo que NO hace falta subir a Vercel (el backend va en otro servicio)
 backend
 .claude
+node_modules
+dist
+.git
+.vercel
+.env
+.env.*

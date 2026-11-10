@@ -5,11 +5,25 @@ import { isProduction } from './env.js';
 const MONGO_OPTIONS = {
   serverSelectionTimeoutMS: 10000,
   connectTimeoutMS: 10000,
+  maxPoolSize: 10,
 };
 
 // Estado legible de la conexión (para /api/health y logs)
 export const getDbState = () =>
   ({ 0: 'disconnected', 1: 'connected', 2: 'connecting', 3: 'disconnecting' }[mongoose.connection.readyState] || 'unknown');
+
+let connectionPromise;
+
+// Share initialization across concurrent requests in a Vercel instance.
+export const ensureDBConnection = async () => {
+  if (mongoose.connection.readyState === 1) return;
+  if (!connectionPromise) {
+    connectionPromise = connectDB({ exitOnFailure: false }).finally(() => {
+      connectionPromise = undefined;
+    });
+  }
+  await connectionPromise;
+};
 
 /**
  * Conecta a MongoDB.
@@ -72,39 +86,8 @@ export const connectDB = async ({ exitOnFailure = true } = {}) => {
     
     console.log(`🔌 Conectando a MongoDB: ${mongoURI.replace(/\/\/[^:]+:[^@]+@/, '//***:***@')}`); // Ocultar credenciales en el log
     
-    try {
-      await mongoose.connect(mongoURI, MONGO_OPTIONS);
-      console.log('✅ MongoDB conectado exitosamente');
-    } catch (authError) {
-      // Si falla la autenticación, intentar con admin123 (contraseña por defecto de Docker)
-      if (!isProduction() && authError.message.includes('Authentication failed')) {
-        console.log('🔄 Autenticación falló, intentando con contraseña por defecto (admin123)...');
-        
-        // Extraer componentes de la URI
-        const uriMatch = mongoURI.match(/mongodb:\/\/([^:]+):([^@]+)@([^\/]+)\/([^?]+)(\?.*)?/);
-        if (uriMatch) {
-          const [, username, , host, database, queryString] = uriMatch;
-          const fallbackURI = `mongodb://${username}:admin123@${host}/${database}${queryString || '?authSource=admin'}`;
-          
-          try {
-            await mongoose.connect(fallbackURI, MONGO_OPTIONS);
-            console.log('✅ MongoDB conectado exitosamente con contraseña por defecto');
-            console.log('💡 Sugerencia: Actualiza tu .env para usar: admin123 como contraseña');
-          } catch (secondError) {
-            // Si también falla, mostrar información útil
-            console.error('\n💡 Posibles soluciones:');
-            console.error('   1. Verifica que la contraseña en .env coincida con la de MongoDB');
-            console.error('   2. Si usas Docker, la contraseña por defecto es: admin123');
-            console.error('   3. Verifica que MongoDB esté corriendo: docker ps');
-            throw authError; // Lanzar el error original
-          }
-        } else {
-          throw authError;
-        }
-      } else {
-        throw authError;
-      }
-    }
+    await mongoose.connect(mongoURI, MONGO_OPTIONS);
+    console.log('✅ MongoDB conectado exitosamente');
   } catch (error) {
     console.error(`❌ Error al conectar con MongoDB: ${error.message}`);
     console.error(`   MONGODB_URI: ${process.env.MONGODB_URI ? '✅ Definida' : '❌ No definida'}`);
@@ -116,7 +99,7 @@ export const connectDB = async ({ exitOnFailure = true } = {}) => {
       console.error(`   DATABASE_NAME: ${process.env.DATABASE_NAME || 'No definida'}`);
       console.error(`   DATABASE_USERNAME: ${process.env.DATABASE_USERNAME || 'No definida'}`);
       console.error(`   DATABASE_PASSWORD: ${process.env.DATABASE_PASSWORD ? '***' : 'No definida'}`);
-      console.error('   Ejemplo: MONGODB_URI=mongodb://admin:admin123@localhost:27017/multimedia_db?authSource=admin');
+      console.error('   Ejemplo: MONGODB_URI=mongodb://USUARIO:CLAVE@localhost:27017/multimedia_db?authSource=admin');
     }
     if (exitOnFailure) process.exit(1);
     throw error;
