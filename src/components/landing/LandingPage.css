@@ -176,6 +176,7 @@
   .landing-story > div { width: 100%; max-width: 440px; background: linear-gradient(var(--auth-bg) 70%, transparent); padding-bottom: 45px; }
   .landing-story h2 { font-size: clamp(44px, 9vw, 62px); }
   .landing-story p:not(.landing-eyebrow) { font-size: 13px; max-width: 320px; }
+  .landing-story-signature { font-size: 18px; max-width: 320px; }
 }
 @media (max-width: 360px) {
 }
