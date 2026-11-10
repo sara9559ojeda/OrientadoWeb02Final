@@ -180,6 +180,8 @@
   .landing-worlds { padding-top: 60px; }
   .landing-worlds-intro { width: 100%; }
   .landing-worlds-intro h2 { font-size: 46px; }
+  .landing-worlds-intro > p:last-child { font-size: 12px; }
+  .landing-world-tabs { width: 100%; margin-block: 25px 0; }
 }
 @media (max-width: 360px) {
 }
