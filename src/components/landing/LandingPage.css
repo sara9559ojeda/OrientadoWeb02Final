@@ -114,6 +114,8 @@
 .landing-mechanics article:hover .landing-sound-art i { animation: landing-wave 1s var(--bar-delay) ease-in-out infinite alternate; }
 .landing-fragment-art { justify-content: flex-start; gap: 13px; padding-left: 25px; color: var(--landing-gold); }
 .landing-fragment-art span { font: 58px/1 var(--landing-serif); }
+.landing-fragment-art span:nth-child(2) { transform: translateY(-13px); font-size: 76px; }
+.landing-finale { position: relative; padding: 100px 0 110px; border-top: 1px solid var(--auth-border); border-bottom: 1px solid var(--auth-border); background: var(--auth-card); text-align: center; overflow: hidden; }
 @media (prefers-reduced-motion: no-preference) {
 }
 @keyframes landing-wave { }
