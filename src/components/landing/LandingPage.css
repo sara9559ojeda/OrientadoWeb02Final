@@ -120,6 +120,8 @@
 .landing-finale > div { position: relative; }
 .landing-finale-star { display: block; font-size: 57px; color: var(--landing-gold); margin-bottom: 24px; }
 .landing-finale .landing-eyebrow { justify-content: center; margin-bottom: 25px; }
+.landing-finale h2 { font-size: clamp(54px, 6.7vw, 92px); }
+.landing-finale .landing-button { margin-top: 38px; min-width: 220px; }
 @media (prefers-reduced-motion: no-preference) {
 }
 @keyframes landing-wave { }
