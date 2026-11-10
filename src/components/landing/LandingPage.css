@@ -31,6 +31,7 @@
 .landing-header { position: sticky; top: 0; z-index: 10; height: 88px; display: flex; align-items: center; justify-content: space-between; gap: 24px; padding-inline: 40px; background: color-mix(in srgb, var(--auth-bg) 88%, transparent); backdrop-filter: blur(18px); border-bottom: 1px solid color-mix(in srgb, var(--auth-border) 65%, transparent); }
 .landing-brand-button { color: inherit; border: 0; background: none; padding: 0; flex-shrink: 0; }
 .landing-nav { display: flex; align-items: center; gap: 30px; }
+.landing-nav button, .landing-text-button { border: 0; background: none; color: var(--auth-text-muted); padding: 8px 0; }
 @media (prefers-reduced-motion: no-preference) {
 }
 @keyframes landing-wave { }
