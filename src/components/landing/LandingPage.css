@@ -98,6 +98,7 @@
 .landing-how { position: relative; padding-block: 130px; background: var(--auth-bg); }
 .landing-section-heading { text-align: center; }
 .landing-section-heading .landing-eyebrow { justify-content: center; }
+.landing-section-heading > p:last-child { color: var(--auth-text-muted); font-size: 14px; margin-top: 27px; }
 @media (prefers-reduced-motion: no-preference) {
 }
 @keyframes landing-wave { }
