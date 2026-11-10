@@ -1,0 +1,30 @@
+.landing-page {
+  --landing-serif: 'Newsreader', Georgia, 'Times New Roman', serif;
+  --landing-gold: #d6b978;
+  --landing-width: 1320px;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  overflow: auto;
+  overflow-x: hidden;
+  overscroll-behavior: contain;
+  background: var(--auth-bg);
+  color: var(--auth-text);
+  font: 400 15px/1.65 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  color-scheme: dark;
+  scroll-padding-top: 100px;
+}
+:root[data-theme='light'] .landing-page { --landing-gold: #927037; color-scheme: light; }
+@media (prefers-reduced-motion: no-preference) {
+}
+@keyframes landing-wave { }
+@media (min-width: 1600px) { }
+@media (max-width: 1000px) {
+}
+@media (max-width: 700px) {
+}
+@media (max-width: 360px) {
+}
+@media (prefers-reduced-motion: reduce) {
+}
