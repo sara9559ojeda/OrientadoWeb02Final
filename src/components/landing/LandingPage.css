@@ -53,6 +53,8 @@
 .landing-orbit-fallback span:nth-child(2) { transform: rotate(45deg) scaleY(0.6); }
 .landing-orbit-fallback i { position: absolute; inset: 70px 100px; background: var(--landing-gold); clip-path: polygon(50% 0,100% 50%,50% 100%,0 50%); }
 .is-ready .landing-orbit-fallback { opacity: 0; }
+.landing-hero { min-height: calc(100svh - 88px); position: relative; display: flex; flex-direction: column; justify-content: center; padding-block: 70px 100px; pointer-events: none; }
+.landing-hero-copy { width: 57%; pointer-events: auto; }
 @media (prefers-reduced-motion: no-preference) {
 }
 @keyframes landing-wave { }
