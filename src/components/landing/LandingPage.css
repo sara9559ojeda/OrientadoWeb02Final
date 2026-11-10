@@ -188,6 +188,7 @@
   .landing-chapter h3 { font-size: 48px; max-width: 310px; }
   .landing-chapter-mood { font-size: 20px; }
   .landing-chapter-copy > p:not(.landing-chapter-mood) { font-size: 13px; max-width: 300px; }
+  .landing-chapter-detail { margin-top: 18px; }
 }
 @media (max-width: 360px) {
 }
