@@ -110,6 +110,7 @@
 .landing-key-art > div { display: flex; gap: 4px; }
 .landing-key-art kbd { display: grid; place-items: center; width: 37px; height: 34px; background: var(--auth-card); border: 1px solid var(--auth-border); border-bottom-width: 3px; border-radius: 7px; color: var(--auth-text-muted); font: 17px/1 'Inter', sans-serif; }
 .landing-sound-art { justify-content: flex-start; gap: 6px; padding-left: 30px; }
+.landing-sound-art i { display: block; width: 5px; height: var(--bar-height); border-radius: 3px; background: var(--landing-gold); opacity: 0.65; transform-origin: center; }
 @media (prefers-reduced-motion: no-preference) {
 }
 @keyframes landing-wave { }
