@@ -108,6 +108,8 @@
 .landing-key-art { flex-direction: column; gap: 4px; align-items: flex-start; padding-left: 48px; }
 .landing-key-art > kbd { margin-left: 41px; }
 .landing-key-art > div { display: flex; gap: 4px; }
+.landing-key-art kbd { display: grid; place-items: center; width: 37px; height: 34px; background: var(--auth-card); border: 1px solid var(--auth-border); border-bottom-width: 3px; border-radius: 7px; color: var(--auth-text-muted); font: 17px/1 'Inter', sans-serif; }
+.landing-sound-art { justify-content: flex-start; gap: 6px; padding-left: 30px; }
 @media (prefers-reduced-motion: no-preference) {
 }
 @keyframes landing-wave { }
