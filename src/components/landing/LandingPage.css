@@ -206,6 +206,7 @@
   .landing-finale h2 { font-size: clamp(46px, 10vw, 64px); }
   .landing-finale::before { width: 470px; height: 470px; }
   .landing-finale .landing-button + p { font-size: 10px; }
+  .landing-footer { flex-wrap: wrap; justify-content: space-between; padding-block: 30px; gap: 18px; }
 }
 @media (max-width: 360px) {
 }
