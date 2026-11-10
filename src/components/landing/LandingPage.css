@@ -161,6 +161,7 @@
   .landing-object-label { bottom: 12%; font-size: 8px; }
   .landing-orbit-note { display: none; }
   .landing-hero { min-height: max(780px, calc(100svh - 72px)); padding-block: 48px 100px; justify-content: flex-start; }
+  .landing-hero-copy { width: 100%; }
 }
 @media (max-width: 360px) {
 }
