@@ -212,6 +212,8 @@
 @media (max-width: 360px) {
   .landing-header { padding-inline: 14px; }
   .landing-header .auth-brand-name { font-size: 21px; }
+  .landing-header-actions { gap: 6px; }
+  .landing-hero-actions { gap: 12px; }
 }
 @media (prefers-reduced-motion: reduce) {
 }
