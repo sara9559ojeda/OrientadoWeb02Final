@@ -105,6 +105,8 @@
 .landing-mechanics p { color: var(--auth-text-muted); font-size: 13px; line-height: 1.9; max-width: 310px; }
 .landing-step { display: inline-block; color: var(--auth-text-muted); font-size: 9px; letter-spacing: 0.15em; margin-top: 34px; }
 .landing-key-art, .landing-sound-art, .landing-fragment-art { height: 90px; display: flex; align-items: center; justify-content: center; }
+.landing-key-art { flex-direction: column; gap: 4px; align-items: flex-start; padding-left: 48px; }
+.landing-key-art > kbd { margin-left: 41px; }
 @media (prefers-reduced-motion: no-preference) {
 }
 @keyframes landing-wave { }
