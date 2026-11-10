@@ -17,6 +17,8 @@
 }
 :root[data-theme='light'] .landing-page { --landing-gold: #927037; color-scheme: light; }
 .landing-page *, .landing-page *::before, .landing-page *::after { box-sizing: border-box; }
+.landing-page button, .landing-page a { -webkit-tap-highlight-color: transparent; }
+.landing-page button { font: inherit; cursor: pointer; }
 @media (prefers-reduced-motion: no-preference) {
 }
 @keyframes landing-wave { }
