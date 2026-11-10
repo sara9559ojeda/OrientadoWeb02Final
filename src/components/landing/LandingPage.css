@@ -189,6 +189,8 @@
   .landing-chapter-mood { font-size: 20px; }
   .landing-chapter-copy > p:not(.landing-chapter-mood) { font-size: 13px; max-width: 300px; }
   .landing-chapter-detail { margin-top: 18px; }
+  .landing-how { padding-block: 85px; }
+  .landing-page h2 { font-size: clamp(40px, 9vw, 58px); }
 }
 @media (max-width: 360px) {
 }
