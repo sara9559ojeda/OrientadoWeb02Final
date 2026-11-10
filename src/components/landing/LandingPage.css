@@ -46,6 +46,7 @@
 .landing-visual.is-ready .landing-scene-canvas { opacity: 1; }
 .landing-object-label { position: absolute; bottom: 12%; left: 50%; transform: translateX(-50%); display: flex; align-items: center; white-space: nowrap; gap: 10px; font-size: 9px; letter-spacing: 0.14em; color: var(--auth-text-muted); }
 .landing-object-label > span:last-child { padding-left: 24px; color: var(--landing-gold); }
+.landing-status-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--landing-gold); box-shadow: 0 0 12px color-mix(in srgb, var(--landing-gold) 45%, transparent); }
 @media (prefers-reduced-motion: no-preference) {
 }
 @keyframes landing-wave { }
