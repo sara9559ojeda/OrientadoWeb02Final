@@ -20,6 +20,8 @@
 .landing-page button, .landing-page a { -webkit-tap-highlight-color: transparent; }
 .landing-page button { font: inherit; cursor: pointer; }
 .landing-page button:focus-visible, .landing-page a:focus-visible { outline: 2px solid var(--auth-focus); outline-offset: 6px; }
+.landing-page ::selection { background: var(--auth-text); color: var(--auth-bg); }
+.landing-container { width: min(var(--landing-width), calc(100% - 112px)); margin-inline: auto; }
 @media (prefers-reduced-motion: no-preference) {
 }
 @keyframes landing-wave { }
