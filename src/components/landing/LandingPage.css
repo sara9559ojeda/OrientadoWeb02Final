@@ -153,6 +153,8 @@
   .landing-header .auth-brand { gap: 7px; }
   .landing-nav { display: none; }
   .landing-header .theme-toggle { width: 34px; height: 34px; }
+  .landing-login { padding: 9px 12px; gap: 10px; font-size: 11px !important; }
+  .landing-header-actions { gap: 10px; }
 }
 @media (max-width: 360px) {
 }
