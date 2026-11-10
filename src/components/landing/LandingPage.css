@@ -96,6 +96,8 @@
 .landing-chapter-copy > p:not(.landing-chapter-mood) { color: var(--auth-text-muted); max-width: 355px; font-size: 14px; line-height: 1.9; }
 .landing-chapter-detail { display: inline-block; margin-top: 26px; font-size: 9px; color: var(--auth-text-muted); letter-spacing: 0.12em; text-transform: uppercase; }
 .landing-how { position: relative; padding-block: 130px; background: var(--auth-bg); }
+.landing-section-heading { text-align: center; }
+.landing-section-heading .landing-eyebrow { justify-content: center; }
 @media (prefers-reduced-motion: no-preference) {
 }
 @keyframes landing-wave { }
