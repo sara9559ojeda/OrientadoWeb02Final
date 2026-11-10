@@ -165,6 +165,8 @@
   .landing-eyebrow { font-size: 8px; letter-spacing: 0.14em; margin-bottom: 22px; }
   .landing-page h1 { font-size: clamp(48px, 11vw, 74px); }
   .landing-lead { font-size: 13px; margin-top: 22px; }
+  .landing-hero-actions { margin-top: 25px; gap: 20px; }
+  .landing-button { padding: 13px 17px; min-height: 48px; gap: 23px; font-size: 11px !important; }
 }
 @media (max-width: 360px) {
 }
