@@ -192,6 +192,8 @@
   .landing-how { padding-block: 85px; }
   .landing-page h2 { font-size: clamp(40px, 9vw, 58px); }
   .landing-section-heading > p:last-child { font-size: 12px; }
+  .landing-mechanics { grid-template-columns: 1fr; gap: 44px; margin-top: 50px; }
+  .landing-mechanics article { display: grid; grid-template-columns: 110px 1fr; column-gap: 22px; padding-top: 25px; }
 }
 @media (max-width: 360px) {
 }
