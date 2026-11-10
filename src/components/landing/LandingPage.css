@@ -162,6 +162,8 @@
   .landing-orbit-note { display: none; }
   .landing-hero { min-height: max(780px, calc(100svh - 72px)); padding-block: 48px 100px; justify-content: flex-start; }
   .landing-hero-copy { width: 100%; }
+  .landing-eyebrow { font-size: 8px; letter-spacing: 0.14em; margin-bottom: 22px; }
+  .landing-page h1 { font-size: clamp(48px, 11vw, 74px); }
 }
 @media (max-width: 360px) {
 }
