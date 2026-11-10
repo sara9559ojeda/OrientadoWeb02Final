@@ -116,6 +116,7 @@
 .landing-fragment-art span { font: 58px/1 var(--landing-serif); }
 .landing-fragment-art span:nth-child(2) { transform: translateY(-13px); font-size: 76px; }
 .landing-finale { position: relative; padding: 100px 0 110px; border-top: 1px solid var(--auth-border); border-bottom: 1px solid var(--auth-border); background: var(--auth-card); text-align: center; overflow: hidden; }
+.landing-finale::before { position: absolute; content: ''; width: 680px; height: 680px; left: 50%; top: 50%; transform: translate(-50%, -50%); border: 1px solid var(--auth-border); border-radius: 50%; pointer-events: none; }
 @media (prefers-reduced-motion: no-preference) {
 }
 @keyframes landing-wave { }
