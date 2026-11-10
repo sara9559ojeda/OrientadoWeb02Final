@@ -16,6 +16,7 @@
   scroll-padding-top: 100px;
 }
 :root[data-theme='light'] .landing-page { --landing-gold: #927037; color-scheme: light; }
+.landing-page *, .landing-page *::before, .landing-page *::after { box-sizing: border-box; }
 @media (prefers-reduced-motion: no-preference) {
 }
 @keyframes landing-wave { }
