@@ -362,7 +362,7 @@ pero **no encaja en este juego**:
 |---|---|---|
 | **Física** (`world.step()` cada frame) | ❌ | `body.position` se lee de forma **sincrónica** en ~6 archivos (World, Enemy, Robot, cámara, colisiones de monedas). Moverlo a un worker obliga a reescribir todos esos accesos con mensajes asíncronos o `SharedArrayBuffer`. Refactor enorme y de alto riesgo. |
 | **Renderizado** (Three.js / WebGL) | ❌ | El contexto WebGL vive en el hilo principal. |
-| **IA de enemigos** (Yuka) | ⚠️ | Necesita la posición del jugador y el mundo físico cada frame → mismo problema de sincronización. Además 5 enemigos no son cuello de botella. |
+| **IA de enemigos** (Yuka) | ⚠️ | Necesita la posición del jugador y el mundo físico cada frame → mismo problema de sincronización. Además 10 enemigos (máximo, nivel 5) no son cuello de botella. |
 | **Extracción de geometría de colisión** (`createTrimeshShapeFromModel`) | ✅ (en teoría) | Es puro cálculo de vértices y su salida son `Float32Array` (transferibles). Es el único candidato real, pero casi no se ejecuta porque los `.glb` no cargan. |
 
 La regla "**un Worker no puede acceder al DOM**" es justo lo que lo descarta: los

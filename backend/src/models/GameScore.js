@@ -1,5 +1,8 @@
 import mongoose from 'mongoose';
 
+// Niveles que se puntúan por separado
+export const SCORED_LEVELS = [1, 2, 3, 4, 5];
+
 const GameScoreSchema = new mongoose.Schema(
   {
     user: {
@@ -13,23 +16,17 @@ const GameScoreSchema = new mongoose.Schema(
       required: [true, 'Los puntos totales son requeridos'],
       min: [0, 'Los puntos no pueden ser negativos'],
     },
-    pointsByLevel: {
-      level1: {
-        type: Number,
-        default: 0,
-        min: [0, 'Los puntos del nivel 1 no pueden ser negativos'],
-      },
-      level2: {
-        type: Number,
-        default: 0,
-        min: [0, 'Los puntos del nivel 2 no pueden ser negativos'],
-      },
-      level3: {
-        type: Number,
-        default: 0,
-        min: [0, 'Los puntos del nivel 3 no pueden ser negativos'],
-      },
-    },
+    // Desglose de puntos por nivel (level1 … level5)
+    pointsByLevel: Object.fromEntries(
+      SCORED_LEVELS.map((n) => [
+        `level${n}`,
+        {
+          type: Number,
+          default: 0,
+          min: [0, `Los puntos del nivel ${n} no pueden ser negativos`],
+        },
+      ])
+    ),
     completedAt: {
       type: Date,
       default: Date.now,

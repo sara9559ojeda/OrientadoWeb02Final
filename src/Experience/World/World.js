@@ -10,7 +10,7 @@ import AmbientSound from './AmbientSound.js'
 import Coins, { COIN_HEIGHT } from './Coins.js'
 import CoinsParticles from './CoinsParticles.js'
 import Enemy, { STATE_LABELS } from './Enemy.js'
-import { archetypeFor, LEVEL_ROSTER } from './enemyArchetypes.js'
+import { archetypeFor, DEFAULT_ENEMY_COUNT, ENEMIES_PER_LEVEL, LEVEL_ROSTER } from './enemyArchetypes.js'
 import EnemyDirector, { NOISE_LEVELS } from './EnemyDirector.js'
 import Narrator from '../Utils/Narrator.js'
 import Environment from './Environment.js'
@@ -71,7 +71,7 @@ export default class World {
         // Sistema de puntos
         this.points = 0 // Puntos del nivel actual
         this.totalPoints = 0 // Puntos totales acumulados entre todos los niveles
-        this.pointsByLevel = { 1: 0, 2: 0, 3: 0 } // 📊 PASO 6: Puntos por nivel para desglose
+        this.pointsByLevel = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 } // 📊 PASO 6: Puntos por nivel para desglose
 
         // Sistema de enemigos
         this.enemies = [] // Array para guardar los enemigos
@@ -1006,7 +1006,7 @@ export default class World {
                 this.scene.add(buildingModel)
                 this.level2Buildings.push(buildingModel)
 
-            } catch (error) { }
+            } catch (error) { console.warn('No se pudo crear un edificio del nivel 2:', error) }
         })
     }
 
@@ -1207,7 +1207,7 @@ export default class World {
 
                 this.scene.add(buildingModel)
                 this.level3Buildings.push(buildingModel)
-            } catch (error) { }
+            } catch (error) { console.warn('No se pudo crear un edificio del nivel 3:', error) }
         })
     }
 
@@ -1216,7 +1216,6 @@ export default class World {
 
         for (let level = 1; level <= 5; level++) {
             const coinsDefault = this.loader.getCoinsCountByLevel(level, 'default')
-            const coinsFinalPrize = this.loader.getCoinsCountByLevel(level, 'finalPrize')
 
             this.jsonCoinsTotal[level] = coinsDefault
             this.jsonCoinsCollected[level] = 0
@@ -1286,7 +1285,7 @@ export default class World {
         try {
             this.portal = new Portal({ position: portalPosition, scene: this.scene, resources: this.resources })
             this.portal.activate()
-        } catch (error) { }
+        } catch (error) { console.warn('No se pudo crear el portal:', error) }
     }
 
     enterPortal() {
@@ -1333,7 +1332,7 @@ export default class World {
 
         this.clearEnemies()
         const roster = LEVEL_ROSTER[this.currentLevel] || LEVEL_ROSTER[3]
-        const numberOfEnemies = this.currentLevel === 2 ? 3 : 5
+        const numberOfEnemies = ENEMIES_PER_LEVEL[this.currentLevel] ?? DEFAULT_ENEMY_COUNT
 
         const robotPos = this.robot.body.position
         const spawnDistance = 100
@@ -1513,18 +1512,18 @@ export default class World {
                     this.ambientSound.isPlaying = false
                 }
             }
-        } catch (error) { }
+        } catch (error) { console.warn('No se pudo detener el sonido ambiente:', error) }
 
-        try { if (this.winner) this.winner.play() } catch (error) { }
+        try { if (this.winner) this.winner.play() } catch (error) { console.warn('No se pudo reproducir el sonido de victoria:', error) }
 
         let scoreSaved = false
         try {
             const savedScore = await saveScore(this.totalPoints, this.pointsByLevel, null)
             if (savedScore) scoreSaved = true
-        } catch (error) { }
+        } catch (error) { console.warn('No se pudo guardar la puntuación:', error) }
 
         let ranking = []
-        try { ranking = await getRanking(5) } catch (error) { }
+        try { ranking = await getRanking(5) } catch (error) { console.warn('No se pudo obtener el ranking:', error) }
 
         const stats = [2, 3, 4, 5].map((n) => [levelName(n), `${this.pointsByLevel[n] || 0} pts`])
         stats.push(['Puntos totales', `${this.totalPoints} pts`])
@@ -1681,7 +1680,7 @@ export default class World {
 
             const physicsBodies = []
 
-            const groundShape = new CANNON.Box(new CANNON.Vec3(500, 0.5, 500))
+            // (el suelo físico lo aporta Floor.js; este cuerpo estático solo se registra para limpiarlo al cambiar de nivel)
             const groundBody = new CANNON.Body({
                 mass: 0,
                 type: CANNON.Body.STATIC,
@@ -1789,7 +1788,7 @@ export default class World {
                     this.scene.add(treeModel)
                     this.level4Buildings.push(treeModel)
                 }
-            } catch (error) { }
+            } catch (error) { console.warn('No se pudo crear un árbol del nivel 4:', error) }
         }
     }
 
@@ -1876,7 +1875,7 @@ export default class World {
                     this.scene.add(treeModel)
                     this.level5Buildings.push(treeModel)
                 }
-            } catch (error) { }
+            } catch (error) { console.warn('No se pudo crear un árbol del nivel 5:', error) }
         }
     }
 }

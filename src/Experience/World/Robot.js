@@ -334,9 +334,6 @@ export default class Robot {
         }
 
 
-        // Dirección hacia adelante, independientemente del salto o movimiento
-        const forward = new THREE.Vector3(0, 0, 1).applyQuaternion(this.group.quaternion)
-
         // Chequeo de "está en el suelo": busca contactos donde haya una superficie debajo
         let isGrounded = false
         const contacts = this.physics.world.contacts

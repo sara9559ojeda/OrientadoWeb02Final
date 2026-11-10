@@ -6,10 +6,17 @@
 import { API_ENDPOINTS } from '../config/api.js';
 import { getToken } from './authService.js';
 
+// Niveles del juego que se puntúan por separado (el backend guarda level1…level5)
+const SCORED_LEVELS = [1, 2, 3, 4, 5];
+
+/** { 1: 120, 2: 80 … } → { level1: 120, level2: 80, … level5: 0 } */
+const buildBreakdown = (pointsByLevel = {}) =>
+  Object.fromEntries(SCORED_LEVELS.map((n) => [`level${n}`, pointsByLevel[n] || 0]));
+
 /**
  * Guarda una puntuación en el backend
  * @param {number} totalPoints - Puntos totales
- * @param {Object} pointsByLevel - Objeto con puntos por nivel { level1, level2, level3 }
+ * @param {Object} pointsByLevel - Objeto con puntos por nivel { 1: n, 2: n, 3: n, 4: n, 5: n }
  * @param {number} gameTime - Tiempo de juego en segundos (opcional)
  * @returns {Promise<Object>} - Datos de la puntuación guardada
  */
@@ -30,6 +37,8 @@ export const saveScore = async (totalPoints, pointsByLevel, gameTime = null) => 
       return null;
     }
 
+    const breakdown = buildBreakdown(pointsByLevel);
+
     const response = await fetch(API_ENDPOINTS.scores.save, {
       method: 'POST',
       headers: {
@@ -38,11 +47,7 @@ export const saveScore = async (totalPoints, pointsByLevel, gameTime = null) => 
       },
       body: JSON.stringify({
         totalPoints,
-        pointsByLevel: {
-          level1: pointsByLevel[1] || 0,
-          level2: pointsByLevel[2] || 0,
-          level3: pointsByLevel[3] || 0,
-        },
+        pointsByLevel: breakdown,
         gameTime: gameTime || null,
       }),
     });
@@ -56,11 +61,7 @@ export const saveScore = async (totalPoints, pointsByLevel, gameTime = null) => 
       });
       console.error('📤 Datos enviados:', {
         totalPoints,
-        pointsByLevel: {
-          level1: pointsByLevel[1] || 0,
-          level2: pointsByLevel[2] || 0,
-          level3: pointsByLevel[3] || 0,
-        },
+        pointsByLevel: breakdown,
         gameTime
       });
       return null;

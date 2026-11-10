@@ -1,6 +1,7 @@
 // src/integrations/VRIntegration.js
 
 import * as THREE from 'three'
+import { Howler } from 'howler'
 import { VRButton } from 'three/examples/jsm/webxr/VRButton.js'
 
 export default class VRIntegration {

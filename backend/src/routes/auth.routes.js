@@ -7,7 +7,11 @@ import { User } from '../models/User.js';
 const router = Router();
 
 // No devolver el valor enviado (evita reflejar contraseñas en la respuesta); se conserva msg/path.
-const safeErrors = (result) => result.array().map(({ value, ...rest }) => rest);
+const safeErrors = (result) => result.array().map((error) => {
+  const rest = { ...error };
+  delete rest.value;
+  return rest;
+});
 
 // Generar token JWT
 const generateToken = (userId) => {
@@ -200,7 +204,7 @@ router.get('/me', async (req, res) => {
         createdAt: user.createdAt,
       },
     });
-  } catch (error) {
+  } catch {
     res.status(401).json({ message: 'Token no válido' });
   }
 });

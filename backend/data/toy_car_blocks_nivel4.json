@@ -1,0 +1,292 @@
+[
+    {
+        "name": "suelo_nivel4_lev4",
+        "x": 94.3875,
+        "y": 1.7267,
+        "z": -33.3305,
+        "rotationY": -0.0,
+        "scale": 1.0,
+        "Role": "building",
+        "level": 4
+    },
+    {
+        "name": "livingroom_lev4",
+        "x": 41.4285,
+        "y": -7.0418,
+        "z": 1.132,
+        "rotationY": -0.0,
+        "scale": 1.0,
+        "Role": "building",
+        "level": 4
+    },
+    {
+        "name": "coin_7_lev4",
+        "x": -79.3488,
+        "y": 0.9441,
+        "z": -60.9856,
+        "rotationY": -0.0,
+        "scale": 1.0,
+        "Role": "default",
+        "level": 4
+    },
+    {
+        "name": "arbol_nivel45_lev4",
+        "x": 31.5695,
+        "y": 4.7141,
+        "z": -9.8994,
+        "rotationY": -0.0,
+        "scale": 1.0,
+        "Role": "building",
+        "level": 4
+    },
+    {
+        "name": "arbol_nivel44_lev4",
+        "x": 28.4373,
+        "y": 4.7569,
+        "z": -26.2497,
+        "rotationY": -0.0,
+        "scale": 1.0,
+        "Role": "building",
+        "level": 4
+    },
+    {
+        "name": "coin_3_lev4",
+        "x": 45.5998,
+        "y": 0.9441,
+        "z": 63.6137,
+        "rotationY": -0.0,
+        "scale": 1.0,
+        "Role": "default",
+        "level": 4
+    },
+    {
+        "name": "arbol_nivel43_lev4",
+        "x": 39.1682,
+        "y": 4.7725,
+        "z": 16.2386,
+        "rotationY": -0.0,
+        "scale": 1.0,
+        "Role": "building",
+        "level": 4
+    },
+    {
+        "name": "coin_1_lev4",
+        "x": -85.1554,
+        "y": 0.9441,
+        "z": 65.107,
+        "rotationY": -0.0,
+        "scale": 1.0,
+        "Role": "default",
+        "level": 4
+    },
+    {
+        "name": "arbol_nivel4_lev4",
+        "x": 67.1773,
+        "y": 5.036,
+        "z": 6.3862,
+        "rotationY": -0.0,
+        "scale": 1.0,
+        "Role": "building",
+        "level": 4
+    },
+    {
+        "name": "coin_6_lev4",
+        "x": 118.3435,
+        "y": 0.9441,
+        "z": -149.4894,
+        "rotationY": -0.0,
+        "scale": 1.0,
+        "Role": "default",
+        "level": 4
+    },
+    {
+        "name": "arbol_nivel42_lev4",
+        "x": 100.9619,
+        "y": 4.6283,
+        "z": 13.5272,
+        "rotationY": -0.0,
+        "scale": 1.0,
+        "Role": "building",
+        "level": 4
+    },
+    {
+        "name": "coin_2_lev4",
+        "x": 21.8392,
+        "y": 0.9441,
+        "z": -7.2693,
+        "rotationY": -0.0,
+        "scale": 1.0,
+        "Role": "default",
+        "level": 4
+    },
+    {
+        "name": "coin_5_lev4",
+        "x": 38.6868,
+        "y": 0.9441,
+        "z": -66.9163,
+        "rotationY": -0.0,
+        "scale": 1.0,
+        "Role": "default",
+        "level": 4
+    },
+    {
+        "name": "pawn5_lev4",
+        "x": 83.1972,
+        "y": 4.0844,
+        "z": 24.0459,
+        "rotationY": -0.0,
+        "scale": 1.0,
+        "Role": "building",
+        "level": 4
+    },
+    {
+        "name": "pawn3_lev4",
+        "x": 31.0487,
+        "y": 4.0391,
+        "z": 15.1189,
+        "rotationY": -0.0,
+        "scale": 1.0,
+        "Role": "building",
+        "level": 4
+    },
+    {
+        "name": "pawn4_lev4",
+        "x": 58.1568,
+        "y": 3.8177,
+        "z": -8.8934,
+        "rotationY": -0.0,
+        "scale": 1.0,
+        "Role": "building",
+        "level": 4
+    },
+    {
+        "name": "suelo_nivel42_lev4",
+        "x": 94.146,
+        "y": 1.7267,
+        "z": 9.3198,
+        "rotationY": -0.0,
+        "scale": 1.0,
+        "Role": "building",
+        "level": 4
+    },
+    {
+        "name": "coin_8_lev4",
+        "x": 120.6691,
+        "y": 0.9441,
+        "z": 5.2222,
+        "rotationY": -0.0,
+        "scale": 1.0,
+        "Role": "default",
+        "level": 4
+    },
+    {
+        "name": "pawn2_lev4",
+        "x": 46.2498,
+        "y": 3.8275,
+        "z": -18.0497,
+        "rotationY": -0.0,
+        "scale": 1.0,
+        "Role": "building",
+        "level": 4
+    },
+    {
+        "name": "low_poly_chess_knights5_lev4",
+        "x": 78.0731,
+        "y": 5.7335,
+        "z": 39.5772,
+        "rotationY": 2.7408,
+        "scale": 1.0,
+        "Role": "building",
+        "level": 4
+    },
+    {
+        "name": "low_poly_chess_knights_lev4",
+        "x": 25.8754,
+        "y": 4.1016,
+        "z": 37.4924,
+        "rotationY": 1.4045,
+        "scale": 1.0,
+        "Role": "building",
+        "level": 4
+    },
+    {
+        "name": "pawn1_lev4",
+        "x": 76.2674,
+        "y": 3.9947,
+        "z": -19.5833,
+        "rotationY": -0.0,
+        "scale": 1.0,
+        "Role": "building",
+        "level": 4
+    },
+    {
+        "name": "suelo_nivel45_lev4",
+        "x": 50.3313,
+        "y": 1.7267,
+        "z": 9.1606,
+        "rotationY": -0.0,
+        "scale": 1.0,
+        "Role": "building",
+        "level": 4
+    },
+    {
+        "name": "low_poly_chess_knights4_lev4",
+        "x": 81.2646,
+        "y": 4.5898,
+        "z": 7.5015,
+        "rotationY": 2.7408,
+        "scale": 1.0,
+        "Role": "building",
+        "level": 4
+    },
+    {
+        "name": "coin_4_lev4",
+        "x": 159.2217,
+        "y": 0.9441,
+        "z": 93.1761,
+        "rotationY": -0.0,
+        "scale": 1.0,
+        "Role": "default",
+        "level": 4
+    },
+    {
+        "name": "alfombra_lev4",
+        "x": 70.5763,
+        "y": -0.0312,
+        "z": 8.6439,
+        "rotationY": -0.0,
+        "scale": 1.0,
+        "Role": "building",
+        "level": 4
+    },
+    {
+        "name": "pawn_lev4",
+        "x": 87.6081,
+        "y": 3.8622,
+        "z": 35.6121,
+        "rotationY": -0.0,
+        "scale": 1.0,
+        "Role": "building",
+        "level": 4
+    },
+    {
+        "name": "low_poly_chess_knights2_lev4",
+        "x": 53.2583,
+        "y": 4.3546,
+        "z": 32.2486,
+        "rotationY": 2.7408,
+        "scale": 1.0,
+        "Role": "building",
+        "level": 4
+    },
+    {
+        "name": "suelo_nivel43_lev4",
+        "x": 49.2287,
+        "y": 1.7267,
+        "z": -33.1628,
+        "rotationY": -0.0,
+        "scale": 1.0,
+        "Role": "building",
+        "level": 4
+    }
+]

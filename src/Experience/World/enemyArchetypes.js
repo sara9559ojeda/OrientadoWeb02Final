@@ -72,10 +72,15 @@ export const DEFAULT_ARCHETYPE = ARCHETYPES.enemyWalk
 
 export const archetypeFor = (modelName) => ARCHETYPES[modelName] || DEFAULT_ARCHETYPE
 
+// Cuántos enemigos patrullan cada nivel. Debe coincidir con `enemiesCount` de
+// backend/src/scripts/seedLevels.js (nivel 2: 3, nivel 3: 5, nivel 4: 7, nivel 5: 10).
+export const ENEMIES_PER_LEVEL = { 2: 3, 3: 5, 4: 7, 5: 10 }
+export const DEFAULT_ENEMY_COUNT = 5
+
 // Qué tipos aparecen en cada nivel (el primero del nivel 2 es siempre uno lento, para aprender las reglas)
 export const LEVEL_ROSTER = {
   2: ['enemyMutantWalking', 'enemyWheelbarrowWalk', 'enemyWalk'],
   3: ['enemyWalk', 'enemyWheelbarrowWalk', 'enemyMutantWalking', 'enemyWalking', 'enemyFastRun'],
-  4: ['enemyWalk', 'enemyWheelbarrowWalk', 'enemyFastRun', 'enemyWalking', 'enemyMutantWalking'],
-  5: ['enemyFastRun', 'enemyWalk', 'enemyWheelbarrowWalk', 'enemyFastRun', 'enemyMutantWalking'],
+  4: ['enemyWalk', 'enemyWheelbarrowWalk', 'enemyFastRun', 'enemyWalking', 'enemyMutantWalking', 'enemyWalk', 'enemyFastRun'],
+  5: ['enemyFastRun', 'enemyWalk', 'enemyWheelbarrowWalk', 'enemyFastRun', 'enemyMutantWalking', 'enemyWalking', 'enemyWalk', 'enemyWheelbarrowWalk', 'enemyFastRun', 'enemyMutantWalking'],
 }

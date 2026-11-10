@@ -2,7 +2,7 @@ import { Router } from 'express';
 import { publicError } from '../config/env.js';
 import { body, validationResult } from 'express-validator';
 import { authenticate } from '../middleware/auth.js';
-import { GameScore } from '../models/GameScore.js';
+import { GameScore, SCORED_LEVELS } from '../models/GameScore.js';
 
 const router = Router();
 
@@ -15,18 +15,12 @@ router.post(
       .isInt({ min: 0 })
       .withMessage('Los puntos totales deben ser un número entero positivo'),
     // El frontend envía `gameTime: null` cuando no mide el tiempo: null cuenta como "no enviado".
-    body('pointsByLevel.level1')
-      .optional({ values: 'null' })
-      .isInt({ min: 0 })
-      .withMessage('Los puntos del nivel 1 deben ser un número entero positivo'),
-    body('pointsByLevel.level2')
-      .optional({ values: 'null' })
-      .isInt({ min: 0 })
-      .withMessage('Los puntos del nivel 2 deben ser un número entero positivo'),
-    body('pointsByLevel.level3')
-      .optional({ values: 'null' })
-      .isInt({ min: 0 })
-      .withMessage('Los puntos del nivel 3 deben ser un número entero positivo'),
+    ...SCORED_LEVELS.map((n) =>
+      body(`pointsByLevel.level${n}`)
+        .optional({ values: 'null' })
+        .isInt({ min: 0 })
+        .withMessage(`Los puntos del nivel ${n} deben ser un número entero positivo`)
+    ),
     body('gameTime')
       .optional({ values: 'null' })
       .isFloat({ min: 0 })
@@ -50,11 +44,9 @@ router.post(
       const gameScore = new GameScore({
         user: userId,
         totalPoints,
-        pointsByLevel: {
-          level1: pointsByLevel?.level1 || 0,
-          level2: pointsByLevel?.level2 || 0,
-          level3: pointsByLevel?.level3 || 0,
-        },
+        pointsByLevel: Object.fromEntries(
+          SCORED_LEVELS.map((n) => [`level${n}`, pointsByLevel?.[`level${n}`] || 0])
+        ),
         gameTime: gameTime || null,
       });
 

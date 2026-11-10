@@ -26,16 +26,18 @@ docker exec backend-express npm run seed:levels
 
 El script `seedLevels.js` crea:
 
-1. **Colección `levels`**: Con 3 niveles iniciales del juego
-   - Nivel 1: Ciudad Toy Car (10 coins, 1 enemigo)
-   - Nivel 2: Mundo Antiguo (10 coins, 3 enemigos)
-   - Nivel 3: Casas Pokémon (10 coins, 5 enemigos)
+1. **Colección `levels`**: Con los 5 niveles del juego (`seedLevels.js`)
+   - Nivel 1: Campamento (10 coins, 1 enemigo)
+   - Nivel 2: Medieval (10 coins, 3 enemigos)
+   - Nivel 3: Nocturno / Fantasía (10 coins, 5 enemigos)
+   - Nivel 4: Bosque / Campo (10 coins, 7 enemigos)
+   - Nivel 5: Nieve (10 coins, 10 enemigos)
 
 2. **Colecciones automáticas**: Cuando se crean usuarios o puntuaciones, MongoDB crea automáticamente:
    - `users`: Para almacenar usuarios registrados
    - `gamescores`: Para almacenar puntuaciones del juego
 
-3. **Colección `blocks`**: Los bloques del juego (edificios, vehículos, monedas, etc.) se cargan desde el archivo `data/toy_car_blocks.json` a MongoDB mediante el script `seedBlocks.js`. Una vez cargados, están disponibles a través del endpoint `/api/blocks` desde la base de datos.
+3. **Colección `blocks`**: Los bloques del juego (edificios, vehículos, monedas, etc.) se cargan a MongoDB mediante el script `seedBlocks.js` desde `data/toy_car_blocks.json` (niveles 1-3) y `data/toy_car_blocks_nivel4.json` / `data/toy_car_blocks_nivel5.json` (niveles 4 y 5). Una vez cargados, están disponibles a través del endpoint `/api/blocks` desde la base de datos.
 
 ## ✅ Verificar que la Base de Datos Está Inicializada
 
@@ -203,7 +205,9 @@ show collections
   pointsByLevel: {
     level1: Number,
     level2: Number,
-    level3: Number
+    level3: Number,
+    level4: Number,
+    level5: Number
   },
   gameTime: Number,          // En segundos (opcional)
   createdAt: Date,

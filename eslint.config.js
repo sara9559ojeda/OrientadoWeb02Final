@@ -4,7 +4,7 @@ import reactHooks from 'eslint-plugin-react-hooks'
 import reactRefresh from 'eslint-plugin-react-refresh'
 
 export default [
-  { ignores: ['dist'] },
+  { ignores: ['dist', 'backend/node_modules', '.tts-venv'] },
   {
     files: ['**/*.{js,jsx}'],
     languageOptions: {
@@ -29,5 +29,15 @@ export default [
         { allowConstantExport: true },
       ],
     },
+  },
+  // Backend, scripts y archivos de configuración se ejecutan en Node (no en el navegador)
+  {
+    files: ['backend/**/*.js', 'scripts/**/*.js', '*.config.js'],
+    languageOptions: { globals: { ...globals.node } },
+  },
+  // mongo-init.js lo ejecuta la shell de MongoDB, que aporta `db`
+  {
+    files: ['backend/mongo-init.js'],
+    languageOptions: { globals: { db: 'readonly' } },
   },
 ]

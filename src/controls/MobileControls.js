@@ -92,7 +92,7 @@ export default class MobileControls {
     document.body.appendChild(this.jumpButton)
   }
 
-  onStart(e) {
+  onStart() {
     const rect = this.container.getBoundingClientRect()
     this.center = {
       x: rect.left + rect.width / 2,
@@ -139,7 +139,7 @@ export default class MobileControls {
     this.updateDirections(dir)
   }
 
-  onEnd(e) {
+  onEnd() {
     this.active = false
     this.stick.style.transform = 'translate(-50%, -50%)'
     this.intensity = 0

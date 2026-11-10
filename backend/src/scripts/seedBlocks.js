@@ -27,25 +27,33 @@ const seedBlocks = async () => {
     await connectDB();
     console.log('✅ Conectado a MongoDB');
 
-    // Leer el archivo JSON de bloques
-    const blocksPath = path.join(__dirname, '../../data/toy_car_blocks.json');
-    
-    if (!fs.existsSync(blocksPath)) {
-      console.error(`❌ Archivo no encontrado: ${blocksPath}`);
-      console.error('💡 Asegúrate de que el archivo toy_car_blocks.json esté en backend/data/');
-      process.exit(1);
+    // Archivos de bloques: el base (niveles 1-3) y un archivo por nivel para los niveles 4 y 5
+    const dataDir = path.join(__dirname, '../../data');
+    const blockFiles = ['toy_car_blocks.json', 'toy_car_blocks_nivel4.json', 'toy_car_blocks_nivel5.json'];
+    const blocksData = [];
+
+    for (const fileName of blockFiles) {
+      const blocksPath = path.join(dataDir, fileName);
+
+      if (!fs.existsSync(blocksPath)) {
+        console.error(`❌ Archivo no encontrado: ${blocksPath}`);
+        console.error(`💡 Asegúrate de que ${fileName} esté en backend/data/`);
+        process.exit(1);
+      }
+
+      console.log(`📖 Leyendo archivo: ${blocksPath}`);
+      const fileBlocks = JSON.parse(fs.readFileSync(blocksPath, 'utf8'));
+
+      if (!Array.isArray(fileBlocks)) {
+        console.error(`❌ ${fileName} no contiene un array válido`);
+        process.exit(1);
+      }
+
+      console.log(`📦 Encontrados ${fileBlocks.length} bloques en ${fileName}`);
+      blocksData.push(...fileBlocks);
     }
 
-    console.log(`📖 Leyendo archivo: ${blocksPath}`);
-    const fileContent = fs.readFileSync(blocksPath, 'utf8');
-    const blocksData = JSON.parse(fileContent);
-
-    if (!Array.isArray(blocksData)) {
-      console.error('❌ El archivo JSON no contiene un array válido');
-      process.exit(1);
-    }
-
-    console.log(`📦 Encontrados ${blocksData.length} bloques en el archivo`);
+    console.log(`📦 Total a procesar: ${blocksData.length} bloques`);
 
     // Limpiar bloques existentes (opcional - descomentar si quieres limpiar)
     // await Block.deleteMany({});

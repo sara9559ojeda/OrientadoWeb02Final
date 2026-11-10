@@ -29,6 +29,13 @@ const blockSchema = new mongoose.Schema(
       required: true,
       index: true,
     },
+    // Opcionales: los bloques de los niveles 4 y 5 (exportados de Blender) los traen
+    rotationY: {
+      type: Number,
+    },
+    scale: {
+      type: Number,
+    },
   },
   {
     timestamps: true,

@@ -4,6 +4,9 @@ import { API_ENDPOINTS } from '../config/api.js'
 import { createBoxShapeFromModel, createTrimeshShapeFromModel } from '../Experience/Utils/PhysicsShapeFactory.js'
 import Prize from '../Experience/World/Prize.js'
 
+// Niveles cuyos bloques están completos en el backend (seed de backend/data/toy_car_blocks_nivelN.json)
+const API_SEEDED_LEVELS = [4, 5]
+
 // Constantes para física de edificios
 const BUILDING_COLLISION_GROUP = 1 // Grupo de colisión para edificios (sólidos)
 const BUILDING_COLLISION_MASK = -1 // Colisiona con todo
@@ -162,6 +165,9 @@ export default class ToyCarLoader {
                 }
             }
 
+            // Los niveles 4 y 5 se cargan a demanda (loadBuildingsByLevel): la carga inicial solo usa 1-3
+            blocks = blocks.filter(b => (b.level || 1) <= 3)
+
             // Verificar si hay bloques para procesar
             if (!blocks || blocks.length === 0) {
                 console.error('❌ No se encontraron bloques para cargar. Verifica que el archivo /data/toy_car_blocks.json existe y tiene datos.')
@@ -192,7 +198,6 @@ export default class ToyCarLoader {
             })
 
             // Las posiciones vienen directamente del JSON de Blender, se usan tal cual
-            const isAlreadyNormalized = true
 
             let buildingCount = 0
             let missingModels = []
@@ -353,9 +358,9 @@ export default class ToyCarLoader {
                 // Verificar que el bbox sea válido
                 if (bbox.isEmpty()) {
                     console.warn(`⚠️ Bbox vacío para ${block.name}, usando posición del JSON sin ajuste`)
-                    const normalizedX = isAlreadyNormalized ? block.x : block.x - offsetX
-                    const normalizedY = isAlreadyNormalized ? block.y : block.y - offsetY
-                    const normalizedZ = isAlreadyNormalized ? block.z : block.z - offsetZ
+                    const normalizedX = block.x
+                    const normalizedY = block.y
+                    const normalizedZ = block.z
                     model.position.set(normalizedX, normalizedY, normalizedZ)
                     this.scene.add(model)
                     this.buildingPositions.push({ x: normalizedX, y: normalizedY, z: normalizedZ })
@@ -371,9 +376,9 @@ export default class ToyCarLoader {
 
                 // 🎯 Establecer la posición del modelo desde el JSON
                 // Normalizar posición solo si no está ya normalizada
-                const normalizedX = isAlreadyNormalized ? block.x : block.x - offsetX
-                const normalizedY = isAlreadyNormalized ? block.y : block.y - offsetY
-                const normalizedZ = isAlreadyNormalized ? block.z : block.z - offsetZ
+                const normalizedX = block.x
+                const normalizedY = block.y
+                const normalizedZ = block.z
 
                 // 🏗️ Ajustar Y para que la base del edificio esté en el suelo (Y = 0)
                 // bbox.min.y es la coordenada Y mínima local del modelo (normalmente negativo)
@@ -493,14 +498,38 @@ export default class ToyCarLoader {
 
 
     }
+    /**
+     * Bloques de un nivel. Los niveles 4 y 5 están sembrados en el backend (`/api/blocks?level=N`);
+     * si la API no responde o viene vacía se usa el archivo local `/data/toy_car_blocks_nivelN.json`.
+     */
+    async _fetchLevelBlocks(level) {
+        if (API_SEEDED_LEVELS.includes(level)) {
+            try {
+                const res = await fetch(`${API_ENDPOINTS.blocks}?level=${level}`, { signal: AbortSignal.timeout(4000) })
+                if (res.ok) {
+                    const data = await res.json()
+                    if (Array.isArray(data) && data.length > 0) {
+                        console.log(`✅ Nivel ${level}: ${data.length} bloques desde la API`)
+                        return data
+                    }
+                }
+            } catch {
+                // sin backend: se usa el archivo local
+            }
+            console.warn(`⚠️ Nivel ${level}: la API no tiene bloques, usando el archivo local`)
+        }
+
+        const res = await fetch(`/data/toy_car_blocks_nivel${level}.json`)
+        if (!res.ok) throw new Error(`HTTP ${res.status}`)
+        return res.json()
+    }
+
     async loadBuildingsByLevel(level) {
         console.log(`🏗️ Cargando edificios del nivel ${level} desde JSON...`)
 
         let blocks = []
         try {
-            const res = await fetch(`/data/toy_car_blocks_nivel${level}.json`)
-            if (!res.ok) throw new Error(`HTTP ${res.status}`)
-            blocks = await res.json()
+            blocks = await this._fetchLevelBlocks(level)
         } catch (err) {
             console.error('❌ Error cargando JSON para nivel', level, err)
             return []

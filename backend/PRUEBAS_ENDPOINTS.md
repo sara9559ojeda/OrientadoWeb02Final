@@ -22,8 +22,8 @@ Previamente se ejecutó `npm run seed:all` (5 niveles y 91 bloques).
 | Auth | `GET /api/auth/me` con token / sin token / token inválido | `200 {user:{id,email,name,createdAt}}` / `401` / `401` |
 | Niveles | `GET /api/levels`, `/levels/3`, `/levels/2/coins-count` | `200 {success:true,data…}` / `{coinsCount:10}` |
 | Niveles | `/levels/99`, `/levels/abc` | `404` / `400` |
-| Bloques | `GET /api/blocks` | `200`, array de 91 bloques con `name,x,y,z,Role,level` (mismos campos que `data/toy_car_blocks.json`) |
-| Bloques | `?level=2`, `?role=finalPrize`, `/blocks/1` | `200` (11 / 3 / 69 bloques) |
+| Bloques | `GET /api/blocks` | `200`, array de 171 bloques (tras `seedBlocks.js`; 91 sin los niveles 4 y 5) con `name,x,y,z,Role,level` (mismos campos que `data/toy_car_blocks.json`) |
+| Bloques | `?level=2`, `?role=finalPrize`, `/blocks/1` | `200` (11 / 3 / 69 bloques; nivel 4: 29, nivel 5: 51) |
 | Bloques | `?level=abc` y `?role[$ne]=x` | `400` (antes: `500` y filtro NoSQL aceptado) — **corregido** |
 | Scores | `POST /api/scores` sin token / negativo / texto | `401` / `400` / `400` |
 | Scores | `POST /api/scores` con `gameTime: null` (lo que envía el frontend) | `201` — **corregido** (antes `400`, la puntuación nunca se guardaba) |
@@ -69,7 +69,7 @@ curl -X POST http://localhost:3000/api/scores \
   -H "Authorization: Bearer $TOKEN" \
   -d '{
     "totalPoints": 200,
-    "pointsByLevel": { "level1": 70, "level2": 80, "level3": 50 },
+    "pointsByLevel": { "level1": 0, "level2": 50, "level3": 40, "level4": 60, "level5": 50 },
     "gameTime": null
   }'
 ```
