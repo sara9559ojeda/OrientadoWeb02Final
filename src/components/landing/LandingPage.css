@@ -197,6 +197,7 @@
   .landing-mechanics article > div { grid-row: 1 / 4; padding-left: 0; align-self: center; }
   .landing-mechanics .landing-step { margin-top: 0; }
   .landing-mechanics h3 { font-size: 26px; margin-block: 10px; }
+  .landing-mechanics p { font-size: 12px; }
 }
 @media (max-width: 360px) {
 }
