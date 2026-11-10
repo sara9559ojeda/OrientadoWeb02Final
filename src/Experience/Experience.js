@@ -260,11 +260,22 @@ export default class Experience {
 
 
   destroy() {
+    if (this.destroyed) return
+    this.destroyed = true
+
+    // Detener el bucle de animación antes de liberar nada
+    this.time.off('tick')
+    this.time.destroy()
+
     this.world?.dispose?.()
     this.ui?.destroy()
     this.menu?.destroy()
+    this.tracker?.destroy()
     this.sizes.off('resize')
-    this.time.off('tick')
+    this.sizes.destroy()
+    this.keyboard?.destroy()
+    window.removeEventListener('click', this.handleFirstInteraction)
+    window.removeEventListener('touchstart', this.handleFirstInteraction)
 
     this.scene.traverse((child) => {
       if (child instanceof THREE.Mesh) {
@@ -281,6 +292,11 @@ export default class Experience {
     this.camera.controls.dispose()
     this.renderer.instance.dispose()
     if (this.debug.active) this.debug.ui.destroy()
+
+    // Liberar el singleton: al volver a iniciar sesión se crea una Experience nueva
+    // sobre el canvas nuevo (si no, se devolvía esta instancia ya destruida → pantalla en blanco).
+    if (instance === this) instance = null
+    if (window.experience === this) delete window.experience
   }
 
   startGame() {

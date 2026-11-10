@@ -12,14 +12,23 @@ export default class Time extends EventEmitter
         this.elapsed = 0
         this.delta = 16
 
-        window.requestAnimationFrame(() =>
+        this.frameId = window.requestAnimationFrame(() =>
         {
             this.tick()
         })
     }
 
+    /** Detiene el bucle de animación (al destruir la Experience). */
+    destroy()
+    {
+        this.stopped = true
+        window.cancelAnimationFrame(this.frameId)
+    }
+
     tick()
     {
+        if(this.stopped) return
+
         const currentTime = Date.now()
         this.delta = currentTime - this.current
         this.current = currentTime
@@ -27,7 +36,9 @@ export default class Time extends EventEmitter
 
         this.trigger('tick')
 
-        window.requestAnimationFrame(() =>
+        if(this.stopped) return
+
+        this.frameId = window.requestAnimationFrame(() =>
         {
             this.tick()
         })

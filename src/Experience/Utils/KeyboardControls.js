@@ -18,7 +18,7 @@ export default class KeyboardControls extends EventEmitter {
     }
 
     setListeners() {
-        window.addEventListener('keydown', (event) => {
+        this._onKeyDown = (event) => {
             if (event.key === 'ArrowUp') this.keys.up = true
             if (event.key === 'ArrowDown') this.keys.down = true
             if (event.key === 'ArrowLeft') this.keys.left = true
@@ -26,9 +26,9 @@ export default class KeyboardControls extends EventEmitter {
             if (event.code === 'Space') this.keys.space = true
             if (event.code === 'ShiftLeft' || event.code === 'ShiftRight') this.keys.shift = true
             this.trigger('change', this.keys)
-        })
+        }
 
-        window.addEventListener('keyup', (event) => {
+        this._onKeyUp = (event) => {
             if (event.key === 'ArrowUp') this.keys.up = false
             if (event.key === 'ArrowDown') this.keys.down = false
             if (event.key === 'ArrowLeft') this.keys.left = false
@@ -36,7 +36,15 @@ export default class KeyboardControls extends EventEmitter {
             if (event.code === 'Space') this.keys.space = false
             if (event.code === 'ShiftLeft' || event.code === 'ShiftRight') this.keys.shift = false
             this.trigger('change', this.keys)
-        })
+        }
+
+        window.addEventListener('keydown', this._onKeyDown)
+        window.addEventListener('keyup', this._onKeyUp)
+    }
+
+    destroy() {
+        window.removeEventListener('keydown', this._onKeyDown)
+        window.removeEventListener('keyup', this._onKeyUp)
     }
 
     getState() {
