@@ -138,6 +138,8 @@
   .landing-header { padding-inline: 28px; gap: 14px; }
   .landing-nav { gap: 18px; }
   .landing-header-actions { gap: 12px; }
+  .landing-page h1 { font-size: clamp(55px, 7.2vw, 76px); }
+  .landing-hero-copy { width: 62%; }
 }
 @media (max-width: 700px) {
 }
