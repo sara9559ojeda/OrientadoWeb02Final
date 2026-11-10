@@ -203,6 +203,7 @@
   .landing-fragment-art span { font-size: 42px; }
   .landing-fragment-art span:nth-child(2) { font-size: 58px; }
   .landing-finale { padding-block: 70px; }
+  .landing-finale h2 { font-size: clamp(46px, 10vw, 64px); }
 }
 @media (max-width: 360px) {
 }
