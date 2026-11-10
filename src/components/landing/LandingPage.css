@@ -107,6 +107,7 @@
 .landing-key-art, .landing-sound-art, .landing-fragment-art { height: 90px; display: flex; align-items: center; justify-content: center; }
 .landing-key-art { flex-direction: column; gap: 4px; align-items: flex-start; padding-left: 48px; }
 .landing-key-art > kbd { margin-left: 41px; }
+.landing-key-art > div { display: flex; gap: 4px; }
 @media (prefers-reduced-motion: no-preference) {
 }
 @keyframes landing-wave { }
