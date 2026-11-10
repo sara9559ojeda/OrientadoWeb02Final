@@ -119,6 +119,7 @@
 .landing-finale::before { position: absolute; content: ''; width: 680px; height: 680px; left: 50%; top: 50%; transform: translate(-50%, -50%); border: 1px solid var(--auth-border); border-radius: 50%; pointer-events: none; }
 .landing-finale > div { position: relative; }
 .landing-finale-star { display: block; font-size: 57px; color: var(--landing-gold); margin-bottom: 24px; }
+.landing-finale .landing-eyebrow { justify-content: center; margin-bottom: 25px; }
 @media (prefers-reduced-motion: no-preference) {
 }
 @keyframes landing-wave { }
