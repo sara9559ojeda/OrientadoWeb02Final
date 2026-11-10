@@ -80,6 +80,7 @@
 .landing-story-signature small { display: block; margin-top: 8px; font: 8px/1.5 'Inter', sans-serif; letter-spacing: 0.13em; color: var(--auth-text-muted); }
 .landing-worlds { position: relative; padding-top: 90px; }
 .landing-worlds-intro { width: 47%; }
+.landing-worlds-intro h2 { font-size: clamp(42px, 4.7vw, 66px); }
 @media (prefers-reduced-motion: no-preference) {
 }
 @keyframes landing-wave { }
