@@ -135,6 +135,8 @@
 @media (min-width: 1600px) { .landing-scene-frame { right: max(0px, calc((100vw - 1600px) / 2)); } }
 @media (max-width: 1000px) {
   .landing-container { width: calc(100% - 64px); }
+  .landing-header { padding-inline: 28px; gap: 14px; }
+  .landing-nav { gap: 18px; }
 }
 @media (max-width: 700px) {
 }
