@@ -179,6 +179,7 @@
   .landing-story-signature { font-size: 18px; max-width: 320px; }
   .landing-worlds { padding-top: 60px; }
   .landing-worlds-intro { width: 100%; }
+  .landing-worlds-intro h2 { font-size: 46px; }
 }
 @media (max-width: 360px) {
 }
