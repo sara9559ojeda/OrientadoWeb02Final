@@ -214,6 +214,7 @@
   .landing-header .auth-brand-name { font-size: 21px; }
   .landing-header-actions { gap: 6px; }
   .landing-hero-actions { gap: 12px; }
+  .landing-page h1 { font-size: 45px; }
 }
 @media (prefers-reduced-motion: reduce) {
 }
