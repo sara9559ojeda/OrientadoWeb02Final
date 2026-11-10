@@ -74,6 +74,8 @@
 .landing-story > div { max-width: 500px; width: 44%; }
 .landing-story h2 { font-size: clamp(44px, 4.7vw, 68px); margin-bottom: 30px; }
 .landing-story h2 span { color: var(--auth-text-muted); }
+.landing-story p:not(.landing-eyebrow) { max-width: 360px; color: var(--auth-text-muted); margin: 0 0 18px; font-size: 14px; }
+.landing-story-signature { display: flex; align-items: center; gap: 17px; padding-top: 22px; margin-top: 30px; border-top: 1px solid var(--auth-border); font-family: var(--landing-serif); font-size: 20px; }
 @media (prefers-reduced-motion: no-preference) {
 }
 @keyframes landing-wave { }
