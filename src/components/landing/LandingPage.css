@@ -156,6 +156,8 @@
   .landing-login { padding: 9px 12px; gap: 10px; font-size: 11px !important; }
   .landing-header-actions { gap: 10px; }
   .landing-page { scroll-padding-top: 85px; }
+  .landing-visual { height: calc(100svh - 72px); margin-bottom: calc(-100svh + 72px); }
+  .landing-scene-frame { inset: 32% 0 0; opacity: 0.75; }
 }
 @media (max-width: 360px) {
 }
