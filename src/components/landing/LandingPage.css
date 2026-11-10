@@ -149,6 +149,7 @@
   .landing-container { width: calc(100% - 40px); }
   .landing-header { height: 72px; padding-inline: 20px; }
   .landing-header .auth-brand-name { font-size: 24px; }
+  .landing-header .auth-brand-mark { width: 25px; height: 25px; }
 }
 @media (max-width: 360px) {
 }
