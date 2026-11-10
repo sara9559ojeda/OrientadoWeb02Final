@@ -26,6 +26,8 @@
 .landing-page h2 { font-size: clamp(44px, 5.4vw, 76px); }
 .landing-page em { font-weight: 400; color: var(--auth-text-muted); }
 .landing-skip { position: fixed; top: -100px; left: 20px; z-index: 20; padding: 12px 20px; background: var(--auth-primary); color: var(--auth-on-primary); }
+.landing-skip:focus { top: 12px; }
+.landing-scroll-progress { position: fixed; top: 0; left: 0; width: 100%; height: 2px; background: var(--landing-gold); transform: scaleX(var(--landing-progress, 0)); transform-origin: left; z-index: 15; }
 @media (prefers-reduced-motion: no-preference) {
 }
 @keyframes landing-wave { }
