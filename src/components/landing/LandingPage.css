@@ -200,6 +200,7 @@
   .landing-mechanics p { font-size: 12px; }
   .landing-key-art { transform: scale(0.85); transform-origin: left; }
   .landing-fragment-art { gap: 3px; }
+  .landing-fragment-art span { font-size: 42px; }
 }
 @media (max-width: 360px) {
 }
