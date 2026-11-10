@@ -73,6 +73,7 @@
 .landing-story { position: relative; min-height: 95svh; display: flex; align-items: center; padding-block: 120px; }
 .landing-story > div { max-width: 500px; width: 44%; }
 .landing-story h2 { font-size: clamp(44px, 4.7vw, 68px); margin-bottom: 30px; }
+.landing-story h2 span { color: var(--auth-text-muted); }
 @media (prefers-reduced-motion: no-preference) {
 }
 @keyframes landing-wave { }
