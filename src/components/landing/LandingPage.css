@@ -140,6 +140,7 @@
   .landing-header-actions { gap: 12px; }
   .landing-page h1 { font-size: clamp(55px, 7.2vw, 76px); }
   .landing-hero-copy { width: 62%; }
+  .landing-hero-actions { gap: 18px; }
 }
 @media (max-width: 700px) {
 }
