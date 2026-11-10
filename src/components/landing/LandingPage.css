@@ -129,6 +129,7 @@
 .landing-footer > p { color: var(--auth-text-muted); font-size: 10px; }
 .landing-page [data-reveal] { transition: opacity 0.85s, transform 0.85s; }
 @media (prefers-reduced-motion: no-preference) {
+  .landing-page [data-reveal]:not(.is-visible) { opacity: 0; transform: translateY(24px); }
 }
 @keyframes landing-wave { }
 @media (min-width: 1600px) { }
