@@ -34,6 +34,7 @@
 .landing-nav button, .landing-text-button { border: 0; background: none; color: var(--auth-text-muted); padding: 8px 0; }
 .landing-nav button:hover, .landing-text-button:hover { color: var(--auth-text); }
 .landing-nav button { font-size: 13px; }
+.landing-header-actions { display: flex; align-items: center; gap: 18px; }
 @media (prefers-reduced-motion: no-preference) {
 }
 @keyframes landing-wave { }
