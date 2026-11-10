@@ -68,6 +68,8 @@
 .landing-text-button { display: inline-flex; align-items: center; gap: 16px; font-size: 12px !important; }
 .landing-small-note { margin-top: 18px; font-size: 10px; color: var(--auth-text-muted); }
 .landing-hero-bottom { position: absolute; bottom: 27px; left: 0; right: 0; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--auth-border); padding-top: 20px; color: var(--auth-text-muted); font-size: 9px; letter-spacing: 0.15em; pointer-events: auto; }
+.landing-scroll-cue { display: flex; align-items: center; gap: 13px; border: none; background: none; color: inherit; font-size: 9px !important; letter-spacing: 0.14em; }
+.landing-scroll-cue > span { font-size: 18px; }
 @media (prefers-reduced-motion: no-preference) {
 }
 @keyframes landing-wave { }
