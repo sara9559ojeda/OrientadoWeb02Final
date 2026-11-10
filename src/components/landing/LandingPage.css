@@ -25,6 +25,7 @@
 .landing-page h1, .landing-page h2, .landing-page h3 { font-family: var(--landing-serif); font-weight: 400; line-height: 1.03; letter-spacing: -0.045em; }
 .landing-page h2 { font-size: clamp(44px, 5.4vw, 76px); }
 .landing-page em { font-weight: 400; color: var(--auth-text-muted); }
+.landing-skip { position: fixed; top: -100px; left: 20px; z-index: 20; padding: 12px 20px; background: var(--auth-primary); color: var(--auth-on-primary); }
 @media (prefers-reduced-motion: no-preference) {
 }
 @keyframes landing-wave { }
