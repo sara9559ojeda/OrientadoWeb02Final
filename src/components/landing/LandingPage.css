@@ -65,6 +65,8 @@
 .landing-button-primary { background: var(--auth-primary); color: var(--auth-on-primary); }
 .landing-button-primary:hover { background: var(--auth-primary-hover); transform: translateY(-2px); }
 .landing-button > span { font-size: 19px; line-height: 1; }
+.landing-text-button { display: inline-flex; align-items: center; gap: 16px; font-size: 12px !important; }
+.landing-small-note { margin-top: 18px; font-size: 10px; color: var(--auth-text-muted); }
 @media (prefers-reduced-motion: no-preference) {
 }
 @keyframes landing-wave { }
