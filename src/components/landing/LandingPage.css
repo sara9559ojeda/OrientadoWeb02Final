@@ -126,6 +126,8 @@
 .landing-footer { display: flex; align-items: center; justify-content: space-between; gap: 24px; min-height: 130px; }
 .landing-footer .auth-brand-name { font-size: 24px; }
 .landing-footer .auth-brand-mark { width: 25px; height: 25px; }
+.landing-footer > p { color: var(--auth-text-muted); font-size: 10px; }
+.landing-page [data-reveal] { transition: opacity 0.85s, transform 0.85s; }
 @media (prefers-reduced-motion: no-preference) {
 }
 @keyframes landing-wave { }
