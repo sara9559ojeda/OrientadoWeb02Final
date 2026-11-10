@@ -185,6 +185,7 @@
   .landing-chapter { min-height: 90svh; align-items: flex-start; padding-top: 90px; }
   .landing-chapter-copy { width: 100%; max-width: 400px; padding: 0 0 50px; background: linear-gradient(var(--auth-bg) 65%, transparent); }
   .landing-chapter-index { margin-bottom: 25px; }
+  .landing-chapter h3 { font-size: 48px; max-width: 310px; }
 }
 @media (max-width: 360px) {
 }
