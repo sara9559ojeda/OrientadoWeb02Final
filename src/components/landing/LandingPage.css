@@ -56,6 +56,8 @@
 .landing-hero { min-height: calc(100svh - 88px); position: relative; display: flex; flex-direction: column; justify-content: center; padding-block: 70px 100px; pointer-events: none; }
 .landing-hero-copy { width: 57%; pointer-events: auto; }
 .landing-eyebrow { display: flex; align-items: center; gap: 10px; margin: 0 0 28px; color: var(--auth-text-muted); font-size: 10px; font-weight: 500; letter-spacing: 0.18em; line-height: 1.6; }
+.landing-eyebrow > span { width: 22px; height: 1px; background: var(--landing-gold); }
+.landing-page h1 { margin: 0; font-size: clamp(58px, 6.3vw, 92px); line-height: 0.99; }
 @media (prefers-reduced-motion: no-preference) {
 }
 @keyframes landing-wave { }
