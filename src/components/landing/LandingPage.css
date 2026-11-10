@@ -159,6 +159,8 @@
   .landing-visual { height: calc(100svh - 72px); margin-bottom: calc(-100svh + 72px); }
   .landing-scene-frame { inset: 32% 0 0; opacity: 0.75; }
   .landing-object-label { bottom: 12%; font-size: 8px; }
+  .landing-orbit-note { display: none; }
+  .landing-hero { min-height: max(780px, calc(100svh - 72px)); padding-block: 48px 100px; justify-content: flex-start; }
 }
 @media (max-width: 360px) {
 }
