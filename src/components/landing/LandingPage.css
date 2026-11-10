@@ -71,6 +71,8 @@
 .landing-scroll-cue { display: flex; align-items: center; gap: 13px; border: none; background: none; color: inherit; font-size: 9px !important; letter-spacing: 0.14em; }
 .landing-scroll-cue > span { font-size: 18px; }
 .landing-story { position: relative; min-height: 95svh; display: flex; align-items: center; padding-block: 120px; }
+.landing-story > div { max-width: 500px; width: 44%; }
+.landing-story h2 { font-size: clamp(44px, 4.7vw, 68px); margin-bottom: 30px; }
 @media (prefers-reduced-motion: no-preference) {
 }
 @keyframes landing-wave { }
