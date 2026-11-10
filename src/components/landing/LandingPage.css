@@ -168,6 +168,8 @@
   .landing-hero-actions { margin-top: 25px; gap: 20px; }
   .landing-button { padding: 13px 17px; min-height: 48px; gap: 23px; font-size: 11px !important; }
   .landing-text-button { font-size: 10px !important; gap: 8px; }
+  .landing-small-note { font-size: 9px; margin-top: 13px; }
+  .landing-hero-bottom > span { display: none; }
 }
 @media (max-width: 360px) {
 }
