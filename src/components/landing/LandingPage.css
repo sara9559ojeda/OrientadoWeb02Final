@@ -131,8 +131,8 @@
 @media (prefers-reduced-motion: no-preference) {
   .landing-page [data-reveal]:not(.is-visible) { opacity: 0; transform: translateY(24px); }
 }
-@keyframes landing-wave { }
-@media (min-width: 1600px) { }
+@keyframes landing-wave { to { transform: scaleY(0.45); } }
+@media (min-width: 1600px) { .landing-scene-frame { right: max(0px, calc((100vw - 1600px) / 2)); } }
 @media (max-width: 1000px) {
 }
 @media (max-width: 700px) {
