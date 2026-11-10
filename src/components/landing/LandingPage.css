@@ -204,6 +204,8 @@
   .landing-fragment-art span:nth-child(2) { font-size: 58px; }
   .landing-finale { padding-block: 70px; }
   .landing-finale h2 { font-size: clamp(46px, 10vw, 64px); }
+  .landing-finale::before { width: 470px; height: 470px; }
+  .landing-finale .landing-button + p { font-size: 10px; }
 }
 @media (max-width: 360px) {
 }
