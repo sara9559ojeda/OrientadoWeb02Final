@@ -22,6 +22,7 @@
 .landing-page button:focus-visible, .landing-page a:focus-visible { outline: 2px solid var(--auth-focus); outline-offset: 6px; }
 .landing-page ::selection { background: var(--auth-text); color: var(--auth-bg); }
 .landing-container { width: min(var(--landing-width), calc(100% - 112px)); margin-inline: auto; }
+.landing-page h1, .landing-page h2, .landing-page h3 { font-family: var(--landing-serif); font-weight: 400; line-height: 1.03; letter-spacing: -0.045em; }
 @media (prefers-reduced-motion: no-preference) {
 }
 @keyframes landing-wave { }
