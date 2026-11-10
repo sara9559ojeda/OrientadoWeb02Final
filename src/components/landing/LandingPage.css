@@ -44,6 +44,8 @@
 .landing-scene-frame::before { content: ''; position: absolute; inset: 14% 5%; border-radius: 50%; background: radial-gradient(ellipse, color-mix(in srgb, var(--landing-gold) 7%, transparent), transparent 66%); }
 .landing-scene-canvas { width: 100%; height: 100%; display: block; position: relative; z-index: 1; opacity: 0; transition: opacity 1s; }
 .landing-visual.is-ready .landing-scene-canvas { opacity: 1; }
+.landing-object-label { position: absolute; bottom: 12%; left: 50%; transform: translateX(-50%); display: flex; align-items: center; white-space: nowrap; gap: 10px; font-size: 9px; letter-spacing: 0.14em; color: var(--auth-text-muted); }
+.landing-object-label > span:last-child { padding-left: 24px; color: var(--landing-gold); }
 @media (prefers-reduced-motion: no-preference) {
 }
 @keyframes landing-wave { }
