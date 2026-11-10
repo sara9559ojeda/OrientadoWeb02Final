@@ -122,6 +122,7 @@
 .landing-finale .landing-eyebrow { justify-content: center; margin-bottom: 25px; }
 .landing-finale h2 { font-size: clamp(54px, 6.7vw, 92px); }
 .landing-finale .landing-button { margin-top: 38px; min-width: 220px; }
+.landing-finale .landing-button + p { color: var(--auth-text-muted); font-size: 11px; margin-top: 18px; }
 @media (prefers-reduced-motion: no-preference) {
 }
 @keyframes landing-wave { }
