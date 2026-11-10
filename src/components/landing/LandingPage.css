@@ -171,6 +171,8 @@
   .landing-small-note { font-size: 9px; margin-top: 13px; }
   .landing-hero-bottom > span { display: none; }
   .landing-hero-bottom { bottom: 22px; }
+  .landing-scroll-cue { font-size: 8px !important; }
+  .landing-story { padding-block: 100px; min-height: 95svh; align-items: flex-start; }
 }
 @media (max-width: 360px) {
 }
