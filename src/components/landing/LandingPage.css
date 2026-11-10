@@ -170,6 +170,7 @@
   .landing-text-button { font-size: 10px !important; gap: 8px; }
   .landing-small-note { font-size: 9px; margin-top: 13px; }
   .landing-hero-bottom > span { display: none; }
+  .landing-hero-bottom { bottom: 22px; }
 }
 @media (max-width: 360px) {
 }
