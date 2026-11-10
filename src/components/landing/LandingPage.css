@@ -173,6 +173,7 @@
   .landing-hero-bottom { bottom: 22px; }
   .landing-scroll-cue { font-size: 8px !important; }
   .landing-story { padding-block: 100px; min-height: 95svh; align-items: flex-start; }
+  .landing-story > div { width: 100%; max-width: 440px; background: linear-gradient(var(--auth-bg) 70%, transparent); padding-bottom: 45px; }
 }
 @media (max-width: 360px) {
 }
