@@ -182,6 +182,7 @@
   .landing-worlds-intro h2 { font-size: 46px; }
   .landing-worlds-intro > p:last-child { font-size: 12px; }
   .landing-world-tabs { width: 100%; margin-block: 25px 0; }
+  .landing-chapter { min-height: 90svh; align-items: flex-start; padding-top: 90px; }
 }
 @media (max-width: 360px) {
 }
