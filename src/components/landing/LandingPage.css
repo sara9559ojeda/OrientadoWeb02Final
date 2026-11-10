@@ -143,6 +143,7 @@
   .landing-hero-actions { gap: 18px; }
   .landing-mechanics { gap: 26px; }
   .landing-story > div { width: 49%; }
+  .landing-chapter-copy { width: 46%; }
 }
 @media (max-width: 700px) {
 }
