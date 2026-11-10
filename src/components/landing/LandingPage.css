@@ -104,6 +104,7 @@
 .landing-mechanics h3 { font-size: 30px; letter-spacing: -0.025em; margin-block: 15px; }
 .landing-mechanics p { color: var(--auth-text-muted); font-size: 13px; line-height: 1.9; max-width: 310px; }
 .landing-step { display: inline-block; color: var(--auth-text-muted); font-size: 9px; letter-spacing: 0.15em; margin-top: 34px; }
+.landing-key-art, .landing-sound-art, .landing-fragment-art { height: 90px; display: flex; align-items: center; justify-content: center; }
 @media (prefers-reduced-motion: no-preference) {
 }
 @keyframes landing-wave { }
