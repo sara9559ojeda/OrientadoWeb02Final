@@ -137,6 +137,7 @@
   .landing-container { width: calc(100% - 64px); }
   .landing-header { padding-inline: 28px; gap: 14px; }
   .landing-nav { gap: 18px; }
+  .landing-header-actions { gap: 12px; }
 }
 @media (max-width: 700px) {
 }
