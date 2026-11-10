@@ -207,8 +207,10 @@
   .landing-finale::before { width: 470px; height: 470px; }
   .landing-finale .landing-button + p { font-size: 10px; }
   .landing-footer { flex-wrap: wrap; justify-content: space-between; padding-block: 30px; gap: 18px; }
+  .landing-footer > p { width: 100%; order: 3; font-size: 9px; }
 }
 @media (max-width: 360px) {
+  .landing-header { padding-inline: 14px; }
 }
 @media (prefers-reduced-motion: reduce) {
 }
