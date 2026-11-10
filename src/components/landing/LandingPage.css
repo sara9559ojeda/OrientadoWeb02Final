@@ -194,6 +194,7 @@
   .landing-section-heading > p:last-child { font-size: 12px; }
   .landing-mechanics { grid-template-columns: 1fr; gap: 44px; margin-top: 50px; }
   .landing-mechanics article { display: grid; grid-template-columns: 110px 1fr; column-gap: 22px; padding-top: 25px; }
+  .landing-mechanics article > div { grid-row: 1 / 4; padding-left: 0; align-self: center; }
 }
 @media (max-width: 360px) {
 }
