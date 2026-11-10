@@ -84,6 +84,8 @@
 .landing-worlds-intro > p:last-child { color: var(--auth-text-muted); margin-top: 24px; font-size: 13px; }
 .landing-world-tabs { display: flex; gap: 6px; margin: 35px 0 10px; width: 45%; }
 .landing-world-tabs button { border: 1px solid var(--auth-border); background: transparent; color: var(--auth-text-muted); border-radius: 50%; width: 39px; height: 39px; font-size: 10px; transition: background 0.2s, color 0.2s; }
+.landing-world-tabs button.is-active { background: var(--auth-primary); color: var(--auth-on-primary); border-color: var(--auth-primary); }
+.landing-world-tabs button:hover { border-color: var(--auth-text-muted); }
 @media (prefers-reduced-motion: no-preference) {
 }
 @keyframes landing-wave { }
