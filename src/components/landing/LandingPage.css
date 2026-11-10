@@ -191,6 +191,7 @@
   .landing-chapter-detail { margin-top: 18px; }
   .landing-how { padding-block: 85px; }
   .landing-page h2 { font-size: clamp(40px, 9vw, 58px); }
+  .landing-section-heading > p:last-child { font-size: 12px; }
 }
 @media (max-width: 360px) {
 }
