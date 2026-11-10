@@ -101,6 +101,7 @@
 .landing-section-heading > p:last-child { color: var(--auth-text-muted); font-size: 14px; margin-top: 27px; }
 .landing-mechanics { display: grid; grid-template-columns: repeat(3, 1fr); gap: 55px; margin-top: 85px; }
 .landing-mechanics article { border-top: 1px solid var(--auth-border); padding-top: 36px; }
+.landing-mechanics h3 { font-size: 30px; letter-spacing: -0.025em; margin-block: 15px; }
 @media (prefers-reduced-motion: no-preference) {
 }
 @keyframes landing-wave { }
