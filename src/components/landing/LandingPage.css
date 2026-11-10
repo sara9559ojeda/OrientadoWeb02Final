@@ -177,6 +177,8 @@
   .landing-story h2 { font-size: clamp(44px, 9vw, 62px); }
   .landing-story p:not(.landing-eyebrow) { font-size: 13px; max-width: 320px; }
   .landing-story-signature { font-size: 18px; max-width: 320px; }
+  .landing-worlds { padding-top: 60px; }
+  .landing-worlds-intro { width: 100%; }
 }
 @media (max-width: 360px) {
 }
