@@ -47,6 +47,8 @@
 .landing-object-label { position: absolute; bottom: 12%; left: 50%; transform: translateX(-50%); display: flex; align-items: center; white-space: nowrap; gap: 10px; font-size: 9px; letter-spacing: 0.14em; color: var(--auth-text-muted); }
 .landing-object-label > span:last-child { padding-left: 24px; color: var(--landing-gold); }
 .landing-status-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--landing-gold); box-shadow: 0 0 12px color-mix(in srgb, var(--landing-gold) 45%, transparent); }
+.landing-orbit-note { position: absolute; top: 16%; right: 7%; writing-mode: vertical-rl; font-size: 8px; letter-spacing: 0.22em; color: var(--auth-text-muted); opacity: 0.6; }
+.landing-orbit-fallback { position: absolute; left: 50%; top: 48%; width: 260px; height: 260px; transform: translate(-50%, -50%); transition: opacity 0.6s; }
 @media (prefers-reduced-motion: no-preference) {
 }
 @keyframes landing-wave { }
