@@ -40,6 +40,7 @@
 .landing-login:hover { background: var(--auth-chip-hover); }
 .landing-journey { position: relative; }
 .landing-visual { position: sticky; top: 0; height: calc(100svh - 88px); margin-bottom: calc(-100svh + 88px); pointer-events: none; }
+.landing-scene-frame { position: absolute; inset: 0 0 0 43%; overflow: hidden; }
 @media (prefers-reduced-motion: no-preference) {
 }
 @keyframes landing-wave { }
