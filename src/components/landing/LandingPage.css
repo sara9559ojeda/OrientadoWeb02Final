@@ -198,6 +198,8 @@
   .landing-mechanics .landing-step { margin-top: 0; }
   .landing-mechanics h3 { font-size: 26px; margin-block: 10px; }
   .landing-mechanics p { font-size: 12px; }
+  .landing-key-art { transform: scale(0.85); transform-origin: left; }
+  .landing-fragment-art { gap: 3px; }
 }
 @media (max-width: 360px) {
 }
