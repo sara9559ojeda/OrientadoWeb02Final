@@ -92,6 +92,7 @@
 .landing-chapter-index { display: flex; align-items: center; justify-content: space-between; padding-bottom: 20px; border-bottom: 1px solid var(--auth-border); margin-bottom: 30px; color: var(--auth-text-muted); font-size: 9px; letter-spacing: 0.15em; }
 .landing-chapter-index span:last-child { font-size: 28px; line-height: 1; color: var(--landing-gold); }
 .landing-chapter h3 { font-size: clamp(38px, 4.4vw, 64px); margin: 0 0 13px; }
+.landing-chapter-mood { font-family: var(--landing-serif); font-size: 21px; margin-bottom: 22px; }
 @media (prefers-reduced-motion: no-preference) {
 }
 @keyframes landing-wave { }
